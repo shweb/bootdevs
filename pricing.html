@@ -1,66 +1,233 @@
-<!DOCTYPE html> <html> <head> <meta http-equiv=Content-Type content="text/html; charset=UTF-8"> <meta charset=utf-8> <meta name=viewport content="width=device-width,initial-scale=1"> <meta name=author content=daocloud> <link rel="shortcut icon" href="https://dn-daowww-prod.qbox.me/6b35de5f.favicon.ico"> <title>DaoCloud 企业级容器云平台</title> <meta name=description content="DaoCloud是业界领先的企业级容器云平台和解决方案提供商，致力于以Docker为代表的容器技术，为企业打造面向下一代互联网应用的交付和运维平台，帮助客户实现云端持续创新。DaoCloud采用混合云模式，以云端SaaS化容器管理平台，对接各类主机资源，构建跨云跨网的容器主机资源池，提供全流程标准化的应用持续集成、镜像构建、发布管理和容器运维服务。DaoCloud在开发运维联动、渐进式混合云构建、大规模高并发集群、微服务架构设计、分布式应用运维等场景拥有丰富经验和成功案例。DaoCloud总部位于中国上海，并在北京设有分支机构。"> <link rel=stylesheet href="https://dn-daowww-prod.qbox.me/styles/1f161627.pricing_vendor.css"> <link rel=stylesheet href="https://dn-daowww-prod.qbox.me/styles/57ec15b5.pricing.css"> <script>(function(i, s, o, g, r, a, m) {
-      i['DaoVoiceObject'] = r;
-      i[r] = i[r] || function() {
-        (i[r].q = i[r].q || []).push(arguments)
-      }, i[r].l = 1 * new Date();
-      a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0];
-      a.async = 1;
-      a.src = g;
-      m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//widget.daovoice.io/widget/91af7bf3.js', 'daovoice')</script>  <body> <div class="navbar navbar-inverse" role=navigation> <div class=container> <div class=navbar-header> <button type=button class=navbar-toggle data-toggle=collapse data-target=.navbar-collapse> <span class=sr-only>Toggle navigation</span> <span class=icon-bar></span> <span class=icon-bar></span> <span class=icon-bar></span> </button> <a href="index.html"> <img src="https://dn-daoweb-resource.qbox.me/green_logo.png"> </a> </div> <div class="navbar-collapse collapse"> <ul class="nav navbar-nav visible-xs"> <li class=dropdown> <a class=dropdown-toggle href="http://blog.daocloud.io" target=_blank>博客</a> </li> <li class=dropdown> <a class=dropdown-toggle href="http://open.daocloud.io/" target=_blank>社区</a> </li> <li class=dropdown> <a class=dropdown-toggle href="http://docs.daocloud.io/" target=_blank>文档</a> </li> <li class=dropdown> <a class=dropdown-toggle href="http://get.daocloud.io/" target=_blank>下载</a> </li> <li class=dropdown id=sign-up-xs> <a class=dropdown-toggle href="https://account.daocloud.io/signup" target=_self>注册</a> </li> <li class=dropdown id=sign-in-xs> <a class=dropdown-toggle href="https://account.daocloud.io/signin" target=_self>登录</a> </li> <li class="dropdown hidden" id=user-name-xs> <a href="https://dashboard.daocloud.io/" class=dropdown-toggle></a> </li> </ul> <ul class="nav navbar-nav navbar-right hidden-xs" style="padding: 19px 15px"> <!-- <a href="https://account.daocloud.io/signup" target="_self">
-                        <button type="button" class="btn btn-success" id="sign-up">注册</button>
-                    </a> --> <a href="https://account.daocloud.io/signin" target=_self> <button type=button class="btn btn-primary" id=sign-in>登录</button> </a> <a href="https://dashboard.daocloud.io/" target=_self id=user-name></a> </ul> <ul class="nav navbar-nav navbar-right hidden-xs"> <!--                     <li class="dropdown">
-                        <a href="https://dashboard.daocloud.io/" class="dropdown-toggle" target="_self">控制台</a>
-                    </li> --> <li class=dropdown> <a href="http://blog.daocloud.io" class=dropdown-toggle target=_blank>博客</a> </li> <li class=dropdown> <a href="http://open.daocloud.io/" class=dropdown-toggle target=_blank>社区</a> </li> <li class=dropdown> <a href="http://docs.daocloud.io/" class=dropdown-toggle target=_blank>文档</a> </li> <li class=dropdown> <a href="http://get.daocloud.io/" class=dropdown-toggle target=_blank>下载</a> </li> </ul> </div> </div> </div> <div class=container> <div class=section style="margin-top: 35px"> <div class=title>按需收费</div> <div class=gray>我们提供灵活的组合式付费计划，兼顾您对交付能力和弹性资源的不同需求</div> <a href="https://account.daocloud.io/signup"> <button class=free-registration>免费注册</button> </a> </div> </div> <div class=container> <div class=section> <div class="btn-group hidden" role=group id=btn-group> <button type=button class="btn btn-default selected" id=community-btn>社区版</button> <button type=button class="btn btn-default" id=profession-btn>专业版</button> <button type=button class="btn btn-default" id=enterprise-btn>企业版</button> </div> <table frame=box rules=all id=table> <colgroup> <col width="25%"> <col width="25%"> <col class=js-is-hidden width="25%"> <col class=js-is-hidden width="25%">  <thead> <tr> <th id=header-3> <th scope=col id=header-0>社区版 <th scope=col id=header-1>专业版 <th scope=col id=header-2>企业版   <tbody> <tr class=price> <td scope=row>价格 <td class=prices> <div class=price><small>¥ </small>0<small> / 月起</small></div> <a id=community-more class=more href=javascript:;>了解详情</a>  <td class=prices> <div class=price><small>¥ </small>20<small> / 月起</small></div> <a id=profession-more class=more href=javascript:;>了解详情</a>  <td class=prices> <div class=price><small>¥ </small>999<small> / 月起</small></div> <a id=enterprise-more class=more href=javascript:;>了解详情</a>   <!-- 协作交付能力 --> <tr class=strong> <td colspan=4>协作交付能力  <tr> <td>团队协作 <td><img src="https://dn-daowww-prod.qbox.me/images/9f8c18b8.checkmark.svg"> <td><img src="https://dn-daowww-prod.qbox.me/images/9f8c18b8.checkmark.svg"> <td><img src="https://dn-daowww-prod.qbox.me/images/9f8c18b8.checkmark.svg">  <tr> <td>代码库 <td><img src="https://dn-daowww-prod.qbox.me/images/9f8c18b8.checkmark.svg"> <td><img src="https://dn-daowww-prod.qbox.me/images/9f8c18b8.checkmark.svg"> <td>私有  <tr> <td>持续集成 <td><img src="https://dn-daowww-prod.qbox.me/images/9f8c18b8.checkmark.svg"> <td>并行 <td>私有  <tr> <td>持续构建 <td>自定义规则 <td>自定义规则 <td>私有  <tr> <td>镜像仓库 <td><img src="https://dn-daowww-prod.qbox.me/images/9f8c18b8.checkmark.svg"> <td>权限控制 <td>私有  <tr> <td>主机接入 <td><img src="https://dn-daowww-prod.qbox.me/images/9f8c18b8.checkmark.svg"> <td><img src="https://dn-daowww-prod.qbox.me/images/9f8c18b8.checkmark.svg"> <td><img src="https://dn-daowww-prod.qbox.me/images/9f8c18b8.checkmark.svg">  <tr> <td>容器编排 <td><img src="https://dn-daowww-prod.qbox.me/images/9f8c18b8.checkmark.svg"> <td><img src="https://dn-daowww-prod.qbox.me/images/9f8c18b8.checkmark.svg"> <td><img src="https://dn-daowww-prod.qbox.me/images/9f8c18b8.checkmark.svg">  <tr> <td>持续交付 <td>自动 <td>自动 <td>自动  <tr> <td> <div class=has-tooltip data-toggle=tooltip data-placement=top title=内网穿越安全通道，调试微信的利器> <span>云隧道</span> <span><img src="https://dn-daowww-prod.qbox.me/images/b5602965.question.svg"></span> </div>  <td style=color:#aab2bd>－ <td><img src="https://dn-daowww-prod.qbox.me/images/9f8c18b8.checkmark.svg"> <td><img src="https://dn-daowww-prod.qbox.me/images/9f8c18b8.checkmark.svg">  <tr> <td>日志 <td><img src="https://dn-daowww-prod.qbox.me/images/9f8c18b8.checkmark.svg"> <td>搜索 <td>审计  <tr> <td> <div class=has-tooltip data-toggle=tooltip data-placement=top title=跨主机间容器及数据迁移，统一的云端管理> <span>迁移</span> <span><img src="https://dn-daowww-prod.qbox.me/images/b5602965.question.svg"></span> </div>  <td style=color:#aab2bd>－ <td><img src="https://dn-daowww-prod.qbox.me/images/9f8c18b8.checkmark.svg"> <td><img src="https://dn-daowww-prod.qbox.me/images/9f8c18b8.checkmark.svg">  <tr> <td>开放 API <td><img src="https://dn-daowww-prod.qbox.me/images/9f8c18b8.checkmark.svg"> <td><img src="https://dn-daowww-prod.qbox.me/images/9f8c18b8.checkmark.svg"> <td><img src="https://dn-daowww-prod.qbox.me/images/9f8c18b8.checkmark.svg">  <tr> <td> <div class=has-tooltip data-toggle=tooltip data-placement=top title=企业定制的访问域名，可定制的访问页面> <span>专属入口</span> <span><img src="https://dn-daowww-prod.qbox.me/images/b5602965.question.svg"></span> </div>  <td style=color:#aab2bd>－ <td style=color:#aab2bd>－ <td><img src="https://dn-daowww-prod.qbox.me/images/9f8c18b8.checkmark.svg">  <!-- 弹性计算资源 --> <tr class=strong> <td colspan=4>弹性计算资源  <tr> <td>加速器 <td><img src="https://dn-daowww-prod.qbox.me/images/9f8c18b8.checkmark.svg"> <td>定制加速 <td>全球加速  <tr> <td>调度 <td>休眠 <td>自动 <td>自动  <tr> <td>弹性 <td><img src="https://dn-daowww-prod.qbox.me/images/9f8c18b8.checkmark.svg"> <td><img src="https://dn-daowww-prod.qbox.me/images/9f8c18b8.checkmark.svg"> <td><img src="https://dn-daowww-prod.qbox.me/images/9f8c18b8.checkmark.svg">  <tr> <td>带宽 <td>免费 <td>高速 <td>定制  <tr> <td>TCP <td style=color:#aab2bd>－ <td><img src="https://dn-daowww-prod.qbox.me/images/9f8c18b8.checkmark.svg"> <td><img src="https://dn-daowww-prod.qbox.me/images/9f8c18b8.checkmark.svg">  <tr> <td>存储卷 <td><img src="https://dn-daowww-prod.qbox.me/images/9f8c18b8.checkmark.svg"> <td><img src="https://dn-daowww-prod.qbox.me/images/9f8c18b8.checkmark.svg"> <td><img src="https://dn-daowww-prod.qbox.me/images/9f8c18b8.checkmark.svg">  <tr> <td> <div class=has-tooltip data-toggle=tooltip data-placement=top title=云端操作容器，浏览器模拟终端窗口> <span>云终端</span> <span><img src="https://dn-daowww-prod.qbox.me/images/b5602965.question.svg"></span> </div>  <td style=color:#aab2bd>－ <td><img src="https://dn-daowww-prod.qbox.me/images/9f8c18b8.checkmark.svg"> <td><img src="https://dn-daowww-prod.qbox.me/images/9f8c18b8.checkmark.svg">  <tr> <td>域名 <td>接入 <td>接入 <td>备案  <!-- 企业技术支持 --> <tr class=strong> <td colspan=4>企业技术支持  <tr> <td>技术支持 <td style=color:#aab2bd>－ <td><img src="https://dn-daowww-prod.qbox.me/images/9f8c18b8.checkmark.svg"> <td><img src="https://dn-daowww-prod.qbox.me/images/9f8c18b8.checkmark.svg">  <tr> <td>架构咨询 <td style=color:#aab2bd>－ <td style=color:#aab2bd>－ <td><img src="https://dn-daowww-prod.qbox.me/images/9f8c18b8.checkmark.svg">  <tr> <td>管理培训 <td style=color:#aab2bd>－ <td style=color:#aab2bd>－ <td><img src="https://dn-daowww-prod.qbox.me/images/9f8c18b8.checkmark.svg">  <tr> <td> <td class=mores><a id=community-more2 class=more href=javascript:;>了解详情</a> <td class=mores><a id=profession-more2 class=more href=javascript:;>了解详情</a> <td class=mores><a id=enterprise-more2 class=more href=javascript:;>了解详情</a>   </table> <div class="plan-arrows hidden-md hidden-lg"> <a class="plan-arrow plan-arrow-left pull-left hidden" href=javascript:;> <img src="https://dn-daowww-prod.qbox.me/images/86f4f47a.arrow-left.svg"> <span class=plan-arrow-left-text></span> </a> <a class="plan-arrow plan-arrow-right pull-right" href=javascript:;> <span class=plan-arrow-right-text>了解专业版</span> <img src="https://dn-daowww-prod.qbox.me/images/649d0977.arrow-right.svg"> </a> </div> </div> </div> <hr class="hidden divider" id=divider> <div class="plan-container hidden" id=community> <div class=container> <div class="section production"> <div class=title>社区版</div> <div class=gray>能力 ＋ 资源，满足个性化需求</div> <div class=ornamental-thread></div> <div class=row> <div class="col-sm-6 col-xs-12 text-left left-section"> <div class=box-container> <div class=title> 1. 协作交付能力 </div> <div class=content> 无限项目 </div> </div> <div class=box-container> <div class=title> 2. 弹性计算资源 </div> <div class=content> <span class=range1-value>2</span> x <span class=pull-right data-toggle=tooltip data-placement=top title="x 是一个标准弹性资源，每 x 约等于128MB 内存的计算资源"> <img src="https://dn-daowww-prod.qbox.me/images/b5602965.question.svg">什么是 x？ </span> </div> <div class=range-container> <input type=range id=range1 class="quota-x fill" min=0 max=13 value=0 step=1> <div class=ticks> <span>2</span> <span>资源</span> <span class=pull-right>500</span> </div> </div> <div class=description> 您的套餐价格随消耗的资源数变化 </div> </div> </div> <div class="col-sm-6 col-xs-12 text-left right-section"> <div class=cart-item> <div class=title>协作交付能力</div> <div class=description> <span class=size> 无限项目 </span> <span class="price pull-right"> 免费 </span> </div> </div> <div class=cart-item> <div class=title>弹性计算资源</div> <div class=description> <span class="size range1-value">2</span> x <span class="price pull-right"><span class=range1-price>0</span> 元 <small>/ 月</small></span> </div> </div> <hr class=divider> <div class=total> <span>合计</span> <span class=pull-right><span class=range1-total>0</span> 元 <small>/ 月</small></span> </div> <div class=register-container> <button class="button signup">免费注册</button> <a href=mailto:info@daocloud.io>需要私有化定制方案?</a> </div> </div> </div> </div> </div> </div> <div class="plan-container hidden" id=profession> <div class=container> <div class="section production"> <div class=title>专业版</div> <div class=gray>能力 ＋ 资源，轻松应对互联网应用的云端交付</div> <div class=ornamental-thread></div> <div class=row> <div class="col-sm-6 col-xs-12 text-left left-section"> <div class=box-container> <div class=title> 1. 协作交付能力 </div> <div class=content> <span class=range2-value>1</span> 个项目 </div> <div class=range-container> <input type=range id=range2 class="cd fill" min=0 max=8 step=1 value=0> <div class=ticks> <span>1</span> <span>项目</span> <span class=pull-right>100</span> </div> </div> <div class=description> 您的套餐价格随协作的项目数变化 </div> </div> <div class=box-container> <div class=title> 2. 弹性计算资源 </div> <div class=content> <span class=range3-value>2</span> x <span class=pull-right data-toggle=tooltip data-placement=top title="x 是一个标准弹性资源，每 x 约等于128MB 内存的计算资源"> <img src="https://dn-daowww-prod.qbox.me/images/b5602965.question.svg">什么是 x？ </span> </div> <div class=range-container> <input type=range id=range3 class="fill quota-x" min=0 max=13 value=0 step=1> <div class=ticks> <span>2</span> <span>资源</span> <span class=pull-right>500</span> </div> </div> <div class=description> 您的套餐价格随消耗的资源数变化 </div> </div> </div> <div class="col-sm-6 col-xs-12 text-left right-section"> <div class=cart-item> <div class=title>协作交付能力</div> <div class=description> <span class="size range2-value"> 1 </span> 个项目，专业版 <span class="price pull-right"> <span class=range2-price value=20>20</span> 元 <small>/ 月</small> </span> </div> </div> <div class=cart-item> <div class=title>弹性计算资源</div> <div class=description> <span class="size range3-value"> 2 </span> x <span class="price pull-right"> <span class=range3-price value=0>0</span> 元 <small>/ 月</small> </span> </div> </div> <hr class=divider> <div class=total> <span>合计</span> <span class=pull-right><span class="range2-total range3-total">20</span> 元 <small>/ 月</small></span> </div> <div class=register-container> <button class="button signup">免费注册</button> <a href=mailto:info@daocloud.io> 需要把 DaoCloud 整体带回家?<br> 请获取我们的私有云产品及方案 </a> </div> </div> </div> </div> </div> </div> <div class="plan-container hidden" id=enterprise> <div class=container> <div class="section production"> <div class=title>企业版</div> <div class=gray>本地协作 ＋ 云端资源，容器化的最佳实践</div> <div class=ornamental-thread></div> <div class=row> <div class="col-sm-6 col-xs-12 text-left left-section"> <div class=box-container> <div class=title> 1. 协作交付能力<span class=label>Enterprise</span> </div> <div class=content> <span>无限项目</span> </div> <div class="radio-container row"> <div class="radio col-sm-6 col-xs-12"> <div class="radio-box checked"> <label> <input type=radio id=radio1 name=plan value=999 checked title=本地代码接入> 本地代码接入 </label> </div> </div> <div class="radio col-sm-6 col-xs-12"> <div class=radio-box> <label> <input type=radio id=radio2 name=plan value=4999 title=本地持续构建> 本地持续构建 </label> </div> </div> </div> <div class="radio-container row"> <div class="radio col-sm-6 col-xs-12"> <div class=radio-box> <label> <input type=radio id=radio3 name=plan value=9800 title=本地镜像托管> 本地镜像托管 </label> </div> </div> <div class="radio col-sm-6 col-xs-12"> <div class=radio-box> <label> <input type=radio id=radio4 name=plan value=0 title=企业定制方案> 企业定制方案 </label> </div> </div> </div> <!-- <div class="radio-container">
-                                <div class="radio">
-                                    <label class="checked">
-                                        <input id="radio1" type="radio" name="plan" value="999" checked title="专属入口"> 本地代码接入
-                                        <div class="description">
-                                            <div>企业专属入口</div>
-                                            <div>私有代码库</div>
-                                            <div>企业级技术支持</div>
-                                        </div>
-                                    </label>
-                                </div>
-                                <div class="radio">
-                                    <label>
-                                        <input id="radio2" type="radio" name="plan" value="4999" title="私有代码仓库"> 本地持续构建
-                                        <div class="hidden description">
-                                            <div>企业专属入口</div>
-                                            <div>私有代码库</div>
-                                            <div>私有流水线</div>
-                                            <div>企业级技术支持</div>
-                                            <div>容器化流程咨询</div>
-                                        </div>
-                                    </label>
-                                </div>
-                                <div class="radio">
-                                    <label>
-                                        <input id="radio3" type="radio" name="plan" value="9800" title="私有代码及镜像仓库"> 本地镜像托管
-                                        <div class="hidden description">
-                                            <div>企业专属入口</div>
-                                            <div>私有代码库</div>
-                                            <div>私有流水线</div>
-                                            <div>私有镜像库</div>
-                                            <div>企业级技术支持</div>
-                                            <div>容器化流程咨询</div>
-                                            <div>微服务架构咨询</div>
-                                        </div>
-                                    </label>
-                                </div>
-                                <div class="radio">
-                                    <label>
-                                        <input id="radio4" type="radio" name="plan" value="0" title="企业定制"> 企业定制方案
-                                        <div class="hidden description">
-                                            <div>定制解决方案</div>
-                                            <div>企业级技术支持</div>
-                                            <div>容器化流程咨询</div>
-                                            <div>微服务架构咨询</div>
-                                            <div>精益化管理培训</div>
-                                        </div>
-                                    </label>
-                                </div>
-                            </div> --> </div> <div class=box-container> <div class=title> 2. 弹性计算资源 </div> <div class=content> <span class=range4-value>2</span> x <span class=pull-right data-toggle=tooltip data-placement=top title="x 是一个标准弹性资源，每 x 约等于128MB 内存的计算资源"> <img src="https://dn-daowww-prod.qbox.me/images/b5602965.question.svg">什么是 x？ </span> </div> <div class=range-container> <input type=range id=range4 class="quota-x fill" min=0 max=13 value=0 step=1> <div class=ticks> <span>2</span> <span>资源</span> <span class=pull-right>500</span> </div> </div> <div class=description> 您的套餐价格随消耗的资源数变化 </div> </div> </div> <div class="col-sm-6 col-xs-12 text-left right-section"> <div class=cart-item> <div class=title>协作交付能力<span class=label>Enterprise</span></div> <div class=description> <span class=size> 无限项目，<span class=radio-size>本地代码接入</span> </span> <span class="radio-price-container price pull-right"> <span class=radio-price>999</span> 元 <small>/ 月</small> </span> </div> <div class=enterprise-description> <ul id=radio1-description> <li>企业专属入口</li> <li class=last-li>私有代码库</li> <li>企业级技术支持</li> </ul> <ul id=radio2-description class=hidden> <li>企业专属入口</li> <li>私有代码库</li> <li class=last-li>私有流水线</li> <li>企业级技术支持</li> <li>容器化流程咨询</li> </ul> <ul id=radio3-description class=hidden> <li>企业专属入口</li> <li>私有代码库</li> <li>私有流水线</li> <li class=last-li>私有镜像库</li> <li>企业级技术支持</li> <li>容器化流程咨询</li> <li>微服务架构咨询</li> </ul> <ul id=radio4-description class=hidden> <li class=last-li>定制解决方案</li> <li>企业级技术支持</li> <li>容器化流程咨询</li> <li>微服务架构咨询</li> <li>精益化管理培训</li> </ul> </div> </div> <div class=cart-item> <div class=title>弹性计算资源</div> <div class=description> <span class="size range4-value"> 2 </span> x <span class="price pull-right"> <span class=range4-price>0</span> 元 <small>/ 月</small> </span> </div> </div> <hr class=divider> <div class=total> <span>合计</span> <span class="radio-total-container pull-right"><span class=range4-total>999</span> 元 <small>/ 月</small></span> </div> <div class=register-container> <button class="button signup">免费注册</button> <a href=mailto:info@daocloud.io> 需要把 DaoCloud 整体带回家?<br> 请获取我们的私有云产品及方案 </a> </div> </div> </div> </div> </div> </div> <!-- Footer --> <div id=footer> <div class=container> <div class=row> <div class="col-xs-6 col-sm-3 footer-col"> <div class=footer-col-unit> <h4>关于公司</h4> <li> <a href="http://blog.daocloud.io/" target=_blank>博客</a> </li> <li> <a href="http://open.daocloud.io/" target=_blank>社区</a> </li> <li> <a href="http://help.daocloud.io/" target=_blank>文档</a> </li> <li> <a href="http://get.daocloud.io/" target=_blank>下载</a> </li> <li class=service-items> <a href="https://account.daocloud.io/term" target=_blank>服务条款</a> </li> <li class=service-items> <a href="http://status.daocloud.io/" target=_blank>服务状态</a> </li> </div> </div> <div class="col-xs-6 col-sm-3 footer-col"> <div class=footer-col-unit> <h4>社交媒体</h4> <li> <a href="http://weibo.com/daocloud" target=_self>微博</a> </li> <li> <a href="https://www.facebook.com/pages/DaoCloudio/794434853974192" target=_self>Facebook</a> </li> <li> <a href="https://twitter.com/DaoCloudIO" target=_self>Twitter</a> </li> <li> <a href="https://www.linkedin.com/company/daocloud-network-technology-co-ltd-" target=_self>LinkedIn</a> </li> </div> </div> <div class="col-xs-6 col-sm-3 footer-col"> <div class=footer-col-unit> <h4>联系方式</h4> <li> 邮箱：<a href=mailto:info@daocloud.io>info@daocloud.io</a> </li> <li> 电话：021-61431590 </li> <li class=address> 地址：上海市杨浦区政府路18号901室 </li> </div> </div> <div class="col-xs-6 col-sm-3 footer-col"> <div class=footer-col-unit> <h4>扫描二维码</h4> <img src="https://dn-daowww-prod.qbox.me/images/b32e172f.qrcode.jpeg" style="width:100px; margin-top:10px"> </div> </div> </div> <div class=final-intro> © 沪ICP备14048409号-1 - 上海道客网络科技有限公司 </div> </div> </div> <script>var api_url = 'https://api.daocloud.io/';
-    var githubClientId = 'a26a25589f569fa90d5d';
-    var account_url = 'https://account.daocloud.io/';</script> <script src="https://dn-daowww-prod.qbox.me/scripts/c52889e0.pricing_vendor.js"></script> <script src="https://dn-daowww-prod.qbox.me/scripts/2914df29.pricing.js"></script>  
+<!DOCTYPE html> <html> <head> <meta http-equiv=Content-Type content="text/html; charset=UTF-8"> <meta charset=utf-8> <meta name=viewport content="width=device-width,initial-scale=1"> <meta name=author content=bootdev> <link rel="shortcut icon" href="http://res.cloudinary.com/hrscywv4p/image/upload/c_limit,h_64,w_64/v1/715149/drupal-8-logo_0_m4lr8p.png"> <title>BootDev 企业级优化云平台</title> <meta name=description content="BootDev是代码即架构和性能优化 SaaS 解决方案提供商，为企业打造面向下一代互联网应用的交付和运维平台，帮助客户实现云端持续创新。BootDev采用混合云模式，以云端SaaS化主机或容器管理平台，对接各类主机资源，构建跨云跨网的云主机资源池，提供全流程标准化的自动性能优化运维服务。BootDev在开发运维联动、渐进式混合云构建、大规模高并发集群、微服务架构设计、分布式应用运维等场景拥有丰富经验和成功案例。BootDev总部位于中国上海，并在香港设有分支机构。"> <link rel=stylesheet href="file:///Users/keithyau/Downloads/us.sitesucker.mac.sitesucker/www.daocloud.io/css/pricing_vendor.css"> <link rel=stylesheet href="file:///Users/keithyau/Downloads/us.sitesucker.mac.sitesucker/www.daocloud.io/css/pricing.css">
+ <body> 
+  <div class="navbar navbar-inverse" role=navigation> 
+  <div class=container> <div class=navbar-header> <button type=button class=navbar-toggle data-toggle=collapse data-target=.navbar-collapse> <span class=sr-only>Toggle navigation</span> <span class=icon-bar></span> <span class=icon-bar></span> <span class=icon-bar></span> </button> <a href="index.html"> <img src="file:///Users/keithyau/Downloads/us.sitesucker.mac.sitesucker/www.daocloud.io/images/assets/bootdev-logo_reform.png"> </a> </div> <div class="navbar-collapse collapse"> <ul class="nav navbar-nav visible-xs"> <li class=dropdown> <a class=dropdown-toggle href="http://blog.bootdev.com" target=_blank>博客</a> </li> <!--<li class=dropdown> <a class=dropdown-toggle href="http://open.bootdev.com/" target=_blank>社区</a> </li>--> <li class=dropdown> <a class=dropdown-toggle href="http://docs.bootdev.com/" target=_blank>文档</a> </li> <li class=dropdown> <a class=dropdown-toggle href="http://get.bootdev.com/" target=_blank>下载</a> </li> <li class=dropdown id=sign-up-xs> <a class=dropdown-toggle href="https://console-dev.bootdev.com/" target=_self>注册</a> </li> <li class=dropdown id=sign-in-xs> <a class=dropdown-toggle href="https://console-dev.bootdev.com/" target=_self>登录</a> </li> <li class="dropdown hidden" id=user-name-xs> <a href="https://dashboard.bootdev.com/" class=dropdown-toggle></a> </li> </ul> <ul class="nav navbar-nav navbar-right hidden-xs" style="padding: 19px 15px"> 
+   <a href="https://console-dev.bootdev.com/" target=_self> <button type=button class="btn btn-primary" id=sign-in>登录</button> </a> <a href="https://console-dev.bootdev.com/" target=_self id=user-name></a> </ul> <ul class="nav navbar-nav navbar-right hidden-xs"> <!--                     <li class="dropdown">
+                        <a href="https://console-dev.bootdev.com/" class="dropdown-toggle" target="_self">控制台</a>
+                    </li> --> <li class=dropdown> <a href="http://blog.bootdev.com" class=dropdown-toggle target=_blank>博客</a> </li> <!--<li class=dropdown> <a href="http://open.bootdev.com/" class=dropdown-toggle target=_blank>社区</a> </li> --><li class=dropdown> <a href="http://docs.bootdev.com/" class=dropdown-toggle target=_blank>文档</a> </li> <li class=dropdown> <a href="http://get.bootdev.com/" class=dropdown-toggle target=_blank>下载</a> </li> </ul> </div> </div> </div> <div class=container> <div class=section style="margin-top: 35px"> <div class=title>按需收费 onDemand</div> <div class=gray>我们提供按單次部署式付费计划，兼顾您对性能优化上的不同考慮</div> <a href="http://console-dev.bootdev.com"> <button class=free-registration>免费注册</button> </a> </div> </div> <div class=container> <div class=section> <div class="btn-group hidden" role=group id=btn-group> <button type=button class="btn btn-default selected" id=community-btn>社区版</button> <button type=button class="btn btn-default" id=profession-btn>专业版</button> <button type=button class="btn btn-default" id=enterprise-btn>企业版</button> </div> <table frame="box" id="table" rules="all">
+  <colgroup>
+    <col width="25%" />
+    <col width="25%" />
+    <col class="js-is-hidden" width="25%" />
+    <col class="js-is-hidden" width="25%" />
+  </colgroup>
+  <thead>
+    <tr>
+      <th id="header-3">&nbsp;</th>
+      <th id="header-0" scope="col"><span style="font-weight: normal;">社区版</span></th>
+      <th id="header-1" scope="col"><span style="font-weight: normal;">专业版</span></th>
+      <th id="header-2" scope="col"><span style="font-weight: normal;">企业版</span></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="price">
+      <td scope="row">价格</td>
+      <td class="prices">
+      <div class="price"><small>&yen; </small>99<small> / 次起</small></span></div>
+      <a class="more" href="javascript:;" id="community-more"><font color="#333333">了解详情</font></a></td>
+      <td class="prices">
+      <div class="price"><small>&yen; </small>500<small> / 月起</small></span></div>
+      <a class="more" href="javascript:;" id="profession-more"><font color="#333333">了解详情</font></a></td>
+      <td class="prices">
+      <div class="price"><small>&yen; </small>9999<small> / 月起</small></span></div>
+      <a class="more" href="javascript:;" id="enterprise-more"><font color="#333333">了解详情</font></a></td>
+    </tr>
+    <tr class="strong">
+      <td colspan="4">性能优化能力</td>
+    </tr>
+    <tr>
+      <td>自我检测</td>
+      <td><img src="https://dn-daowww-prod.qbox.me/images/9f8c18b8.checkmark.svg" /></td>
+      <td><img src="https://dn-daowww-prod.qbox.me/images/9f8c18b8.checkmark.svg" /></td>
+      <td><img src="https://dn-daowww-prod.qbox.me/images/9f8c18b8.checkmark.svg" /></td>
+    </tr>
+    <tr>
+      <td><span style="color: rgb(67, 74, 84); font-family: 'Source Han Sans SC'; font-size: 16px; line-height: normal; white-space: pre-wrap;">自我修復</span></td>
+      <td><span style="line-height: 20.8px;">－</span></td>
+      <td><img src="https://dn-daowww-prod.qbox.me/images/9f8c18b8.checkmark.svg" /></td>
+      <td><img src="https://dn-daowww-prod.qbox.me/images/9f8c18b8.checkmark.svg" style="line-height: 20.8px;" /></td>
+    </tr>
+    <tr>
+      <td>持续集成</td>
+      <td><span style="line-height: 20.8px;">－</span></td>
+      <td><img src="https://dn-daowww-prod.qbox.me/images/9f8c18b8.checkmark.svg" style="line-height: 20.8px;" /></td>
+      <td><span data-sheets-userformat="{&quot;2&quot;:14915,&quot;3&quot;:{&quot;1&quot;:0},&quot;4&quot;:{&quot;1&quot;:2,&quot;2&quot;:16777215},&quot;9&quot;:1,&quot;12&quot;:0,&quot;14&quot;:{&quot;1&quot;:2,&quot;2&quot;:6647160},&quot;15&quot;:&quot;\&quot;Source Han Sans SC\&quot;&quot;,&quot;16&quot;:12}" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;\u81ea\u5b9a\u4e49\u89c4\u5219&quot;}" style="font-size:120%;font-family:Source Han Sans SC;color:#656d78;text-align:center;">自定义规则</span></td>
+    </tr>
+    <tr>
+      <td>多主机部署</td>
+      <td><span style="line-height: 20.8px;">－</span></td>
+      <td><img src="https://dn-daowww-prod.qbox.me/images/9f8c18b8.checkmark.svg" style="line-height: 20.8px;" /></td>
+      <td><span data-sheets-userformat="{&quot;2&quot;:14915,&quot;3&quot;:{&quot;1&quot;:0},&quot;4&quot;:{&quot;1&quot;:2,&quot;2&quot;:16777215},&quot;9&quot;:1,&quot;12&quot;:0,&quot;14&quot;:{&quot;1&quot;:2,&quot;2&quot;:6647160},&quot;15&quot;:&quot;\&quot;Source Han Sans SC\&quot;&quot;,&quot;16&quot;:12}" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;\u81ea\u5b9a\u4e49\u89c4\u5219&quot;}" style="font-size:120%;font-family:Source Han Sans SC;color:#656d78;text-align:center;">自定义规则</span></td>
+    </tr>
+    <tr>
+      <td><span style="color: rgb(67, 74, 84); font-family: 'Source Han Sans SC'; font-size: 16px; line-height: normal; white-space: pre-wrap;">Docker部署</span></td>
+      <td><span style="line-height: 20.8px;">－</span></td>
+      <td><img src="https://dn-daowww-prod.qbox.me/images/9f8c18b8.checkmark.svg" style="line-height: 20.8px;" /></td>
+      <td><span data-sheets-userformat="{&quot;2&quot;:14915,&quot;3&quot;:{&quot;1&quot;:0},&quot;4&quot;:{&quot;1&quot;:2,&quot;2&quot;:16777215},&quot;9&quot;:1,&quot;12&quot;:0,&quot;14&quot;:{&quot;1&quot;:2,&quot;2&quot;:6647160},&quot;15&quot;:&quot;\&quot;Source Han Sans SC\&quot;&quot;,&quot;16&quot;:12}" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;\u81ea\u5b9a\u4e49\u89c4\u5219&quot;}" style="font-size:120%;font-family:Source Han Sans SC;color:#656d78;text-align:center;">自定义规则</span></td>
+    </tr>
+    <tr>
+      <td>主机接入</td>
+      <td><img src="https://dn-daowww-prod.qbox.me/images/9f8c18b8.checkmark.svg" /></td>
+      <td><img src="https://dn-daowww-prod.qbox.me/images/9f8c18b8.checkmark.svg" /></td>
+      <td><img src="https://dn-daowww-prod.qbox.me/images/9f8c18b8.checkmark.svg" /></td>
+    </tr>
+    <tr>
+      <td><span style="color: rgb(67, 74, 84); font-family: 'Source Han Sans SC'; font-size: 16px; line-height: normal; white-space: pre-wrap;">按時优化</span></td>
+      <td><span style="line-height: 20.8px;">－</span></td>
+      <td><img src="https://dn-daowww-prod.qbox.me/images/9f8c18b8.checkmark.svg" /></td>
+      <td><img src="https://dn-daowww-prod.qbox.me/images/9f8c18b8.checkmark.svg" /></td>
+    </tr>
+    <tr>
+      <td><span style="color: rgb(67, 74, 84); font-family: 'Source Han Sans SC'; font-size: 16px; line-height: normal; white-space: pre-wrap;">日志</span></td>
+      <td>7天</td>
+      <td>1月</td>
+      <td>3年</td>
+    </tr>
+    <tr>
+      <td>
+      <div class="has-tooltip" data-placement="top" data-toggle="tooltip" title="内网穿越安全通道，调试微信的利器"><span style="color: rgb(67, 74, 84); font-family: 'Source Han Sans SC'; font-size: 16px; line-height: normal; white-space: pre-wrap;">Docker迁移</span></div>
+      </td>
+      <td style="color:#aab2bd"><font color="#333333">－</font></td>
+      <td><span data-sheets-userformat="{&quot;2&quot;:14915,&quot;3&quot;:{&quot;1&quot;:0},&quot;4&quot;:{&quot;1&quot;:2,&quot;2&quot;:16777215},&quot;9&quot;:1,&quot;12&quot;:0,&quot;14&quot;:{&quot;1&quot;:2,&quot;2&quot;:6647160},&quot;15&quot;:&quot;\&quot;Source Han Sans SC\&quot;&quot;,&quot;16&quot;:12}" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;\u5b9a\u5236&quot;}" style="font-size:120%;font-family:Source Han Sans SC;color:#656d78;text-align:center;">定制</span></td>
+      <td><span data-sheets-userformat="{&quot;2&quot;:14915,&quot;3&quot;:{&quot;1&quot;:0},&quot;4&quot;:{&quot;1&quot;:2,&quot;2&quot;:16777215},&quot;9&quot;:1,&quot;12&quot;:0,&quot;14&quot;:{&quot;1&quot;:2,&quot;2&quot;:6647160},&quot;15&quot;:&quot;\&quot;Source Han Sans SC\&quot;&quot;,&quot;16&quot;:12}" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;\u5b9a\u5236&quot;}" style="font-size:120%;font-family:Source Han Sans SC;color:#656d78;text-align:center;">定制</span></td>
+    </tr>
+    <tr>
+      <td>开放 API</td>
+      <td><span style="line-height: 20.8px;">－</span></td>
+      <td><img src="https://dn-daowww-prod.qbox.me/images/9f8c18b8.checkmark.svg" /></td>
+      <td><img src="https://dn-daowww-prod.qbox.me/images/9f8c18b8.checkmark.svg" /></td>
+    </tr>
+    <tr class="strong">
+      <td colspan="4"><span style="color: rgb(67, 74, 84); font-family: 'Source Han Sans SC'; font-size: 16px; line-height: normal; white-space: pre-wrap; background-color: rgb(245, 247, 250);">安全+監控能力</span></td>
+    </tr>
+    <tr>
+      <td><span style="color: rgb(67, 74, 84); font-family: 'Source Han Sans SC'; font-size: 16px; line-height: normal; white-space: pre-wrap;">Ping</span></td>
+      <td><img src="https://dn-daowww-prod.qbox.me/images/9f8c18b8.checkmark.svg" /></td>
+      <td><img src="https://dn-daowww-prod.qbox.me/images/9f8c18b8.checkmark.svg" style="line-height: 20.8px;" /></td>
+      <td><img src="https://dn-daowww-prod.qbox.me/images/9f8c18b8.checkmark.svg" style="line-height: 20.8px;" /></td>
+    </tr>
+    <tr>
+      <td><span style="color: rgb(67, 74, 84); font-family: 'Source Han Sans SC'; font-size: 16px; line-height: normal; white-space: pre-wrap;">ab 測試</span></td>
+      <td><img src="https://dn-daowww-prod.qbox.me/images/9f8c18b8.checkmark.svg" style="line-height: 20.8px;" /></td>
+      <td>自动</td>
+      <td><span data-sheets-userformat="{&quot;2&quot;:14915,&quot;3&quot;:{&quot;1&quot;:0},&quot;4&quot;:{&quot;1&quot;:2,&quot;2&quot;:16777215},&quot;9&quot;:1,&quot;12&quot;:0,&quot;14&quot;:{&quot;1&quot;:2,&quot;2&quot;:6647160},&quot;15&quot;:&quot;\&quot;Source Han Sans SC\&quot;&quot;,&quot;16&quot;:12}" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;\u81ea\u5b9a\u4e49\u89c4\u5219&quot;}" style="font-size:120%;font-family:Source Han Sans SC;color:#656d78;text-align:center;">自定义规则</span></td>
+    </tr>
+    <tr>
+      <td><span style="color: rgb(67, 74, 84); font-family: 'Source Han Sans SC'; font-size: 16px; line-height: normal; white-space: pre-wrap;">Jmeter</span></td>
+      <td><span data-sheets-userformat="{&quot;2&quot;:14915,&quot;3&quot;:{&quot;1&quot;:0},&quot;4&quot;:{&quot;1&quot;:2,&quot;2&quot;:16777215},&quot;9&quot;:1,&quot;12&quot;:0,&quot;14&quot;:{&quot;1&quot;:2,&quot;2&quot;:6647160},&quot;15&quot;:&quot;\&quot;Source Han Sans SC\&quot;&quot;,&quot;16&quot;:12}" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;\u6309\u9700&quot;}" style="font-size:120%;font-family:Source Han Sans SC;color:#656d78;text-align:center;">按需</span></td>
+      <td><span style="color: rgb(101, 109, 120); font-family: 'Source Han Sans SC'; font-size: 16px; line-height: normal; text-align: center; white-space: pre-wrap;">自动</span></td>
+      <td><span data-sheets-userformat="{&quot;2&quot;:14915,&quot;3&quot;:{&quot;1&quot;:0},&quot;4&quot;:{&quot;1&quot;:2,&quot;2&quot;:16777215},&quot;9&quot;:1,&quot;12&quot;:0,&quot;14&quot;:{&quot;1&quot;:2,&quot;2&quot;:6647160},&quot;15&quot;:&quot;\&quot;Source Han Sans SC\&quot;&quot;,&quot;16&quot;:12}" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;\u81ea\u5b9a\u4e49\u89c4\u5219&quot;}" style="font-size:120%;font-family:Source Han Sans SC;color:#656d78;text-align:center;">自定义规则</span></td>
+    </tr>
+    <tr>
+      <td><span style="color: rgb(67, 74, 84); font-family: 'Source Han Sans SC'; font-size: 16px; line-height: normal; white-space: pre-wrap;">问题排查</span></td>
+      <td><span data-sheets-userformat="{&quot;2&quot;:14915,&quot;3&quot;:{&quot;1&quot;:0},&quot;4&quot;:{&quot;1&quot;:2,&quot;2&quot;:16777215},&quot;9&quot;:1,&quot;12&quot;:0,&quot;14&quot;:{&quot;1&quot;:2,&quot;2&quot;:6647160},&quot;15&quot;:&quot;\&quot;Source Han Sans SC\&quot;&quot;,&quot;16&quot;:12}" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;\u6309\u9700&quot;}" style="font-size:120%;font-family:Source Han Sans SC;color:#656d78;text-align:center;">按需</span></td>
+      <td><span style="color: rgb(101, 109, 120); font-family: 'Source Han Sans SC'; font-size: 16px; line-height: normal; text-align: center; white-space: pre-wrap;">自动</span></td>
+      <td><span data-sheets-userformat="{&quot;2&quot;:14915,&quot;3&quot;:{&quot;1&quot;:0},&quot;4&quot;:{&quot;1&quot;:2,&quot;2&quot;:16777215},&quot;9&quot;:1,&quot;12&quot;:0,&quot;14&quot;:{&quot;1&quot;:2,&quot;2&quot;:6647160},&quot;15&quot;:&quot;\&quot;Source Han Sans SC\&quot;&quot;,&quot;16&quot;:12}" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;\u81ea\u5b9a\u4e49\u89c4\u5219&quot;}" style="font-size:120%;font-family:Source Han Sans SC;color:#656d78;text-align:center;">自定义规则</span></td>
+    </tr>
+    <tr>
+      <td><span style="color: rgb(67, 74, 84); font-family: 'Source Han Sans SC'; font-size: 16px; line-height: normal; white-space: pre-wrap;">安全更新 </span></td>
+      <td style="color:#aab2bd"><span data-sheets-userformat="{&quot;2&quot;:14915,&quot;3&quot;:{&quot;1&quot;:0},&quot;4&quot;:{&quot;1&quot;:2,&quot;2&quot;:16777215},&quot;9&quot;:1,&quot;12&quot;:0,&quot;14&quot;:{&quot;1&quot;:2,&quot;2&quot;:6647160},&quot;15&quot;:&quot;\&quot;Source Han Sans SC\&quot;&quot;,&quot;16&quot;:12}" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;\u6309\u9700&quot;}" style="font-size:120%;font-family:Source Han Sans SC;color:#656d78;text-align:center;">按需</span></td>
+      <td><span style="color: rgb(101, 109, 120); font-family: 'Source Han Sans SC'; font-size: 16px; line-height: normal; text-align: center; white-space: pre-wrap;">自动</span></td>
+      <td><span data-sheets-userformat="{&quot;2&quot;:14915,&quot;3&quot;:{&quot;1&quot;:0},&quot;4&quot;:{&quot;1&quot;:2,&quot;2&quot;:16777215},&quot;9&quot;:1,&quot;12&quot;:0,&quot;14&quot;:{&quot;1&quot;:2,&quot;2&quot;:6647160},&quot;15&quot;:&quot;\&quot;Source Han Sans SC\&quot;&quot;,&quot;16&quot;:12}" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;\u81ea\u5b9a\u4e49\u89c4\u5219&quot;}" style="font-size:120%;font-family:Source Han Sans SC;color:#656d78;text-align:center;">自定义规则</span></td>
+    </tr>
+    <tr>
+      <td><span style="color: rgb(67, 74, 84); font-family: 'Source Han Sans SC'; font-size: 16px; line-height: normal; white-space: pre-wrap;">KeepAlive</span></td>
+      <td><span data-sheets-userformat="{&quot;2&quot;:14915,&quot;3&quot;:{&quot;1&quot;:0},&quot;4&quot;:{&quot;1&quot;:2,&quot;2&quot;:16777215},&quot;9&quot;:1,&quot;12&quot;:0,&quot;14&quot;:{&quot;1&quot;:2,&quot;2&quot;:6647160},&quot;15&quot;:&quot;\&quot;Source Han Sans SC\&quot;&quot;,&quot;16&quot;:12}" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;\u6309\u9700&quot;}" style="font-size:120%;font-family:Source Han Sans SC;color:#656d78;text-align:center;">按需</span></td>
+      <td><span style="color: rgb(101, 109, 120); font-family: 'Source Han Sans SC'; font-size: 16px; line-height: normal; text-align: center; white-space: pre-wrap;">自动</span></td>
+      <td><span data-sheets-userformat="{&quot;2&quot;:14915,&quot;3&quot;:{&quot;1&quot;:0},&quot;4&quot;:{&quot;1&quot;:2,&quot;2&quot;:16777215},&quot;9&quot;:1,&quot;12&quot;:0,&quot;14&quot;:{&quot;1&quot;:2,&quot;2&quot;:6647160},&quot;15&quot;:&quot;\&quot;Source Han Sans SC\&quot;&quot;,&quot;16&quot;:12}" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;\u81ea\u5b9a\u4e49\u89c4\u5219&quot;}" style="font-size:120%;font-family:Source Han Sans SC;color:#656d78;text-align:center;">自定义规则</span></td>
+    </tr>
+    <tr>
+      <td>域名</td>
+      <td>接入</td>
+      <td>接入</td>
+      <td>备案 <!-- 企业技术支持 --></td>
+    </tr>
+    <tr class="strong">
+      <td colspan="4">企业技术支持</td>
+    </tr>
+    <tr>
+      <td>技术支持</td>
+      <td style="color:#aab2bd"><font color="#333333">－</font></td>
+      <td><img src="https://dn-daowww-prod.qbox.me/images/9f8c18b8.checkmark.svg" /></td>
+      <td><img src="https://dn-daowww-prod.qbox.me/images/9f8c18b8.checkmark.svg" /></td>
+    </tr>
+    <tr>
+      <td>架构咨询</td>
+      <td style="color:#aab2bd"><font color="#333333">－</font></td>
+      <td style="color:#aab2bd"><font color="#333333">－</font></td>
+      <td><img src="https://dn-daowww-prod.qbox.me/images/9f8c18b8.checkmark.svg" /></td>
+    </tr>
+    <tr>
+      <td>管理培训</td>
+      <td style="color:#aab2bd"><font color="#333333">－</font></td>
+      <td style="color:#aab2bd"><font color="#333333">－</font></td>
+      <td><img src="https://dn-daowww-prod.qbox.me/images/9f8c18b8.checkmark.svg" /></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td class="mores"><a class="more" href="javascript:;" id="community-more2"><font color="#333333">了解详情</font></a></td>
+      <td class="mores"><a class="more" href="javascript:;" id="profession-more2"><font color="#333333">了解详情</font></a></td>
+      <td class="mores"><a class="more" href="javascript:;" id="enterprise-more2"><font color="#333333">了解详情</font></a></td>
+    </tr>
+  </tbody>
+</table>
+ <div class="plan-arrows hidden-md hidden-lg"> <a class="plan-arrow plan-arrow-left pull-left hidden" href=javascript:;> <img src="file:///Users/keithyau/Downloads/us.sitesucker.mac.sitesucker/www.daocloud.io/images/assets/arrow-left.svg"> <span class=plan-arrow-left-text></span> </a> <a class="plan-arrow plan-arrow-right pull-right" href=javascript:;> <span class=plan-arrow-right-text>了解专业版</span> <img src="file:///Users/keithyau/Downloads/us.sitesucker.mac.sitesucker/www.daocloud.io/images/assets/arrow-right.svg"> </a> </div> </div> </div> <hr class="hidden divider" id=divider> <div class="plan-container hidden" id=community> <div class=container> <div class="section production"> <div class=title>社区版</div> <div class=gray>满足个人用户接量付费需求</div> <div class=ornamental-thread></div> <div class=row> <div class="col-sm-6 col-xs-12 text-left left-section"> <div class=box-container> <div class=title> 1. 性能优化能力 </div> <div class=content> 无限项目 </div> </div> <div class=box-container> <div class=title> 2. 向單主机部署次 </div> <div class=content> <span class=range1-value>1</span> x <span class=pull-right data-toggle=tooltip data-placement=top title="x 是一个使用BootDev优化数，每 x 等于一个项目优化一次"> <img src="file:///Users/keithyau/Downloads/us.sitesucker.mac.sitesucker/www.daocloud.io/images/assets/question.svg">什么是 x？ </span> </div> <div class=range-container> <input type=range id=range1 class="quota-x fill" min=0 max=13 value=0 step=1> <div class=ticks> <span>1</span> <span>资源</span> <span class=pull-right>500</span> </div> </div> <div class=description> 您的套餐价格随消耗的部署数变化 </div> </div> </div> <div class="col-sm-6 col-xs-12 text-left right-section"> <div class=cart-item> <div class=title>性能优化檢測</div> <div class=description> <span class=size> 无限项目 </span> <span class="price pull-right"> 免费 </span> </div> </div> <div class=cart-item> <div class=title>向单主机部署优化代码／次</div> <div class=description> <span class="size range1-value">1</span> x <span class="price pull-right"><span class=range1-price>99</span> 元 <small>/ 次</small></span> </div> </div> <hr class=divider> <div class=total> <span>合计</span> <span class=pull-right><span class=range1-total>99</span> 元 <small>/ 次</small></span> </div> <div class=register-container> <button class="button signup">免费注册</button> <a href=mailto:info@daocloud.io>需要私有化定制方案?</a> </div> </div> </div> </div> </div> </div> <div class="plan-container hidden" id=profession> <div class=container> <div class="section production"> <div class=title>专业版</div> <div class=gray>提供每月多次性能自动优化方案</div> <div class=ornamental-thread></div> <div class=row> <div class="col-sm-6 col-xs-12 text-left left-section"> <div class=box-container> <div class=title> 1. 性能优化能力 </div> <div class=content> <span class=range2-value>1</span> 个项目 </div> <div class=range-container> <input type=range id=range2 class="cd fill" min=0 max=8 step=1 value=0> <div class=ticks> <span>1</span> <span>项目</span> <span class=pull-right>100</span> </div> </div> <div class=description> 您的套餐价格随优化的项目数变化 </div> </div> <div class=box-container> <div class=title> 2. 向多主机部署优化代码／次 </div> <div class=content> <span class=range3-value>5</span> x <span class=pull-right data-toggle=tooltip data-placement=top title="x 是一个使用BootDev优化数，每 x 等于一个项目优化一次"> <img src="file:///Users/keithyau/Downloads/us.sitesucker.mac.sitesucker/www.daocloud.io/images/assets/question.svg">什么是 x？ </span> </div> <div class=range-container> <input type=range id=range3 class="fill quota-x" min=0 max=13 value=0 step=1> <div class=ticks> <span>5</span> <span>资源</span> <span class=pull-right>500</span> </div> </div> <div class=description> 您的套餐价格随消耗的部署数变化 </div> </div> </div> <div class="col-sm-6 col-xs-12 text-left right-section"> <div class=cart-item> <div class=title>性能优化能力</div> <div class=description> <span class="size range2-value"> 1 </span> 个项目，专业版 <span class="price pull-right"> <span class=range2-price value=500>500</span> 元 <small>/ 月</small> </span> </div> </div> <div class=cart-item> <div class=title>向多主机优化次</div> <div class=description> <span class="size range3-value"> 5 </span> x <span class="price pull-right"> <span class=range3-price value=0>0</span> 元 <small>/ 月</small> </span> </div> </div> <hr class=divider> <div class=total> <span>合计</span> <span class=pull-right><span class="range2-total range3-total">500</span> 元 <small>/ 月</small></span> </div> <div class=register-container> <button class="button signup">免费注册</button> <a href=mailto:info@bootdev.com> 需要把 BootDev 整体私有化?<br> 请获取我们的私有云产品及方案 </a> </div> </div> </div> </div> </div> </div> <div class="plan-container hidden" id=enterprise> <div class=container> <div class="section production"> <div class=title>企业版</div> <div class=gray>全定制性能自动优化方案适用任何公有云，私有云</div> <div></div> <div class="section production"> <div>  <a href=mailto:info@bootdev.com> 需要把 BootDev 整体私有化? 请获取我们的私有云产品及方案 </a> </div> </div> </div> </div> 
+    <!-- Footer -->
+    <div  id="footer">
+      <div  class="container">
+        <div  class="row">
+          <div  class="col-xs-6 col-sm-3 footer-col">
+            <div  class="footer-col-unit">
+              <h4>关于公司</h4>
+              <li> <a  href="http://blog.bootdev.com/"  target="_blank">博客</a>
+              </li>
+              <!--<li> <a  href="http://open.bootdev.com/"  target="_blank">社区</a>-->
+              </li>
+              <li> <a  href="http://docs.bootdev.com/"  target="_blank">文档</a>
+              </li>
+              <li> <a  href="http://get.bootdev.com/"  target="_blank">下载</a> </li>
+              <li  class="service-items"> <a  href="https://account.bootdev.com/term"
+                   target="_blank">服
+                  务条款</a> </li>
+              <li  class="service-items"> <a  href="http://status.bootdev.com/"
+                   target="_blank">服
+                  务状态</a> </li>
+            </div>
+          </div>
+          <div  class="col-xs-6 col-sm-3 footer-col">
+            <div  class="footer-col-unit">
+              <h4>社交媒体</h4>
+              <li> <a  href="http://overseas.weibo.com/user/5305828201"  target="_self">微博</a>
+              </li>
+              <li> <a  href="https://www.facebook.com/bootdev"
+                   target="_self">Facebook</a>
+              </li>
+              <li> <a  href="https://twitter.com/bootdev_channel"  target="_self">Twitter</a>
+              </li>
+              <li> <a  href="https://www.linkedin.com/company/bootdev"
+                   target="_self">LinkedIn</a>
+              </li>
+            </div>
+          </div>
+          <div  class="col-xs-6 col-sm-3 footer-col">
+            <div  class="footer-col-unit">
+              <h4>联系方式</h4>
+              <li> 邮箱：<a  href="mailto:info@bootdev.com">info@bootdev.com</a> </li>
+              <li> 电话：021-999999 </li>
+              <li  class="address"> 地址：上海市虹口区祥德路118号1901室 </li>
+            </div>
+          </div>
+          <div  class="col-xs-6 col-sm-3 footer-col">
+            <div  class="footer-col-unit">
+              <h4>扫描二维码</h4>
+              <img  src="http://res.cloudinary.com/hrscywv4p/image/upload/c_limit,f_auto,h_3000,q_90,w_1200/v1/715149/594c804739294639a76be692dad2191b_riogn3.jpg"
+                 style="width:100px; margin-top:10px">
+            </div>
+          </div>
+        </div>
+        <div  class="final-intro"> © 沪ICP备999999999号-1 - 上海豹达科技有限公司 </div>
+      </div>
+    </div> <script>
+                            var api_url = '';
+    var githubClientId = '';
+    var account_url = '';</script> <script src="file:///Users/keithyau/Downloads/us.sitesucker.mac.sitesucker/www.daocloud.io/js/pricing_vendor.js"></script> <script src="file:///Users/keithyau/Downloads/us.sitesucker.mac.sitesucker/www.daocloud.io/js/pricing.js"></script>  
