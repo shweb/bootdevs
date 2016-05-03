@@ -141,7 +141,7 @@ License: You must have a valid license purchased only from themeforest(the above
                     <!-- END PAGE BAR -->
                     <!-- BEGIN PAGE TITLE-->
                     <h3 class="page-title"> Dashboard
-                        <small>testing & {{ $test[0]['test1'] }}</small>
+                        <small>testing & {{ $test[0]['test1'] or "" }}</small>
                     </h3>
                     <!-- END PAGE TITLE-->
                     <!-- END PAGE HEADER-->

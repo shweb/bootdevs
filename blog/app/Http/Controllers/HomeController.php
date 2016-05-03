@@ -63,6 +63,30 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function appwizard()
+    {
+        $data['test'] = [
+            [
+                '1' => 'App/Server 1',
+            ],
+            [
+                '2' => 'App/Server 2',
+            ],
+            [
+                '3' => 'App/Server 3',
+            ],
+            [
+                '4' => 'App/Server 4',
+            ],
+        ];
+
+        return view('app-wizard-begin')->with($data);
+    }
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function appsettings(Request $request)
     {
         $data['test'] = [

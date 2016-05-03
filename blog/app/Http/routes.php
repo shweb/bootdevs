@@ -17,8 +17,10 @@ Route::get('/', function () {
 
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/dashboard', 'HomeController@index');
 Route::get('/appstat', 'HomeController@appstat');
+Route::get('/home', 'HomeController@appstat');
 Route::get('/app-settings', 'HomeController@appsettings');
 Route::post('/app-settings-save', 'HomeController@appsettings_save');
 Route::get('/app-settings-save', 'HomeController@appsettings');
+Route::get('/app-wizard-begin', 'HomeController@appwizard');
