@@ -80,7 +80,7 @@ class HomeController extends Controller
             ],
         ];
         $input = $request->input('appid');
-        $data['appname'] = $data['test'][0][$input];
+        $data['appname'] = $data['test'][$input - 1][$input];
         $data['appid'] = $input;
 
         //Control if the displayed checkbox on or off
