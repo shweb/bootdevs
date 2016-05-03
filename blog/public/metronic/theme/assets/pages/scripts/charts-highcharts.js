@@ -65,11 +65,11 @@ jQuery(document).ready(function() {
                 }
             },
             title: {
-                text: 'USD to EUR exchange rate over time'
+                text: 'CPU 情況'
             },
             subtitle: {
                 text: document.ontouchstart === undefined ?
-                        'Click and drag in the plot area to zoom in' : 'Pinch the chart to zoom in'
+                        '點擊拖動放大' : 'Pinch the chart to zoom in'
             },
             xAxis: {
                 type: 'datetime'

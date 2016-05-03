@@ -19,3 +19,6 @@ Route::auth();
 
 Route::get('/home', 'HomeController@index');
 Route::get('/appstat', 'HomeController@appstat');
+Route::get('/app-settings', 'HomeController@appsettings');
+Route::post('/app-settings-save', 'HomeController@appsettings_save');
+Route::get('/app-settings-save', 'HomeController@appsettings');
