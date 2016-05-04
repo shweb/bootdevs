@@ -839,22 +839,22 @@ var ChartsAmcharts = function() {
             "color":    '#888',
 
             "dataProvider": [{
-                "country": "Czech Republic",
+                "country": "CPU",
                 "litres": 156.9
             }, {
-                "country": "Ireland",
-                "litres": 131.1
-            }, {
-                "country": "Germany",
+                "country": "IO",
+                "litres": 111.1
+            },{
+                "country": "網絡",
                 "litres": 115.8
             }, {
-                "country": "Australia",
+                "country": "內存",
                 "litres": 109.9
             }, {
-                "country": "Austria",
+                "country": "硬盤",
                 "litres": 108.3
             }, {
-                "country": "UK",
+                "country": "系統",
                 "litres": 99
             }],
             "valueAxes": [{

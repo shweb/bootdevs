@@ -20,7 +20,18 @@ Route::auth();
 Route::get('/dashboard', 'HomeController@index');
 Route::get('/appstat', 'HomeController@appstat');
 Route::get('/home', 'HomeController@appstat');
-Route::get('/app-settings', 'HomeController@appsettings');
-Route::post('/app-settings-save', 'HomeController@appsettings_save');
-Route::get('/app-settings-save', 'HomeController@appsettings');
+
+Route::get('/app-settings', 'appController@appsettings');
+Route::post('/app-settings-save', 'appController@appsettings_save');
+Route::get('/app-settings-save', 'appController@appsettings');
+
 Route::get('/app-wizard-begin', 'HomeController@appwizard');
+Route::post('/app-wizard-save', 'HomeController@appwizard_save');
+
+//Benmarking route
+Route::get('/app-benchmarking-start', 'appController@appbenchmarking_start');
+Route::get('/app-benchmarking', 'appController@appbenchmarking');
+Route::get('/app-benchmarking-history', 'appController@appbenchmarking');
+Route::get('/app-benchmarking-ci', 'appController@appbenchmarking_ci');
+Route::get('/app-benchmarking-now', 'appController@appbenchmarking_ci');
+Route::get('/app-benchmarking-all-now', 'appController@appbenchmarking_ci');
