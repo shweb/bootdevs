@@ -31,7 +31,13 @@ Route::post('/app-wizard-save', 'HomeController@appwizard_save');
 //Benmarking route
 Route::get('/app-benchmarking-start', 'appController@appbenchmarking_start');
 Route::get('/app-benchmarking', 'appController@appbenchmarking');
-Route::get('/app-benchmarking-history', 'appController@appbenchmarking');
+Route::get('/app-benchmarking-history', 'appController@appbenchmarking_history');
 Route::get('/app-benchmarking-ci', 'appController@appbenchmarking_ci');
 Route::get('/app-benchmarking-now', 'appController@appbenchmarking_ci');
 Route::get('/app-benchmarking-all-now', 'appController@appbenchmarking_ci');
+
+//Git related
+Route::get('/git-manager', 'gitController@gitlist');
+
+//Monitor related
+Route::get('/monitor-list', 'monitorController@monitorlist');
