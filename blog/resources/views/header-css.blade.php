@@ -20,6 +20,7 @@
         <link href="{{ asset("/metronic/theme/assets/global/plugins/morris/morris.css") }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset("/metronic/theme/assets/global/plugins/fullcalendar/fullcalendar.min.css") }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset("/metronic/theme/assets/global/plugins/jqvmap/jqvmap/jqvmap.css") }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset("/metronic/theme/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css") }}" rel="stylesheet" type="text/css" />
         <!-- END PAGE LEVEL PLUGINS -->
         <!-- BEGIN THEME GLOBAL STYLES -->
         <link href="{{ asset("/metronic/theme/assets/global/css/components.min.css") }}" rel="stylesheet" id="style_components" type="text/css" />

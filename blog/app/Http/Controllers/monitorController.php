@@ -25,14 +25,6 @@ class monitorController extends Controller
      */
     public function monitorlist(Request $request)
     {
-
-        $data['test'] = [
-              'App/Server 1',
-              'App/Server 2',
-              'App/Server 3',
-              'App/Server 4',
-        ];
-
 	$data['test'] = array(
 		'1' => array(
                     'appname' => 'appone',

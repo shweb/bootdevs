@@ -69,7 +69,7 @@
                                         <div class="form-group form-md-line-input form-md-floating-label has-warning">
                                             <input type="text" class="form-control" id="form_control_1">
                                             <label for="form_control_1">授权编号 License Key</label>
-                                            <span class="help-block">在 New Relic 中 添加应用會顯示</span>
+                                            <span class="help-block">在 聽雲 中 添加应用會顯示</span>
                                         </div>
                                         <div class="form-group form-md-line-input form-md-floating-label has-success">
                                             <input type="text" class="form-control" id="form_control_1">
@@ -118,7 +118,7 @@
                                         <div class="form-group form-md-line-input form-md-floating-label has-warning">
                                             <input type="text" class="form-control" id="form_control_1">
                                             <label for="form_control_1">授权编号 License Key</label>
-                                            <span class="help-block">在 New Relic 中 添加应用會顯示</span>
+                                            <span class="help-block">在 OneAPM 中 添加应用會顯示</span>
                                         </div>
                                         <div class="form-group form-md-line-input form-md-floating-label has-success">
                                             <input type="text" class="form-control" id="form_control_1">

@@ -41,3 +41,6 @@ Route::get('/git-manager', 'gitController@gitlist');
 
 //Monitor related
 Route::get('/monitor-list', 'monitorController@monitorlist');
+
+//User profile page
+Route::get('/user-profile', 'profileController@index');
