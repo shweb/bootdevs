@@ -85,13 +85,13 @@ License: You must have a valid license purchased only from themeforest(the above
                                         <a href="#tab_1_3" data-toggle="tab"> 個人信息 </a>
                                     </li>
                                     <li>
-                                        <a href="#tab_1_6" data-toggle="tab"> 交易紀錄 </a>
+                                        <a href="#tab_1_6" data-toggle="tab"> 充值紀錄 </a>
                                     </li>
                                     <li>
                                         <a href="#tab_1_7" data-toggle="tab"> 通知 </a>
                                     </li>
                                     <li>
-                                        <a href="#tab_1_8" data-toggle="tab"> API </a>
+                                        <a href="#tab_1_8" data-toggle="tab"> API (準備中)</a>
                                     </li>
                                 </ul>
                                 <div class="tab-content">
@@ -131,7 +131,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                         <p> 当前套餐： {{ Auth::User()->package }}
                                                             </p>
                                                         <p>
-                                                            <a href="javascript:;"> {{ Auth::User()->website }} </a>
+                                                            <a href="javascript:;"> 更改套餐 {{ Auth::User()->website }} </a>
                                                         </p>
                                                         <ul class="list-inline">
                                                             <li>
@@ -186,9 +186,78 @@ License: You must have a valid license purchased only from themeforest(the above
                                                             <a href="#tab_1_11" data-toggle="tab"> 消費記錄 </a>
                                                         </li>
                                                         <li>
-                                                            <a href="#tab_1_22" data-toggle="tab"> 按次消費 </a>
+                                                            <a href="#myModal" role="button" class="btn btn-outline" data-toggle="modal"> 充值 </a>
                                                         </li>
                                                     </ul>
+                                                    <div id="myModal" class="modal fade" role="dialog" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <a href="javascript:;" class="close" data-dismiss="modal" aria-hidden="true"></a>
+                                                                    <h4 class="modal-title">充值方式</h4>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <div class="portlet light bordered">
+                                                                        <div class="portlet-body form">
+                                                                            <form role="form" action="/gopaynow" class="form-horizontal">
+                                                                                <div class="form-body">
+                                                                                    <div class="form-group form-md-line-input">
+                                                                                        <label class="col-md-2 control-label" for="form_control_1">金額</label>
+                                                                                        <div class="col-md-10">
+                                                                                            <div class="input-group">
+                                                                                                <span class="input-group-addon">$</span>
+                                                                                                <input type="text" class="form-control" placeholder="500" name="payamount">
+                                                                                                <div class="form-control-focus"> </div>
+                                                                                                <span class="input-group-addon">.00</span>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-actions">
+                                                                                    <div class="row">
+                                                                                        <div class="col-md-offset-2 col-md-10">
+                                                                                            <a href="#myModalwechatpay#" role="button" class="btn red btn-outline" data-toggle="modal"> 
+                                                                                                <img height="20px" src="https://t.alipayobjects.com/images/T1HHFgXXVeXXXXXXXX.png"></img>
+                                                                                            </a>
+                                                                                            <a href="#myModalwechatpay" role="button" class="btn green btn-outline" data-toggle="modal">
+                                                                                                <img height="20px" src="http://www.naturalplus-hk.com/upfiles/1C9943C5556F0E2866870B431CE914F9/BE54C96C0D918D060FD187790A5AD91F/image/201603/20160325193335_6875.png"></img> 
+                                                                                            </a>
+                                                                                            <a href="javascript:;" class="btn grey-salsa btn-outline" data-dismiss="modal">返回</a>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </form>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- END SAMPLE FORM PORTLET-->
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div id="myModalwechatpay" class="modal fade" role="dialog" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <a href="javascript:;" class="close" data-dismiss="modal" aria-hidden="true"></a>
+                                                                    <h4 class="modal-title">微信扫码支付</h4>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <div class="form-group form-md-radios has-success">
+                                                                        <div class="row" align="center">
+                                                                                <label for="checkbox2_6">
+                                                                                    <span class="check"></span>
+                                                                                    <span class="box"></span><img src="http://s.pimg.tw/qrcode/rakutentw/blog/post/228077776-%E5%A6%82%E4%BD%95%E5%88%B6%E4%BD%9Cwechat(%E5%BE%AE%E4%BF%A1)%E7%9A%84qr-code%3F.png"></img> 
+                                                                                </label>   
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    请使用微信扫描二维码完成支付<br/>
+                                                                    支付完成后页面会自动刷新
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                     <div class="tab-content">
                                                         <div class="tab-pane active" id="tab_1_11">
                                                             <div class="portlet-body">
@@ -456,45 +525,6 @@ License: You must have a valid license purchased only from themeforest(the above
                                                     </div>
                                                 </div>
                                             </form>
-                                            <div id="myModal" class="modal fade" role="dialog" aria-hidden="true">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <a href="javascript:;" class="close" data-dismiss="modal" aria-hidden="true"></a>
-                                                            <h4 class="modal-title">Bootstrap switches</h4>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <form action="#" class="form-horizontal">
-                                                                <div class="form-group">
-                                                                    <label class="control-label col-md-3">Default Sizes</label>
-                                                                    <div class="col-md-9">
-                                                                        <input type="checkbox" checked class="make-switch" data-size="small">
-                                                                        <input type="checkbox" checked class="make-switch" data-size="normal">
-                                                                        <input type="checkbox" checked class="make-switch" data-size="large"> </div>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label class="control-label col-md-3">Colors</label>
-                                                                    <div class="col-md-9">
-                                                                        <input type="checkbox" class="make-switch" checked data-on-color="primary" data-off-color="info">
-                                                                        <input type="checkbox" class="make-switch" checked data-on-color="success" data-off-color="warning">
-                                                                        <input type="checkbox" class="make-switch" checked data-on-color="warning" data-off-color="danger"> </div>
-                                                                </div>
-                                                                <div class="form-group last">
-                                                                    <label class="control-label col-md-3">Disabled / Readonly</label>
-                                                                    <div class="col-md-9">
-                                                                        <input type="checkbox" checked disabled class="make-switch" />
-                                                                        <input type="checkbox" checked readonly class="make-switch" /> </div>
-                                                                </div>
-                                                            </form>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <a href="javascript:;" class="btn grey-salsa btn-outline" data-dismiss="modal">Close</a>
-                                                            <a href="javascript:;" class="btn green">
-                                                                <i class="fa fa-check"></i> Save changes</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
                                             <!-- END FORM-->
                                         </div>
                                     </div>

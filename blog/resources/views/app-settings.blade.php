@@ -117,6 +117,9 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                 <a href="#tab_1_3" tabindex="-1" data-toggle="tab"> 手動重起 </a>
                                                             </li>
                                                             <li>
+                                                                <a href="#tab_1_3" tabindex="-1" data-toggle="tab"> Log </a>
+                                                            </li>
+                                                            <li>
                                                                 <a href="#tab_1_4" tabindex="-1" data-toggle="tab"> 刪除應用</a>
                                                             </li>
 

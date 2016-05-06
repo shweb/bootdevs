@@ -91,7 +91,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                             <button type="submit" class="btn green">開始</button>
                                             @if ( isset ($select2_serverconf) )
                                             <a href="/app-wizard-begin" class="btn default">部署新應用</a>
-                                            <a href="/app-optimze-begin" class="btn default">優化在跑應用</a>
+                                            <a href="/app-optimize-begin" class="btn default">優化在跑應用</a>
                                             @endif
                                         </div>
                                         <div class="form-body">

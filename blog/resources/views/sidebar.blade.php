@@ -66,7 +66,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item  ">
-                                    <a href="/app-benchmarking-history" class="nav-link ">
+                                    <a href="/app-benchmarking" class="nav-link ">
                                         <span class="title">為服務器跑分</span>
                                     </a>
                                 </li>

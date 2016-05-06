@@ -18,7 +18,7 @@
                                             <i class="icon-shield"></i>新增應用</a>
                                     </li>
                                     <li>
-                                        <a href="/app-wizard-begin">
+                                        <a href="/app-optimize-begin">
                                             <i class="icon-shield"></i>新增服務器優化</a>
                                     </li>
                                     <li>
