@@ -20,25 +20,25 @@
                         <li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar">
                             <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                                 <i class="icon-bell"></i>
-                                <span class="badge badge-default"> {{!! getnotifications( Auth::User() )['count'] !!}} </span>
+                                <span class="badge badge-default"> {{ $notifications['count'] }} </span>
                             </a>
                             <ul class="dropdown-menu">
                                 <li class="external">
                                     <h3>
-                                        <span class="bold"> {{ getnotifications( Auth::User() )['count'] or "0" }} </span> 通知</h3>
+                                        <span class="bold"> {{ $notifications['count'] or "0" }} </span> 通知</h3>
                                     <a href="#page_user_profile_1.html">查看</a>
                                 </li>
                                 <li>
                                     <ul class="dropdown-menu-list scroller" style="height: 250px;" data-handle-color="#637283">
-                                        @if ( isset($notifications) )
-                                            @foreach ( getnotifications( Auth::User() ) as $notification)
+                                        @if ( $notifications['count'] > 0  )
+                                            @foreach ( $notifications['messages'] as $key => $notification)
                                             <li>
                                                 <a href="javascript:;">
-                                                    <span class="time">新</span>
+                                                    <span class="time">{{ $notification }}</span>
                                                     <span class="details">
                                                         <span class="label label-sm label-icon label-success">
                                                             <i class="fa fa-plus"></i>
-                                                        </span> 付費成功 </span>
+                                                        </span> {{ $key }} </span>
                                                 </a>
                                             </li>
                                             @endforeach
