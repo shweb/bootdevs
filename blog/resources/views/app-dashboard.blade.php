@@ -16,7 +16,6 @@ License: You must have a valid license purchased only from themeforest(the above
 <html lang="en">
     <!--<![endif]-->
     <!-- BEGIN HEAD -->
-
     @include('header-css')
     <!-- END HEAD -->
 
@@ -30,14 +29,13 @@ License: You must have a valid license purchased only from themeforest(the above
         <!-- BEGIN CONTAINER -->
         <div class="page-container">
             <!-- BEGIN SIDEBAR -->
-            <@include('sidebar')
+            @include('sidebar')
             <!-- END SIDEBAR -->
             <!-- BEGIN CONTENT -->
             <div class="page-content-wrapper">
                 <!-- BEGIN CONTENT BODY -->
                 <div class="page-content">
                     <!-- BEGIN PAGE HEADER-->
-
                     <!-- BEGIN PAGE BAR -->
                     <div class="page-bar">
                         <ul class="page-breadcrumb">
@@ -46,7 +44,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <i class="fa fa-circle"></i>
                             </li>
                             <li>
-                                <span>Portlets</span>
+                                <span>應用主頁</span>
                             </li>
                         </ul>
                         @include('page-toolbar')
@@ -60,8 +58,8 @@ License: You must have a valid license purchased only from themeforest(the above
                     <!-- END PAGE HEADER-->
                     <div class="note note-info">
                         <p> 應用情況主頁
-                            <br> For more info check out
-                            <a href="/appstat" target="_blank"> 應用情況 </a>. </p>
+                            <a href="/appstat" target="_blank"> 應用情況 </a>
+                        </p>
                     </div>
                     <div class="row" id="sortable_portlets">
                         @foreach ($test as $temp)
@@ -106,5 +104,4 @@ License: You must have a valid license purchased only from themeforest(the above
         @include('js-plugin')
         <!-- END THEME LAYOUT SCRIPTS -->
     </body>
-
 </html>

@@ -1,5 +1,3 @@
-    <!-- BEGIN HEAD -->
-
     <head>
         <meta charset="utf-8" />
         <title>BootDev | control panel</title>
@@ -33,4 +31,3 @@
         <!-- END THEME LAYOUT STYLES -->
         <link rel="shortcut icon" href="favicon.ico" /> 
     </head>
-    <!-- END HEAD -->

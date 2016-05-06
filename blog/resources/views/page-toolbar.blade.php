@@ -5,7 +5,7 @@
                                 </button>
                                 <ul class="dropdown-menu pull-right" role="menu">
                                     <li>
-                                        <a href="#">
+                                        <a href="http://localhost:8888/user-payment-list#payment">
                                             <i class="icon-bell"></i>充值</a>
                                     </li>
                                     <li class="divider"> </li>

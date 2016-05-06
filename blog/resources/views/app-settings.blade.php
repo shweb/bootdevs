@@ -16,14 +16,12 @@ License: You must have a valid license purchased only from themeforest(the above
 <html lang="en">
     <!--<![endif]-->
     <!-- BEGIN HEAD -->
-
     @include('header-css')
     <!-- BEGIN PAGE LEVEL PLUGINS -->
         <link href="{{ asset("/metronic/theme/assets/global/plugins/select2/css/select2.min.css") }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset("/metronic/theme/assets/global/plugins/select2/css/select2-bootstrap.min.css") }}" rel="stylesheet" type="text/css" />
     <!-- END PAGE LEVEL PLUGINS -->
     <!-- END HEAD -->
-
     <body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
         <!--Begin header -->
         @include('header')
