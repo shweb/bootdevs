@@ -57,8 +57,8 @@ License: You must have a valid license purchased only from themeforest(the above
                     </div>
                     <!-- END PAGE BAR -->
                     <!-- BEGIN PAGE TITLE-->
-                    <h3 class="page-title"> 應用設定
-                        <small>增加並自動化 應用</small>
+                    <h3 class="page-title"> 應用優化
+                        <small>自動的持續的優化 應用</small>
                     </h3>
                     <!-- END PAGE TITLE-->
                     <!-- END PAGE HEADER-->
@@ -72,7 +72,7 @@ License: You must have a valid license purchased only from themeforest(the above
                     @endif
                     <div class="row" id="sortable_portlets">
                             <!--Main content here -->
-                            @include('app-wizard')
+                            @include('app-optimize-wizard')
                             <!--Main content END -->
                     </div>
                 </div>
