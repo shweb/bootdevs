@@ -51,7 +51,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <i class="fa fa-circle"></i>
                             </li>
                             <li>
-                                <span>Portlets</span>
+                                <span>用戶</span>
                             </li>
                         </ul>
                         @include('page-toolbar')
@@ -131,8 +131,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                         <p> 当前套餐： {{ Auth::User()->package }}
                                                             </p>
                                                         <p>
-                                                            <a href="javascript:;"> 更改套餐 {{ Auth::User()->website }} </a>
-                                                        </p>
+                                                            <a href="javascript:;"> <a href="#pacakgeModal" role="button" class="btn btn-outline" data-toggle="modal"> 更改套餐 </a>                                                         </p>
                                                         <ul class="list-inline">
                                                             <li>
                                                                 <i class="fa fa-map-marker"></i> {{ Auth::User()->country }} </li>
@@ -145,6 +144,107 @@ License: You must have a valid license purchased only from themeforest(the above
                                                             <li>
                                                                 <i class="fa fa-heart"></i> {{ Auth::User()->interest }} </li>
                                                         </ul>
+                                                    </div>
+                                                    <div id="pacakgeModal" class="modal fade" role="dialog" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <a href="javascript:;" class="close" data-dismiss="modal" aria-hidden="true"></a>
+                                                                    <h4 class="modal-title">更改套餐</h4>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <div class="portlet light bordered">
+                                                                        <div class="portlet-title">
+                                                                            <div class="caption">
+                                                                                <i class="icon-equalizer font-green-haze"></i>
+                                                                                <span class="caption-subject font-green-haze bold uppercase">当前套餐： </span>
+                                                                                <span class="caption-helper">包年 {{ Auth::User()->package }}</span>
+                                                                            </div>
+                                                                        </div> 
+                                                                        <div class="portlet-body form">
+                                                                            <!-- BEGIN FORM-->
+                                                                            <form class="form-horizontal" role="form" acion="/user-package-save">
+                                                                                <div class="form-body">
+                                                                                    <h2 class="margin-bottom-20"> 专业版功能： </h2>
+                                                                                    <h3 class="form-section">包括所有社区版功能，另外支持：</h3>
+                                                                                    <div class="row">
+                                                                                        <div class="col-md-6">
+                                                                                            <div class="form-group">
+                                                                                                <label class="control-label col-md-6"><li>自我修復</li></label>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <!--/span-->
+                                                                                        <div class="col-md-6">
+                                                                                            <div class="form-group">
+                                                                                                <label class="control-label col-md-6"><li>持续集成</li></label>                                                                                            </div>
+                                                                                        </div>
+                                                                                        <!--/span-->
+                                                                                    </div>
+                                                                                    <!--/row-->
+                                                                                    <div class="row">
+                                                                                        <div class="col-md-6">
+                                                                                            <div class="form-group">
+                                                                                                <label class="control-label col-md-6"><li>多主机部署</li></label>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <!--/span-->
+                                                                                        <div class="col-md-6">
+                                                                                            <div class="form-group">
+                                                                                                <label class="control-label col-md-6"><li>Docker部署</li></label>                                                                                            </div>
+                                                                                        </div>
+                                                                                        <!--/span-->
+                                                                                    </div>
+                                                                                    <!--/row-->
+                                                                                    <div class="row">
+                                                                                        <div class="col-md-6">
+                                                                                            <div class="form-group">
+                                                                                                <label class="control-label col-md-6"><li>按時优化</li></label>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <!--/span-->
+                                                                                        <div class="col-md-6">
+                                                                                            <div class="form-group">
+                                                                                                <label class="control-label col-md-6"><li>开放 API</li></label>                                                                                            </div>
+                                                                                        </div>
+                                                                                        <!--/span-->
+                                                                                    </div>
+                                                                                    <!--/row-->
+                                                                                    <h3 class="form-section"> 专业版价格</h3>
+                                                                                    <div class="row">
+                                                                                        <div class="col-md-6">
+                                                                                            <div class="form-group">
+                                                                                                <label class="control-label col-md-9"> {{ Auth::User()->monthlyoffer }} 
+                                                                                                    <h3> 499元 / 月 </h3> 
+                                                                                                </label>
+                                                                                                <div class="col-md-9">
+                                                                                                    <p class="control-label "> 每月支持 5 次優化 / 部署</p>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-actions">
+                                                                                    <div class="row">
+                                                                                        <div class="col-md-6">
+                                                                                            <div class="row">
+                                                                                                <div class="col-md-offset-3 col-md-9">
+                                                                                                    <button type="submit" class="btn green">
+                                                                                                        <i class="fa fa-pencil"></i> 更改套餐
+                                                                                                    </button>
+                                                                                                 <!--   <button type="button" class="btn default">cancel</button> -->
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="col-md-6"> </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </form>
+                                                                            <!-- END FORM-->
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                     <!--end col-md-8-->
                                                     <div class="col-md-4">
@@ -189,7 +289,8 @@ License: You must have a valid license purchased only from themeforest(the above
                                                             <a href="#myModal" role="button" class="btn btn-outline" data-toggle="modal"> 充值 </a>
                                                         </li>
                                                     </ul>
-                                                    <div id="myModal" class="modal fade" role="dialog" aria-hidden="true">
+                                                    
+                                                    <div id="myModal" class="modal fade" role="dialog" aria-hidden="{{ $hidden or "true" }}">
                                                         <div class="modal-dialog">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
@@ -197,38 +298,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                     <h4 class="modal-title">充值方式</h4>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    <div class="portlet light bordered">
-                                                                        <div class="portlet-body form">
-                                                                            <form role="form" action="/gopaynow" class="form-horizontal">
-                                                                                <div class="form-body">
-                                                                                    <div class="form-group form-md-line-input">
-                                                                                        <label class="col-md-2 control-label" for="form_control_1">金額</label>
-                                                                                        <div class="col-md-10">
-                                                                                            <div class="input-group">
-                                                                                                <span class="input-group-addon">$</span>
-                                                                                                <input type="text" class="form-control" placeholder="500" name="payamount">
-                                                                                                <div class="form-control-focus"> </div>
-                                                                                                <span class="input-group-addon">.00</span>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="form-actions">
-                                                                                    <div class="row">
-                                                                                        <div class="col-md-offset-2 col-md-10">
-                                                                                            <a href="#myModalwechatpay#" role="button" class="btn red btn-outline" data-toggle="modal"> 
-                                                                                                <img height="20px" src="https://t.alipayobjects.com/images/T1HHFgXXVeXXXXXXXX.png"></img>
-                                                                                            </a>
-                                                                                            <a href="#myModalwechatpay" role="button" class="btn green btn-outline" data-toggle="modal">
-                                                                                                <img height="20px" src="http://www.naturalplus-hk.com/upfiles/1C9943C5556F0E2866870B431CE914F9/BE54C96C0D918D060FD187790A5AD91F/image/201603/20160325193335_6875.png"></img> 
-                                                                                            </a>
-                                                                                            <a href="javascript:;" class="btn grey-salsa btn-outline" data-dismiss="modal">返回</a>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </form>
-                                                                        </div>
-                                                                    </div>
+                                                                    @include('user-payment')   
                                                                     <!-- END SAMPLE FORM PORTLET-->
                                                                 </div>
                                                             </div>

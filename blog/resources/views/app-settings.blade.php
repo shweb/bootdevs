@@ -50,7 +50,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <i class="fa fa-circle"></i>
                             </li>
                             <li>
-                                <span>Portlets</span>
+                                <span>應用</span>
                             </li>
                         </ul>
                         @include('page-toolbar')

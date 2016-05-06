@@ -14,7 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
 Route::auth();
 
 Route::get('/dashboard', 'HomeController@index');
@@ -44,6 +43,9 @@ Route::get('/monitor-list', 'monitorController@monitorlist');
 
 //User profile page
 Route::get('/user-profile', 'profileController@index');
+Route::get('/user-package-save', 'profileController@package_save');
+Route::get('/user-creditcode-save', 'profileController@package_save');
+Route::get('/user-payment-list', 'profileController@payment_list');
 
 //Optimize running app
 Route::get('/app-optimize-begin', 'appOptimizeController@index');
