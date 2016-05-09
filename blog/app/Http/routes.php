@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/home');
 });
 Route::auth();
 
@@ -24,6 +24,7 @@ Route::get('/app-settings', 'appController@appsettings');
 Route::post('/app-settings-save', 'appController@appsettings_save');
 Route::get('/app-settings-save', 'appController@appsettings');
 
+//Wizard
 Route::get('/app-wizard-begin', 'HomeController@appwizard');
 Route::post('/app-wizard-save', 'HomeController@appwizard_save');
 

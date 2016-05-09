@@ -50,6 +50,23 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
+                                                            <label for="select2-single-append" class="control-label col-md-3">自動故障後重起</label>
+                                                            <div class="col-md-4 input-group select2-bootstrap-prepend">
+                                                                <span class="input-group-addon">
+                                                                    <input type="checkbox" name="select2_appconf_checked" value="checked" {{ $select2_appconf_checked or ""}}> 
+                                                                </span>
+                                                                <select id="select2-single-append" class="form-control select2-allow-clear" name="select2_appconf">
+                                                                    <option></option>
+                                                                    <optgroup label="現支持的應用">
+                                                                        <option value="login_reboot">登錄服務器重起並加載應用</option>
+                                                                        <option value="cloud_reboot" selected="selected">由雲賬號重起並加載應用</option>
+                                                                        <option value="Chef_reboot" disabled="disabled">用DevOps工具重起</option>
+                                                                        <option value="protectdb_reboot" disabled="disabled">保護數據並重起</option>
+                                                                    </optgroup>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
                                                             <label for="select2-single-append" class="control-label col-md-3">自動優化數據庫</label>
                                                             <div class="col-md-4 input-group select2-bootstrap-prepend">
                                                                 <span class="input-group-addon">

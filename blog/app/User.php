@@ -23,4 +23,14 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /* 
+     * Define User and applications dependencies
+     *
+     */
+     public function applications()
+     {
+  	return $this->hasMany('App\Application');
+     }
+
 }

@@ -62,13 +62,11 @@ License: You must have a valid license purchased only from themeforest(the above
                         </p>
                     </div>
                     <div class="row" id="sortable_portlets">
-                        @foreach ($test as $temp)
-                          @foreach ($temp as $key => $value)
+                        @foreach ($applications as $application)
                             @include('server-stats', [
-                                'app_title' => $value,
-                                'app_id' => $key,
+                                'app_title' => $application->domainname,
+                                'app_id' => $application->id,
                             ])
-                          @endforeach
                         @endforeach
                     </div>
                 </div>
@@ -86,12 +84,10 @@ License: You must have a valid license purchased only from themeforest(the above
         <!-- for repeatly printing server stats -->
                 <script> 
                         var keyArray = new Array();
-                        @if (isset ($test))
-                            @foreach ($test as $temp)
-                              @foreach ($temp as $key => $value)
-                                            keyArray[{{json_encode($key)}}] = "{{json_encode($value)}}"; 
-                              @endforeach
-                            @endforeach
+                        @if (isset ($applications))
+                          @foreach ($applications as $application)
+                            keyArray[{{json_encode($application->id)}}] = "{{json_encode($application->domainname)}}"; 
+                          @endforeach
                         @endif
                 </script>
         <!-- END repear server stats-->

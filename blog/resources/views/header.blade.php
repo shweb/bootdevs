@@ -20,7 +20,7 @@
                         <li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar">
                             <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                                 <i class="icon-bell"></i>
-                                <span class="badge badge-default"> {{ $notifications['count'] }} </span>
+                                <span class="badge badge-default"> {{ $notifications['count'] or "0" }} </span>
                             </a>
                             <ul class="dropdown-menu">
                                 <li class="external">
@@ -30,7 +30,7 @@
                                 </li>
                                 <li>
                                     <ul class="dropdown-menu-list scroller" style="height: 250px;" data-handle-color="#637283">
-                                        @if ( $notifications['count'] > 0  )
+                                        @if ( isset($notifications['count']) && $notifications['count'] > 0  )
                                             @foreach ( $notifications['messages'] as $key => $notification)
                                             <li>
                                                 <a href="javascript:;">
@@ -53,7 +53,7 @@
                         <li class="dropdown dropdown-user">
                             <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                                 <img alt="" class="img-circle" src="{{ asset("/metronic/theme/assets/layouts/layout/img/avatar3_small.jpg") }}" />
-                                <span class="username username-hide-on-mobile"> {{Auth::User()->name}} </span>
+                                <span class="username username-hide-on-mobile"> {{ isset(Auth::User()->name) ? Auth::User()->name : '請登錄' }} </span>
                                 <i class="fa fa-angle-down"></i>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-default">
@@ -67,19 +67,21 @@
                                 </li>
                                 <li class="divider"> </li>
                                 <li>
-                                    <a href="page_user_login_1.html">
-                                        <i class="icon-key"></i> Log Out </a>
+                                    <a href="/logout">
+                                        <i class="icon-key"></i> 登出 </a>
                                 </li>
                             </ul>
                         </li>
                         <!-- END USER LOGIN DROPDOWN -->
                         <!-- BEGIN QUICK SIDEBAR TOGGLER -->
                         <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
+                        <!--
                         <li class="dropdown dropdown-quick-sidebar-toggler">
                             <a href="javascript:;" class="dropdown-toggle">
                                 <i class="icon-logout"></i>
                             </a>
                         </li>
+                        -->
                         <!-- END QUICK SIDEBAR TOGGLER -->
                     </ul>
                 </div>

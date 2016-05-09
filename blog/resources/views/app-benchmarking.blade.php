@@ -157,7 +157,6 @@ License: You must have a valid license purchased only from themeforest(the above
                                 </div>
                             </div>
                         </div>
-
                         <div class="col-md-6">
                             <!-- BEGIN CHART PORTLET-->
                             <div class="portlet light bordered">

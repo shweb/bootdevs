@@ -64,9 +64,10 @@ License: You must have a valid license purchased only from themeforest(the above
                     <!-- END PAGE HEADER-->
                     @if( isset($notice) )
                         <div class="note note-info">
-                            <p> {{ $notice or "" }}
+                            <!-- Change the app notice to Chinese --> 
+                            <p> 已保存應用，應用部署完成會發出系統通知，
                                 <br> {{ $notice_details or "" }}
-                                <a href="/app-auto" target="_blank"> {{ $notice_url or "" }} </a>
+                                點此設定 <a href="#/app-notification-conf" target="_blank">  系統通知</a>
                             </p>
                         </div>
                     @endif

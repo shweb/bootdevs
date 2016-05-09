@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+//Adding ORM
+use App\Application;
+
 class appController extends Controller
 {
 
@@ -26,25 +29,12 @@ class appController extends Controller
      */
     public function appsettings(Request $request)
     {
-        $data['test'] = [
-            [
-                '1' => 'App/Server 1',
-            ],
-            [
-                '2' => 'App/Server 2',
-            ],
-            [
-                '3' => 'App/Server 3',
-            ],
-            [
-                '4' => 'App/Server 4',
-            ],
-        ];
-        $input = $request->input('appid');
-        $data['appname'] = $data['test'][$input - 1][$input];
-        $data['appid'] = $input;
+        $appid = $request->input('appid');
 
-        //Control if the displayed checkbox on or off
+        $applications = Application::where('id', $appid)->get()->toArray();
+        $data['appname'] = $applications[0]['domainname'];
+
+        //Control if default value display checkbox on or off
         $data['select2_appconf_checked'] = 'checked';
         $data['select2_objectcache_checked'] = 'checked';
 
@@ -52,31 +42,20 @@ class appController extends Controller
     }
 
     /**
-     * Save app settings and route it back to the settings page.
+     * Save app settings and redirect to the settings page.
      *
      * @return \Illuminate\Http\Response
      */
     public function appsettings_save(Request $request)
     {
-        $data['test'] = [
-            [
-                '1' => 'App/Server 1',
-            ],
-            [
-                '2' => 'App/Server 2',
-            ],
-            [
-                '3' => 'App/Server 3',
-            ],
-            [
-                '4' => 'App/Server 4',
-            ],
-        ];
-        $email = $request->input('email');
+
+        $appsetttings = new Application;
+        $appsettings->email = $request->input('email');
+        $appsettings->appid = $request->input('appid');
+
         $select2_appconf = $request->input('select2_appconf');
         $select2_appconf_checked = $request->input('select2_appconf_checked');
         $select2_objectcache_checked = $request->input('select2_objectcache_checked');
-        $input = $request->input('appid');
         $data['appname'] = $data['test'][$input - 1][$input];
         $data['appid'] = $input;
         $data['notice'] = 'Your settings being saved';
@@ -125,7 +104,6 @@ class appController extends Controller
               'App/Server 3',
               'App/Server 4',
         ];
-
 
         // Get current users' all apps
         $data['appnames'] = $data['test'];

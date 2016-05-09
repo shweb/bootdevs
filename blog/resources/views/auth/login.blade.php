@@ -59,7 +59,7 @@ License: You must have a valid license purchased only from themeforest(the above
             <!-- BEGIN LOGIN FORM -->
             <form class="login-form" action="{{ url('/login') }}" method="post">
                 {!! csrf_field() !!}
-                <h3 class="form-title font-green">Sign In</h3>
+                <h3 class="form-title font-green">登錄</h3>
                 <div class="alert alert-danger display-hide">
                     <button class="close" data-close="alert"></button>
                     <span> Enter any username and password. </span>
@@ -67,7 +67,7 @@ License: You must have a valid license purchased only from themeforest(the above
                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                     <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
                     <label class="control-label visible-ie8 visible-ie9">Email</label>
-                    <input class="form-control form-control-solid placeholder-no-fix" type="email" autocomplete="off" placeholder="Username" name="email" value="{{ old('email') }}" /> </div>
+                    <input class="form-control form-control-solid placeholder-no-fix" type="email" autocomplete="off" placeholder="EMAIL" name="email" value="{{ old('email') }}" /> </div>
                                 @if ($errors->has('email'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
@@ -113,6 +113,7 @@ License: You must have a valid license purchased only from themeforest(the above
             <!-- END LOGIN FORM -->
             <!-- BEGIN FORGOT PASSWORD FORM -->
             <form class="forget-form" action="{{ url('/password/reset') }}" method="post">
+                {!! csrf_field() !!}
                 <h3 class="font-green">Forget Password ?</h3>
                 <p> Enter your e-mail address below to reset your password. </p>
                 <div class="form-group">
@@ -125,7 +126,7 @@ License: You must have a valid license purchased only from themeforest(the above
             <!-- END FORGOT PASSWORD FORM -->
             <!-- BEGIN REGISTRATION FORM -->
             <form class="register-form" action="{{ url('/register') }}" method="post">
-                                        {!! csrf_field() !!}
+                {!! csrf_field() !!}
                 <h3 class="font-green">Sign Up</h3>
                 <p class="hint"> Enter your personal details below: </p>
                 <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -172,7 +173,7 @@ License: You must have a valid license purchased only from themeforest(the above
                 -->
                 <div class="form-group{{ $errors->has('country') ? ' has-error' : '' }}">
                     <label class="control-label visible-ie8 visible-ie9">Country</label>
-                    <select name="country" class="form-control">
+                    <select name="country" class="form-control" placeholder="Country">
                         <option value="">Country</option>
                         <option value="AF">Afghanistan</option>
                         <option value="AL">Albania</option>

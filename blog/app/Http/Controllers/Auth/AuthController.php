@@ -67,8 +67,20 @@ class AuthController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'email' => $data['country'],
+            'country' => $data['country'],
             'password' => bcrypt($data['password']),
         ]);
     }
+
+    /**
+     * Log the user out of the application.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getLogout()
+    {
+        $this->auth->logout();
+        return redirect('login');
+    }
+
 }
