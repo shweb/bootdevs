@@ -17,8 +17,6 @@ class optimzation_record extends Model
     {
         return $this->belongsTo('Action_History');
     }
-
-
 }
 
 

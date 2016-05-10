@@ -103,7 +103,6 @@ License: You must have a valid license purchased only from themeforest(the above
                                                         <img src="{{ asset("/metronic/theme/assets/pages/media/profile/people19.png") }}" class="img-responsive pic-bordered" alt="" />
                                                         <a href="javascript:;" class="profile-edit"> edit </a>
                                                     </li>
-                                                    
                                                     <li>
                                                         <a href="javascript:;"> 账户余额 
                                                             <span> {{ Auth::User()->moneyleft }} 999 </span>

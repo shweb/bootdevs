@@ -23,6 +23,7 @@ Route::get('/home', 'HomeController@appstat');
 Route::get('/app-settings', 'appController@appsettings');
 Route::post('/app-settings-save', 'appController@appsettings_save');
 Route::get('/app-settings-save', 'appController@appsettings');
+Route::post('/app-codesettings-save', 'appController@appsettings_codesave');
 
 //Wizard
 Route::get('/app-wizard-begin', 'HomeController@appwizard');

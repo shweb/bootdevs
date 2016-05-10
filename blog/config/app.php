@@ -156,6 +156,10 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+	/*
+	 * Third party plugin
+         */ 
+	Collective\Html\HtmlServiceProvider::class,
     ],
 
     /*
@@ -201,6 +205,10 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+
+	/* Third party plugin */
+	'Html'      => 'Collective\Html\HtmlFacade',
+    	'Form'      => 'Collective\Html\FormFacade',
 
     ],
 

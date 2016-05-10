@@ -99,7 +99,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             <div class="portlet-title">
                                 <div class="caption">
                                     <i class="icon-settings font-dark"></i>
-                                    <span class="caption-subject font-dark sbold uppercase">{{ $app->domainname or "你的應用" }}</span>
+                                    <span class="caption-subject font-dark sbold uppercase">繼續優化： {{ $app->domainname or "你的應用" }}  </span>
                                 </div>
                                 <div class="actions">
                                     <div class="btn-group btn-group-devided" data-toggle="buttons">

@@ -70,108 +70,106 @@ License: You must have a valid license purchased only from themeforest(the above
                     @endif
                     <div class="row" id="sortable_portlets">
                             <!--Main content here -->
-                                       <div class="portlet light portlet-fit bordered form">
-                                            <div class="portlet-title">
-                                                <div class="caption">
-                                                    <i class="icon-equalizer font-red-sunglo"></i>
-                                                    <span class="caption-subject font-red-sunglo bold uppercase">{{ $appname or "請選擇你的應用" }} </span>
-                                                    <span class="caption-helper">來自動化 {{ $appname or "請選擇你的應用" }}</span>
-                                                </div>
-                                                <div class="actions">
-                                                    <a class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
-                                                        <i class="icon-cloud-upload"></i>
-                                                    </a>
-                                                    <a class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
-                                                        <i class="icon-wrench"></i>
-                                                    </a>
-                                                    <a class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
-                                                        <i class="icon-trash"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="portlet-body">
-                                                <ul class="nav nav-tabs">
-                                                    <li class="active">
-                                                        <a href="#tab_1_1" data-toggle="tab"> 自動化配置 </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#tab_1_2" data-toggle="tab"> 監控 </a>
-                                                    </li>
-                                                    <li class="dropdown">
-                                                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> 應用管理
-                                                            <i class="fa fa-angle-down"></i>
-                                                        </a>
-                                                        <ul class="dropdown-menu" role="menu">
-                                                            <li>
-                                                                <a href="#tab_1_3" tabindex="-1" data-toggle="tab"> 部署代碼 </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#tab_1_4" tabindex="-1" data-toggle="tab"> 部署歷史 </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#apmbindingpage" tabindex="-1" data-toggle="tab"> 第三方監控</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#tab_1_3" tabindex="-1" data-toggle="tab"> 手動重起 </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#tab_1_3" tabindex="-1" data-toggle="tab"> Log </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#tab_1_4" tabindex="-1" data-toggle="tab"> 刪除應用</a>
-                                                            </li>
+                       <div class="portlet light portlet-fit bordered form">
+                            <div class="portlet-title">
+                                <div class="caption">
+                                    <i class="icon-equalizer font-red-sunglo"></i>
+                                    <span class="caption-subject font-red-sunglo bold uppercase">{{ $appname or "請選擇你的應用" }} </span>
+                                    <span class="caption-helper">來自動化 {{ $appname or "請選擇你的應用" }}</span>
+                                </div>
+                                <div class="actions">
+                                    <a class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
+                                        <i class="icon-cloud-upload"></i>
+                                    </a>
+                                    <a class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
+                                        <i class="icon-wrench"></i>
+                                    </a>
+                                    <a class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
+                                        <i class="icon-trash"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="portlet-body">
+                                <ul class="nav nav-tabs">
+                                    <li class="active">
+                                        <a href="#tab_1_1" data-toggle="tab"> 自動化配置 </a>
+                                    </li>
+                                    <li>
+                                        <a href="#tab_1_2" data-toggle="tab"> 監控 </a>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> 應用管理
+                                            <i class="fa fa-angle-down"></i>
+                                        </a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li>
+                                                <a href="#tab_1_3" tabindex="-1" data-toggle="tab"> 部署代碼 </a>
+                                            </li>
+                                            <li>
+                                                <a href="#tab_1_4" tabindex="-1" data-toggle="tab"> 部署歷史 </a>
+                                            </li>
+                                            <li>
+                                                <a href="#apmbindingpage" tabindex="-1" data-toggle="tab"> 第三方監控</a>
+                                            </li>
+                                            <li>
+                                                <a href="#tab_1_3" tabindex="-1" data-toggle="tab"> 手動重起 </a>
+                                            </li>
+                                            <li>
+                                                <a href="#tab_1_3" tabindex="-1" data-toggle="tab"> Log </a>
+                                            </li>
+                                            <li>
+                                                <a href="#tab_1_4" tabindex="-1" data-toggle="tab"> 刪除應用</a>
+                                            </li>
 
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                                <div class="tab-content">
-                                                    <div class="tab-pane fade active in" id="tab_1_1">
-                                                        @include('app-settings-form')
-                                                    </div>
-                                                    <div class="tab-pane fade" id="tab_1_2">
-                                                        <div class="row">
-                                                            <div class="col-md-12">
-                                                                <div class="portlet light portlet-fit bordered">
-                                                                    <div class="portlet-title">
-                                                                        <div class="caption">
-                                                                            <i class=" icon-layers font-green"></i>
-                                                                            <span class="caption-subject font-green bold uppercase">性能</span>
-                                                                        </div>
-                                                                        <div class="actions">
-                                                                            <a class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
-                                                                                <i class="icon-cloud-upload"></i>
-                                                                            </a>
-                                                                            <a class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
-                                                                                <i class="icon-wrench"></i>
-                                                                            </a>
-                                                                            <a class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
-                                                                                <i class="icon-trash"></i>
-                                                                            </a>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="portlet-body">
-                                                                        <div id="highchart_2" style="height:500px;"></div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane fade active in" id="tab_1_1">
+                                        @include('app-settings-form')
+                                    </div>
+                                    <div class="tab-pane fade" id="tab_1_2">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="portlet light portlet-fit bordered">
+                                                    <div class="portlet-title">
+                                                        <div class="caption">
+                                                            <i class=" icon-layers font-green"></i>
+                                                            <span class="caption-subject font-green bold uppercase">性能</span>
+                                                        </div>
+                                                        <div class="actions">
+                                                            <a class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
+                                                                <i class="icon-cloud-upload"></i>
+                                                            </a>
+                                                            <a class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
+                                                                <i class="icon-wrench"></i>
+                                                            </a>
+                                                            <a class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
+                                                                <i class="icon-trash"></i>
+                                                            </a>
                                                         </div>
                                                     </div>
-                                                    <div class="tab-pane fade" id="tab_1_3">
-                                                        @include('code-deploy-form-select2')
-                                                        @include('commit-history')
-                                                    </div>
-                                                    <div class="tab-pane fade" id="tab_1_4">
-                                                        @include('history-list')
-                                                    </div>
-                                                    <div class="tab-pane fade" id="apmbindingpage">
-                                                        @include('monitor-manager')
+                                                    <div class="portlet-body">
+                                                        <div id="highchart_2" style="height:500px;"></div>
                                                     </div>
                                                 </div>
-                                                <div class="clearfix margin-bottom-20"> </div>
-                                                
                                             </div>
-
                                         </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="tab_1_3">
+                                        @include('code-deploy-form-select2')
+                                        @include('commit-history')
+                                    </div>
+                                    <div class="tab-pane fade" id="tab_1_4">
+                                        @include('history-list')
+                                    </div>
+                                    <div class="tab-pane fade" id="apmbindingpage">
+                                        @include('monitor-manager')
+                                    </div>
+                                </div>
+                                <div class="clearfix margin-bottom-20"> </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!-- END CONTENT BODY -->

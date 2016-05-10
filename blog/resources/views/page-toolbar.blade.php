@@ -22,7 +22,7 @@
                                             <i class="icon-shield"></i>新增服務器優化</a>
                                     </li>
                                     <li>
-                                        <a href="#">
+                                        <a href="/git-manager">
                                             <i class="icon-user"></i>代碼庫管理</a>
                                     </li>            
                                 </ul>
