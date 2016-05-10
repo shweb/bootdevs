@@ -4,14 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Application extends Model
+class Action_History extends Model
 {
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'applications';
+    protected $table = 'actions_history';
 
     public function User()
     {
@@ -19,11 +19,11 @@ class Application extends Model
     }
 
     /**
-     * Get the action history for this application.
+     * Get the optimization record associated with this action.
      */
-    public function history()
+    public function optimization_result()
     {
-        return $this->hasMany('App\Action_History', 'app_id');
+        return $this->hasOne('App\optimzation_record', 'action_id');
     }
 
 }

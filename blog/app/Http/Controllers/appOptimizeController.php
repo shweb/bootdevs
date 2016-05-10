@@ -83,9 +83,11 @@ class appOptimizeController extends Controller
         //Save a history
         $history = new Action_History;
         $history->user_id = \Auth::user()->id;
+        $history->app_id = $application->id;
+        $history->action_status = 'user';
         $history->action_type = 'Optimize existng app';
         $history->action_appname = $application->domainname;
-        $history->action_desc = serialize($application->get()->toArray()) ;
+        $history->action_desc = serialize( $application->get()->toArray() ) ;
 
         $history->save();
 
@@ -93,10 +95,12 @@ class appOptimizeController extends Controller
         //$history->status = '';
         //$history->error = '';
         //$history->log = '';
+
+        //Store app optimization log to db after server return, for performance measurement
+        //    $optimization_record = new optimzation_record;
+        //    $optimization_record->action_id = ''; //system return action id
+        //    $optimization_record->type = 'create_init';
         return view('app-optimize-begin')->with($data);
     }
-
-
-    
 
 }

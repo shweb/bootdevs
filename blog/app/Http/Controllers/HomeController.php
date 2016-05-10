@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 use App\Application;
 use App\Action_History;
+use App\optimzation_record;
 
 class HomeController extends Controller
 {
@@ -84,6 +85,19 @@ class HomeController extends Controller
      */
     public function appwizard_save(Request $request)
     {
+    
+    /* validation sample
+    $validator = Validator::make($request->all(), [
+        'name' => 'required|max:255',
+    ]);
+
+    if ($validator->fails()) {
+        return redirect('/')
+            ->withInput()
+            ->withErrors($validator);
+    }
+    */
+
         $application = new Application;
         $application->user_id = \Auth::user()->id; 
         $application->type = 'new_app'; 
@@ -103,15 +117,16 @@ class HomeController extends Controller
         $application->key = $request->input('key'); 
         $application->remarks = $request->input('remarks'); 
 
-	$application->save();
+	    $application->save();
 
         $data['application'] = $application;
         $data['notice'] = 'Your application being saved and after creation, you will receive an email';        
 
-	//Save a history
+	    //Save a history
         $history = new Action_History;
         $history->type = 'user'; //User or system create
         $history->user_id = \Auth::user()->id;
+        $history->app_id = $application->id;
         $history->action_type = 'Create new app';
         $history->action_appname = $application->domainname;
         $history->action_desc = serialize($application->get()->toArray()) ;
@@ -122,6 +137,11 @@ class HomeController extends Controller
         //$history->status = '';
         //$history->error = '';
         //$history->log = '';
+
+    //Store app optimization log to db after server return, for performance measurement
+    //    $optimization_record = new optimzation_record;
+    //    $optimization_record->action_id = ''; //system return action id
+    //    $optimization_record->type = 'create_init';
 
         return view('app-wizard-begin')->with($data);
     }

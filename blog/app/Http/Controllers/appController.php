@@ -9,6 +9,7 @@ use App\Http\Requests;
 //Adding ORM
 use App\Application;
 use App\Action_History;
+use App\optimzation_record;
 
 class appController extends Controller
 {
@@ -43,13 +44,14 @@ class appController extends Controller
     }
 
     /**
-     * Save app settings and redirect to the settings page.
+     * Update app settings and redirect to the settings page.
      *
      * @return \Illuminate\Http\Response
      */
     public function appsettings_save(Request $request)
     {
 
+        /*
         $appsetttings = new Application;
         $appsettings->email = $request->input('email');
         $appsettings->appid = $request->input('appid');
@@ -60,15 +62,16 @@ class appController extends Controller
         $data['appid'] = $input;
         $data['notice'] = 'Your settings being saved';
 
-	$history = new Action_History;
+	    $history = new Action_History;
         $history->user_id = \Auth::User()->id;
         $history->action_type = 'update_new_app';
         $history->action_desc = $appsettings->appid;
  
         //Check server status after deploy new conf and store to history
 	//$history->action_status = 'server return';
+        */
 
-        return view('app-settings')->with($data);
+        return view('app-settings'); //->with($data);
     }
 
     /**
@@ -108,7 +111,32 @@ class appController extends Controller
         // Get current users' all apps
         $data['applications'] = \Auth::User()->applications()->get();
 
-        // Get each app's status and optimization history
+        // Get each app's status and optimization history app --> action_id(s) -> app_optimization_log
+        // % of improvement measure by ( current improved measurement / BootDev's optimial result on same conf ) * 100%
+        // So if BootDev improved, the measurement increased
+        $measurement = optimzation_record::find(2);
+
+        foreach ( $data['applications'] as $key => $application ) {
+            foreach ($application->history()->get() as $action) {
+                $result = $action->optimization_result()->orderBy('created_at', 'desc')->get();
+                $data['applications'][$key]['optimization_result'] = $result->toArray();
+            }
+        
+            if ( isset($result) ) {
+                //Calculate response_time %, lower better
+                $data['applications'][$key]['response_time_measure'] = round( ( $measurement->response_time / $result[0]->response_time ) * 100 ); 
+
+                //Calculate request per sec %, higher better
+                $data['applications'][$key]['request_per_sec_measure'] =  round( ( $result[0]->request_per_sec / $measurement->request_per_sec ) * 100 ); 
+
+                //Calculate bandwidth_per_request %, lower better
+                $data['applications'][$key]['bandwidth_per_request_measure'] =  round( ( $measurement->bandwidth_per_request / $result[0]->bandwidth_per_request ) * 100 ); 
+            }
+
+            unset($result);
+        }
+
+  //      print_r($data['applications']); exit;
 
         return view('app-benchmarking-ci')->with($data);
     }

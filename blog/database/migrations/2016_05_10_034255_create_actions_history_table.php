@@ -16,6 +16,7 @@ class CreateActionsHistoryTable extends Migration
             $table->increments('id');
             $table->timestamps();
 	    $table->integer('user_id'); //for onetomany mappin in app/User.php
+	    $table->integer('app_id'); //for onetomany mappin in app/Application.php
             $table->string('action_type');
             $table->string('type'); //History type
             $table->string('action_appname');

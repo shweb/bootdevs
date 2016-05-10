@@ -46,11 +46,11 @@ License: You must have a valid license purchased only from themeforest(the above
                     <div class="page-bar">
                         <ul class="page-breadcrumb">
                             <li>
-                                <a href="/home">{{ $page_title or "Home" }}</a>
+                                <a href="/home">{{ $page_title or "主頁" }}</a>
                                 <i class="fa fa-circle"></i>
                             </li>
                             <li>
-                                <span>Portlets</span>
+                                <span>歷史記錄</span>
                             </li>
                         </ul>
                         @include('page-toolbar')

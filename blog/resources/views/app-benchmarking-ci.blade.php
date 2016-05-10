@@ -124,15 +124,15 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <div class="row">
                                     <div class="col-md-4">
                                         <h4>反應時間</h4>
-                                        <input class="knob" data-angleoffset=-125 data-anglearc=250 data-fgcolor="#66EEFF" value="15">
+                                        <input class="knob" data-angleoffset=-125 data-anglearc=250 data-fgcolor="#66EEFF" value="{{ $app->response_time_measure }} ">
                                     </div>
                                     <div class="col-md-4">
                                         <h4>并發數</h4>
-                                        <input class="knob" data-angleoffset=-125 data-anglearc=250 data-fgcolor="#FFEE66" value="35">
+                                        <input class="knob" data-angleoffset=-125 data-anglearc=250 data-fgcolor="#FFEE66" value="{{ $app->request_per_sec_measure }}">
                                     </div>
                                     <div class="col-md-4">
                                         <h4>帶寬</h4>
-                                        <input class="knob" data-angleoffset=-125 data-anglearc=250 data-fgcolor="#11EE66" value="55">
+                                        <input class="knob" data-angleoffset=-125 data-anglearc=250 data-fgcolor="#11EE66" value="{{ $app->bandwidth_per_request_measure }}">
                                     </div>
                                 </div>
 
