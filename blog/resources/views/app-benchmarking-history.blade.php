@@ -71,10 +71,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         </div>
                     @endif
                     <div class="row" id="sortable_portlets">
-                            <!--Main content here -->
-                        @foreach ($appnames as $key => $appname)
-                            @include('history-list') 
-                        @endforeach     
+                        @include('history-list') 
                     </div>
                 </div>
                 <!-- END CONTENT BODY -->

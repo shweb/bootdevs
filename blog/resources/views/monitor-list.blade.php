@@ -101,10 +101,10 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 @foreach ( $app_monitors as $monitor)
                                                 <tr>
                                                     <td>
-                                                        <a href="javascript:;"> {{ $monitor['vendor'] or "error" }} </a>
+                                                        <a href="javascript:;"> {{ $monitor['select2_appmonitor'] or "error" }} </a>
                                                     </td>
-                                                    <td class="hidden-xs"> {{ $monitor['appname'] or "error" }} </td>
-                                                    <td> {{ $monitor['account_owner'] or "error" }}
+                                                    <td class="hidden-xs"> {{ $monitor['domainname'] or "error" }} </td>
+                                                    <td> {{ Auth::User()->name }}
                                                         <span class="label label-sm label-success label-mini"> 有效 </span>
                                                     </td>
                                                     <td>

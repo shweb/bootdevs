@@ -17,6 +17,7 @@ class Applications extends Migration
             $table->increments('id');
             $table->integer('user_id');
             $table->string('domainname');
+            $table->string('type');
             $table->string('username');
             $table->string('password');
             $table->string('email');

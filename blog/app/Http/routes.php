@@ -50,3 +50,4 @@ Route::get('/user-payment-list', 'profileController@payment_list');
 
 //Optimize running app
 Route::get('/app-optimize-begin', 'appOptimizeController@index');
+Route::post('/app-optimize-save', 'appOptimizeController@appoptimize_save');

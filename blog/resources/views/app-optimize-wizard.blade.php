@@ -21,7 +21,7 @@
                                     </div>
                                 </div>
                                 <div class="portlet-body form">
-                                    <form class="form-horizontal" action="#/app-optimzie-save" id="submit_form" method="POST">
+                                    <form class="form-horizontal" action="/app-optimize-save" id="submit_form" method="POST">
                                         {!! csrf_field() !!}
                                         <div class="form-wizard">
                                             <div class="form-body">
@@ -204,7 +204,7 @@
                                                                 <span class="input-group-addon">
                                                                     <input type="checkbox" name="select2_appmonitor_checked" value="checked" checked> 
                                                                 </span>
-                                                                <select id="select2-single-append" class="form-control select2-allow-clear" name="select2_appmonitor_checked">
+                                                                <select id="select2-single-append" class="form-control select2-allow-clear" name="select2_appmonitor">
                                                                     <option></option>
                                                                     <optgroup label="現支持之監控">
                                                                         <option value="newrelic">newrelic</option>
@@ -230,14 +230,14 @@
                                                         <div class="form-group">
                                                             <label class="control-label col-md-3"> 需要打包式備份 ？ 提供 DockerHub 用戶／密碼 </label>
                                                             <div class="col-md-4">
-                                                                <input type="text" class="form-control" name="key" />
+                                                                <input type="text" class="form-control" name="dockerhub" />
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label col-md-3">密碼
                                                             </label>
                                                             <div class="col-md-4">
-                                                                <input type="password" class="form-control" name="gitpassword" id="submit_form_password" />
+                                                                <input type="password" class="form-control" name="dockerhub_password" id="submit_form_password" />
                                                                 <span class="help-block"> DockerHub 密碼 </span>
                                                             </div>
                                                         </div>

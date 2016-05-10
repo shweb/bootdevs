@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+//ORM
+use App\Application;
+use App\Action_History;
+
 class appOptimizeController extends Controller
 {
     /**
@@ -19,7 +23,7 @@ class appOptimizeController extends Controller
     }
 
     /**
-     * Listing git accounts.
+     * Listing optimizations.
      *
      * @return \Illuminate\Http\Response
      */
@@ -41,5 +45,58 @@ class appOptimizeController extends Controller
 
         return view('app-optimize-begin')->with($data);
     }
+
+   /**
+     * Listing git accounts.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function appoptimize_save(Request $request)
+    {
+        //print_r($request->all()); exit;
+        $application = new Application;
+        $application->type = 'existing_app';
+        $application->user_id = \Auth::user()->id;
+        $application->domainname = $request->input('domainname');
+        $application->username = $request->input('username');
+        $application->password = $request->input('password'); //Not encrypted as it require to use in login other servers
+        //$application->password = Hash::make($request::input('password')); //Not encrypted as it require to use in login other servers
+        $application->email = $request->input('email');
+        $application->select2_applang_checked = $request->input('select2_applang_checked');
+        $application->select2_applang = $request->input('select2_applang');
+        $application->codepath = $request->input('codepath');
+        $application->select2_gitrepo_checked = $request->input('select2_gitrepo_checked');
+        $application->select2_gitrepo = $request->input('select2_gitrepo');
+        $application->gitusername = $request->input('gitusername');
+        $application->select2_appmonitor_checked = $request->input('select2_appmonitor_checked');
+        $application->select2_appmonitor = $request->input('select2_appmonitor');
+        $application->key = $request->input('key');
+        $application->remarks = $request->input('remarks');
+        $application->dockerhub = $request->input('dockerhub');
+        $application->dockerhub_password = $request->input('dockerhub_password');
+
+        $application->save();
+
+        $data['application'] = $application;
+        $data['notice'] = 'Your application being saved and after creation, you will receive an email';
+
+        //Save a history
+        $history = new Action_History;
+        $history->user_id = \Auth::user()->id;
+        $history->action_type = 'Optimize existng app';
+        $history->action_appname = $application->domainname;
+        $history->action_desc = serialize($application->get()->toArray()) ;
+
+        $history->save();
+
+        //Store below history after server return, may put it in a restful function
+        //$history->status = '';
+        //$history->error = '';
+        //$history->log = '';
+        return view('app-optimize-begin')->with($data);
+    }
+
+
+    
 
 }

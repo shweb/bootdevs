@@ -8,6 +8,7 @@ use App\Http\Requests;
 
 //Adding ORM
 use App\Application;
+use App\Action_History;
 
 class appController extends Controller
 {
@@ -56,9 +57,16 @@ class appController extends Controller
         $select2_appconf = $request->input('select2_appconf');
         $select2_appconf_checked = $request->input('select2_appconf_checked');
         $select2_objectcache_checked = $request->input('select2_objectcache_checked');
-        $data['appname'] = $data['test'][$input - 1][$input];
         $data['appid'] = $input;
         $data['notice'] = 'Your settings being saved';
+
+	$history = new Action_History;
+        $history->user_id = \Auth::User()->id;
+        $history->action_type = 'update_new_app';
+        $history->action_desc = $appsettings->appid;
+ 
+        //Check server status after deploy new conf and store to history
+	//$history->action_status = 'server return';
 
         return view('app-settings')->with($data);
     }
@@ -97,17 +105,10 @@ class appController extends Controller
      */
     public function appbenchmarking_ci(Request $request)
     {
-
-        $data['test'] = [
-              'App/Server 1',
-              'App/Server 2',
-              'App/Server 3',
-              'App/Server 4',
-        ];
-
         // Get current users' all apps
-        $data['appnames'] = $data['test'];
-	// print_r($data['appnames']); exit;
+        $data['applications'] = \Auth::User()->applications()->get();
+
+        // Get each app's status and optimization history
 
         return view('app-benchmarking-ci')->with($data);
     }
@@ -119,18 +120,8 @@ class appController extends Controller
      */
     public function appbenchmarking_history(Request $request)
     {
-
-        $data['test'] = [
-              'App/Server 1',
-              'App/Server 2',
-              'App/Server 3',
-              'App/Server 4',
-        ];
-
-
-        // Get current users' all apps
-        $data['appnames'] = $data['test'];
-	// print_r($data['appnames']); exit;
+        // Get current users' all apps history
+        $data['history_list'] = \Auth::User()->history()->get();
 
         return view('app-benchmarking-history')->with($data);
     }

@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
-//use Illuminate\Http\Request;
-use Request;
+use Illuminate\Http\Request;
+//use Request;
 
 use App\Application;
+use App\Action_History;
 
 class HomeController extends Controller
 {
@@ -83,29 +84,44 @@ class HomeController extends Controller
      */
     public function appwizard_save(Request $request)
     {
-       
-	//print_r($request::all()); exit;
         $application = new Application;
         $application->user_id = \Auth::user()->id; 
-        $application->domainname = $request::input('domainname'); 
-        $application->username = $request::input('username'); 
-        $application->password = $request::input('password'); //Not encrypted as it require to use in login other servers
-        //$application->password = Hash::make($request::input('password')); //Not encrypted as it require to use in login other servers
-        $application->email = $request::input('email'); 
-        $application->select2_applang_checked = $request::input('select2_applang_checked'); 
-        $application->select2_applang = $request::input('select2_applang'); 
-        $application->codepath = $request::input('codepath'); 
-        $application->select2_gitrepo_checked = $request::input('select2_gitrepo_checked'); 
-        $application->select2_gitrepo = $request::input('select2_gitrepo'); 
-        $application->gitusername = $request::input('gitusername'); 
-        $application->select2_appmonitor_checked = $request::input('select2_appmonitor_checked'); 
-        $application->select2_appmonitor = $request::input('select2_appmonitor'); 
-        $application->key = $request::input('key'); 
-        $application->remarks = $request::input('remarks'); 
+        $application->type = 'new_app'; 
+        $application->domainname = $request->input('domainname'); 
+        $application->username = $request->input('username'); 
+        $application->password = $request->input('password'); //Not encrypted as it require to use in login other servers
+        //$application->password = Hash::make($request->input('password')); //Not encrypted as it require to use in login other servers
+        $application->email = $request->input('email'); 
+        $application->select2_applang_checked = $request->input('select2_applang_checked'); 
+        $application->select2_applang = $request->input('select2_applang'); 
+        $application->codepath = $request->input('codepath'); 
+        $application->select2_gitrepo_checked = $request->input('select2_gitrepo_checked'); 
+        $application->select2_gitrepo = $request->input('select2_gitrepo'); 
+        $application->gitusername = $request->input('gitusername'); 
+        $application->select2_appmonitor_checked = $request->input('select2_appmonitor_checked'); 
+        $application->select2_appmonitor = $request->input('select2_appmonitor'); 
+        $application->key = $request->input('key'); 
+        $application->remarks = $request->input('remarks'); 
 
 	$application->save();
+
         $data['application'] = $application;
         $data['notice'] = 'Your application being saved and after creation, you will receive an email';        
+
+	//Save a history
+        $history = new Action_History;
+        $history->type = 'user'; //User or system create
+        $history->user_id = \Auth::user()->id;
+        $history->action_type = 'Create new app';
+        $history->action_appname = $application->domainname;
+        $history->action_desc = serialize($application->get()->toArray()) ;
+        
+        $history->save();
+
+	//Store below history after server return, may put it in a restful function
+        //$history->status = '';
+        //$history->error = '';
+        //$history->log = '';
 
         return view('app-wizard-begin')->with($data);
     }

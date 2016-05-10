@@ -33,4 +33,12 @@ class User extends Authenticatable
   	return $this->hasMany('App\Application');
      }
 
+    /* 
+     * Define User and history dependencies
+     *
+     */
+     public function history()
+     {
+  	return $this->hasMany('App\Action_History');
+     }
 }

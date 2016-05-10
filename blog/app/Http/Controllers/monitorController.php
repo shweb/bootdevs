@@ -52,12 +52,9 @@ class monitorController extends Controller
                 ),
 	);
 
-
-
         // Get current users' all apps
-        $data['app_monitors'] = $data['test']; 
-//print_r($data['app-monitors']); exit;
-        $data['github_user'] = 'keithyau';
+	// Get value by onetoMany way from ORM
+        $data['app_monitors'] = \Auth::User()->applications()->get();
 
         return view('monitor-list')->with($data);
     }
