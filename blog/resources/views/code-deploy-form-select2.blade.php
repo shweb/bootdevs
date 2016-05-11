@@ -25,10 +25,10 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="select2-single-append" class="control-label col-md-3">Git 庫</label>
+                    <label for="select2-single-append" class="control-label col-md-3">使用已綁定這應用的 Git 庫</label>
                     <div class="col-md-4 input-group select2-bootstrap-prepend">
                         <span class="input-group-addon">
-                            <input type="checkbox" name="select2_codedeploy_git_checked" value="checked" {{ $select2_codedeploy_git_checked or ""}}> 
+                            <input type="checkbox" name="select2_codedeploy_git_checked" value="checked" {{ $select2_codedeploy_git_checked or ""}}>
                         </span>
                         {{ 
                             Form::select(
@@ -44,6 +44,7 @@
                                     'id' => 'select2-single-append',
                                     'class' => 'form-control select2-allow-clear',
                                     'name' => 'select2_codedeploy_git',
+                                    'disabled' => 'disabled'
                                 ]
                             )
                         }}
@@ -53,7 +54,7 @@
                     <label for="select2-single-append" class="control-label col-md-3">備份數據庫</label>
                     <div class="col-md-4 input-group select2-bootstrap-prepend">
                         <span class="input-group-addon">
-                            <input type="checkbox" name="select2_db_backup_checked" value="checked" {{ $select2_db_checked or ""}}> </span>
+                            <input type="checkbox" name="select2_db_backup_checked" value="checked" {{ $select2_db_backup_checked or ""}}> </span>
                         {{ 
                             Form::select(
                                 '備份數據庫', 
@@ -98,7 +99,7 @@
                     <label for="select2-single-append" class="control-label col-md-3">清理頁面緩存</label>
                     <div class="col-md-4 input-group select2-bootstrap-prepend">
                         <span class="input-group-addon">
-                            <input type="checkbox" name="select2_pagecacheclear_checked" value="" {{ $select2_pagecacheclear_checked or "" }}> 
+                            <input type="checkbox" name="select2_pagecacheclear_checked" value="checked" {{ $select2_pagecacheclear_checked or "" }}> 
                         </span>
                         {{ 
                             Form::select(

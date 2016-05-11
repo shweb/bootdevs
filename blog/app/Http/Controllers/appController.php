@@ -40,25 +40,12 @@ class appController extends Controller
         //Control if default value display checkbox on or off
         $data = $array;
 
-        /*
-        $data['email'] = $array['email'];
-        $data['SSHuser'] = $array['SSHuser'];
-        //$data['serverpassword'] = $array['serverpassword'];
-        $data['select2_appconf_checked'] = $array['select2_appconf_checked'];
-        $data['select2_appconf'] = $array['select2_appconf'];
-        $data['select2_db_checked'] = $array['select2_db_checked'];
-        $data['select2_db'] = $array['select2_db'];
-        $data['select2_objectcache_checked'] = $array['select2_objectcache_checked'];
-        $data['select2_objectcache'] = $array['select2_objectcache'];
-        $data['select2_pagecache_checked'] = $array['select2_pagecache_checked'];
-        $data['select2_pagecache'] = $array['select2_pagecache'];
-        $data['select2_cacheheader_checked'] = $array['select2_cacheheader_checked'];
-        $data['select2_cacheheader'] = $array['select2_cacheheader'];
-        */
-
         $data['appname'] = $application->domainname;
         $data['appid'] = $appid;
         $data['history_list'] = \Auth::User()->history()->where('action_type', 'Create new app')->get();
+
+        // Bind the current application's git repo 
+        $data['select2_codedeploy_git'] = $application->select2_gitrepo;
 
         return view('app-settings')->with($data);
     }
@@ -72,24 +59,14 @@ class appController extends Controller
     {
         $appid = $request->input('appid');
         $application = \Auth::User()->applications()->find($appid);
-
-        if ( isset($application->app_autoconf) ) {
-            $temp = unserialize($application->app_autoconf);
-            $data = array_merge($temp, $request->all() );
-        } else {
-             //Load and prepare current settings
-            $array = unserialize($application->app_autoconf);
-
-            //Control if default value display checkbox on or off
-            $data = array_merge($data, $array);
-        }
-        //Store all autmation conf as meta data in the current application object
-        $application->app_autoconf = serialize($data);
-        $application->save();   
-
-        $data['notice'] = 'Your settings being saved';
         $data['appname'] = $application->domainname;
         $data['appid'] = $appid;
+
+        //Store all autmation conf as meta data in the current application object
+        $application->app_codedeploy_conf = serialize($request->all());
+        $application->save();   
+
+        $data['notice'] = 'Your codedeploy settings being saved';
 
         $history = new Action_History;
         $history->user_id = \Auth::User()->id;
@@ -98,6 +75,17 @@ class appController extends Controller
         $history->action_type = 'update_new_app';
         $history->action_desc = $application->app_autoconf;
         $history->save();
+
+        //Load and prepare current settings
+        //Control if default value display checkbox on or off
+        $array = unserialize($application->app_codedeploy_conf);
+        $data = array_merge($data, $array);
+
+        $array = unserialize($application->app_autoconf);
+        $data = array_merge($data, $array);
+        
+        // Bind the current application's git repo 
+        $data['select2_codedeploy_git'] = $application->select2_gitrepo;
 
         // For history tab
         $data['history_list'] = \Auth::User()->history()->where('action_type', 'Create new app')->get();
@@ -134,16 +122,22 @@ class appController extends Controller
         $history->save();
 
         //Load and prepare current settings
-        $array = unserialize($application->app_autoconf);
-
         //Control if default value display checkbox on or off
+        $array = unserialize($application->app_codedeploy_conf);
         $data = array_merge($data, $array);
+
+        $array = unserialize($application->app_autoconf);
+        $data = array_merge($data, $array);
+        
+        // Bind the current application's git repo 
+        $data['select2_codedeploy_git'] = $application->select2_gitrepo;
 
         // For history tab
         $data['history_list'] = \Auth::User()->history()->where('action_type', 'Create new app')->get();
         //Check server status after deploy new conf and store to history
 	   //$history->action_status = 'server return';
-        
+
+
         return view('app-settings')->with($data);
     }
 
