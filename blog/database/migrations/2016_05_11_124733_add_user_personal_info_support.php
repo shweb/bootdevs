@@ -19,6 +19,8 @@ class AddUserPersonalInfoSupport extends Migration
          $table->longtext('about');
          $table->string('website');
          $table->string('nickname');
+         $table->string('avatar_path');
+         $table->longtext('notifications_conf');
        });
     }
 

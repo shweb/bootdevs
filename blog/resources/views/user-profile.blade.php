@@ -86,8 +86,8 @@ License: You must have a valid license purchased only from themeforest(the above
                                             <div class="col-md-3">
                                                 <ul class="list-unstyled profile-nav">
                                                     <li>
-                                                        <img src="{{ asset("/metronic/theme/assets/pages/media/profile/people19.png") }}" class="img-responsive pic-bordered" alt="" />
-                                                        <a href="javascript:;" class="profile-edit"> edit </a>
+                                                        <img src="{{ asset( Auth::User()->avatar_path ) }}" class="img-responsive pic-bordered" alt="Auth::User()->name " />
+                                                        <!-- <a href="/user-profile#tab_2-2" class="profile-edit"> edit </a> -->
                                                     </li>
                                                     <li>
                                                         <a href="javascript:;"> 账户余额 
@@ -407,17 +407,30 @@ License: You must have a valid license purchased only from themeforest(the above
                                                     </div>
                                                     <div id="tab_2-2" class="tab-pane">
                                                         <p></p>
-                                                        <form action="/save-avatar" role="form">
+                                                        <!-- <form action="/user-save-avatar" role="form" method="POST"> -->
+                                                            {!!
+                                                                Form::open(
+                                                                    array(
+                                                                        'url' => 'user-save-avatar',
+                                                                        'class' => 'form',
+                                                                        'novalidate' => 'novalidate',
+                                                                        'files' => true,
+                                                                        'method' => "POST"
+                                                                    )
+                                                                )
+                                                            !!}
                                                             <div class="form-group">
                                                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                                                     <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
-                                                                        <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" /> </div>
+                                                                        <img src="{{ asset( Auth::User()->avatar_path ) }}" alt="{{ Auth::User()->name }}" /> </div>
                                                                     <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"> </div>
                                                                     <div>
                                                                         <span class="btn default btn-file">
                                                                             <span class="fileinput-new"> 更改头像 </span>
                                                                             <span class="fileinput-exists"> 更改 </span>
-                                                                            <input type="file" name="..."> </span>
+                                                                            <!-- <input type="file" name="avatar_upload"> -->
+                                                                            {!! Form::file('avatar_upload', null) !!}
+                                                                        </span>
                                                                         <a href="javascript:;" class="btn default fileinput-exists" data-dismiss="fileinput"> 刪除 </a>
                                                                     </div>
                                                                 </div>
@@ -427,7 +440,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                 </div>
                                                             </div>
                                                             <div class="margin-top-10">
-                                                                <a href="javascript:;" class="btn green"> 提交 </a>
+                                                                <button type="submit" class="btn green">提交</button>
                                                                 <a href="javascript:;" class="btn default"> 取消 </a>
                                                             </div>
                                                         </form>
@@ -532,24 +545,25 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <div class="tab-pane" id="tab_1_7">
                                         <div class="row">
                                             <!-- BEGIN FORM-->
-                                            <form action="#" class="form-horizontal form-bordered">
+                                            <form action="/user-notification-save" class="form-horizontal form-bordered" method="POST">
+                                                {!! csrf_field() !!}
                                                 <div class="form-body">
                                                     <div class="form-group">
                                                         <label class="control-label col-md-3">Email 通知</label>
                                                         <div class="col-md-9">
-                                                            <input type="checkbox" checked class="make-switch" checked>
+                                                            <input type="checkbox"  class="make-switch" name="notifications_email" value="checked" {{ $notifications_email or "" }}>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="control-label col-md-3">微信通知</label>
                                                         <div class="col-md-9">
-                                                            <input type="checkbox" class="make-switch" checked data-on-color="primary" data-off-color="info">
+                                                            <input type="checkbox" class="make-switch" name="notifications_wechat" value= "checked" {{ $notifications_wechat or "" }}>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="control-label col-md-3">手機短信</label>
                                                         <div class="col-md-9">
-                                                            <input type="checkbox" class="make-switch">
+                                                            <input type="checkbox" class="make-switch" name="notifications_phone" value="checked" {{ $notifications_phone or "" }}>
                                                         </div>
                                                     </div>
                                                     <br/>
@@ -558,13 +572,13 @@ License: You must have a valid license purchased only from themeforest(the above
                                                         <div class="col-md-9">
                                                             <div class="margin-bottom-10">
                                                                 <label for="option1">在優化成功时通知我</label>
-                                                                <input id="option1" type="radio" name="radio1" value="option1" class="make-switch switch-radio1"> </div>
+                                                                <input type="checkbox" class="make-switch" class="make-switch switch-radio1" name="optimize_success" value="checked" {{ $optimize_success or "" }}> </div>
                                                             <div class="margin-bottom-10">
                                                                 <label for="option2">在優化失败时通知我</label>
-                                                                <input id="option2" type="radio" name="radio1" value="option2" class="make-switch switch-radio1"> </div>
+                                                                <input type="checkbox" class="make-switch" class="make-switch switch-radio1" name="optimize_fail" value="checked" {{ $optimize_fail or "" }}> </div>
                                                             <div class="margin-bottom-10">
-                                                                <label for="option3">如優化试结果发生改变，通知我</label>
-                                                                <input id="option3" type="radio" name="radio1" value="option3" class="make-switch switch-radio1"> </div>
+                                                                <label for="option3">如優化測试发生改变，通知我</label>
+                                                                <input type="checkbox" class="make-switch" class="make-switch switch-radio1" name="optimize_test" value="checked" {{ $optimize_test or "" }}> </div>
                                                         </div>
                                                     </div>
                                                     <!--
@@ -579,8 +593,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 <div class="form-actions">
                                                     <div class="row">
                                                         <div class="col-md-offset-3 col-md-9">
-                                                            <a href="javascript:;" class="btn green">
-                                                                <i class="fa fa-check"></i> 決定</a>
+                                                            <button type="submit" class="btn green">保存</button>
                                                             <a href="javascript:;" class="btn btn-outline grey-salsa">取消</a>
                                                         </div>
                                                     </div>

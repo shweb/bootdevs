@@ -53,6 +53,8 @@ Route::get('/user-package-save', 'profileController@package_save');
 Route::get('/user-creditcode-save', 'profileController@package_save');
 Route::get('/user-payment-list', 'profileController@payment_list');
 Route::post('/user-validate-password', 'profileController@change_password');
+Route::post('/user-notification-save', 'profileController@change_notifications');
+Route::post('/user-save-avatar', 'profileController@upload_image');
 
 //Optimize running app
 Route::get('/app-optimize-begin', 'appOptimizeController@index');

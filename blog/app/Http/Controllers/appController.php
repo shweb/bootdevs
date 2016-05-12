@@ -23,6 +23,13 @@ class appController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+
+        // For history tab
+        $this->data['history_list'] = \Auth::User()->history()->where('action_type', 'Create new app')->get();
+
+        // Prepare deploy history
+        $this->data['codedeploy_list'] = $application->history()->where('action_type', 'codedeploy')->get();
+
     }
 
     /**
@@ -32,6 +39,8 @@ class appController extends Controller
      */
     public function appsettings(Request $request)
     {
+        $data = $this->data;
+
         $appid = $request->input('appid');
         $application = \Auth::User()->applications()->find($appid);
 
@@ -43,13 +52,9 @@ class appController extends Controller
 
         $data['appname'] = $application->domainname;
         $data['appid'] = $appid;
-        $data['history_list'] = \Auth::User()->history()->where('action_type', 'Create new app')->get();
 
         // Bind the current application's git repo 
         $data['select2_codedeploy_git'] = $application->select2_gitrepo;
-
-        // Prepare deploy history
-        $data['codedeploy_list'] = $application->history()->where('action_type', 'codedeploy')->get();
 
         return view('app-settings')->with($data);
     }
@@ -61,12 +66,14 @@ class appController extends Controller
      */
     public function appsettings_codedeploy(Request $request)
     {
+        $data = $this->data;
+
         $appid = $request->input('appid');
         $application = \Auth::User()->applications()->find($appid);
         $data['appname'] = $application->domainname;
         $data['appid'] = $appid;
 
-        //Store all autmation conf as meta data in the current application object
+        //Store all automation conf as meta data in the current application object
         $application->app_codedeploy_conf = serialize($request->all());
         $application->save();   
 
@@ -94,12 +101,6 @@ class appController extends Controller
         // Bind the current application's git repo 
         $data['select2_codedeploy_git'] = $application->select2_gitrepo;
 
-        // For history tab
-        $data['history_list'] = \Auth::User()->history()->where('action_type', 'Create new app')->get();
-
-        // Prepare deploy history
-        $data['codedeploy_list'] = $application->history()->where('action_type', 'codedeploy')->get();
-
         //Check server status after deploy new conf and store to history
        //$history->action_status = 'server return';
 
@@ -116,6 +117,8 @@ class appController extends Controller
      */
     public function appsettings_save(Request $request)
     {
+        $data = $this->data;
+
         $appid = $request->input('appid');
         $application = \Auth::User()->applications()->find($appid);
         $data['appname'] = $application->domainname;
@@ -149,12 +152,6 @@ class appController extends Controller
         // Bind the current application's git repo 
         $data['select2_codedeploy_git'] = $application->select2_gitrepo;
 
-        // For history tab
-        $data['history_list'] = \Auth::User()->history()->where('action_type', 'Create new app')->get();
-
-        // Prepare deploy history
-        $data['codedeploy_list'] = $application->history()->where('action_type', 'codedeploy')->get();
-
         //Check server status after deploy new conf and store to history
 	   //$history->action_status = 'server return';
 
@@ -169,7 +166,7 @@ class appController extends Controller
     public function appbenchmarking(Request $request)
     {
 
-	$data['testing'] = 'testing';
+        $data = $this->data;
 
         return view('app-benchmarking')->with($data);
     }
@@ -195,6 +192,8 @@ class appController extends Controller
      */
     public function appbenchmarking_ci(Request $request)
     {
+        $data = $this->data;
+
         // Get current users' all apps
         $data['applications'] = \Auth::User()->applications()->get();
 
@@ -219,7 +218,6 @@ class appController extends Controller
                 //Calculate bandwidth_per_request %, lower better
                 $data['applications'][$key]['bandwidth_per_request_measure'] =  round( ( $measurement->bandwidth_per_request / $result[0]->bandwidth_per_request ) * 100 ); 
             }
-
             unset($result);
         }
 
@@ -233,8 +231,7 @@ class appController extends Controller
      */
     public function appbenchmarking_history(Request $request)
     {
-        // Get current users' all apps history
-        $data['history_list'] = \Auth::User()->history()->get();
+        $data = $this->data;
 
         return view('app-benchmarking-history')->with($data);
     }
