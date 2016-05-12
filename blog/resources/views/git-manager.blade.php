@@ -71,15 +71,15 @@ License: You must have a valid license purchased only from themeforest(the above
                                 </div>
                                 <div class="actions">
                                     <div class="btn-group btn-group-devided">
-                                        <form action="/auth/github" class="form-horizontal" method="post">
+                                        <form action="/auth/github" class="form-horizontal">
                                             {!! csrf_field() !!}
                                             <div class="form-actions">
                                                 <div class="row">
                                                     <div class="col-md-offset-3 col-md-9">
-                                                        @if ( isset($github_user) ) 
-                                                            <button href="/auth/github" class="btn red">解除</button>
+                                                        @if ( isset( Auth::User()->github_id ) )
+                                                            <a href="/oauth/unbind?type=github" class="btn red">解除</a>
                                                         @else
-                                                            <button href="/auth/github"  class="btn blue">綁定</button>
+                                                            <button class="btn blue">綁定</button>
                                                         @endif
                                                     </div>
                                                 </div>
@@ -99,14 +99,15 @@ License: You must have a valid license purchased only from themeforest(the above
                                 </div>
                                 <div class="actions">
                                     <div class="btn-group btn-group-devided">
-                                        <form action="/app-benchmarking-all-now" class="form-horizontal" method="post">
+                                        <form action="/auth/bitbucket" class="form-horizontal">
+                                            {!! csrf_field() !!}
                                             <div class="form-actions">
                                                 <div class="row">
                                                     <div class="col-md-offset-3 col-md-9">
-                                                        @if ( isset($bitbucket_user) ) 
-                                                            <button type="submit" class="btn red">解除</button>
+                                                        @if ( isset( Auth::User()->bitbucket_id ))
+                                                            <a href="/oauth/unbind?type=bitbucket" class="btn red">解除</a>
                                                         @else
-                                                            <button type="button" class="btn blue">綁定</button>
+                                                            <button class="btn blue">綁定</button>
                                                         @endif
                                                     </div>
                                                 </div>

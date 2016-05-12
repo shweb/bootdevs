@@ -41,4 +41,10 @@ return [
         'redirect' => env('GITHUB_URL'),
     ],
 
+    'bitbucket' => [
+        'client_id' => env('BITBUCKET_ID'),
+        'client_secret' => env('BITBUCKET_SECRET'),
+        'redirect' => env('BITBUKCET_URL'),
+    ],
+
 ];

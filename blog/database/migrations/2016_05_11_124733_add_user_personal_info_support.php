@@ -21,6 +21,7 @@ class AddUserPersonalInfoSupport extends Migration
          $table->string('nickname');
          $table->string('avatar_path');
          $table->string('github_id')->unique;
+         $table->string('bitbucket_id')->unique;
          $table->longtext('notifications_conf');
        });
     }
