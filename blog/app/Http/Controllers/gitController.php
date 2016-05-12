@@ -36,7 +36,7 @@ class gitController extends Controller
 
         // Get current users' all apps
         $data['appnames'] = $data['test'];
-        $data['github_user'] = 'keithyau';
+        //$data['github_user'] = 'keithyau';
         // print_r($data['appnames']); exit;
 
         return view('git-manager')->with($data);

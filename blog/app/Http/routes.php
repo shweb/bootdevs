@@ -61,6 +61,6 @@ Route::get('/app-optimize-begin', 'appOptimizeController@index');
 Route::post('/app-optimize-save', 'appOptimizeController@appoptimize_save');
 
 //Github
-Route::get('auth/github', 'Auth\OauthController@redirectToProvider');
-Route::get('auth/github/callback', 'Auth\OauthController@handleProviderCallback');
+Route::get('/auth/github', 'Auth\OauthController@redirectToProvider');
+Route::get('/auth/github/callback', 'Auth\OauthController@handleProviderCallback');
 

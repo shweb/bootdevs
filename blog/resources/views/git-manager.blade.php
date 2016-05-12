@@ -43,18 +43,7 @@ License: You must have a valid license purchased only from themeforest(the above
                     <!-- BEGIN PAGE HEADER-->
 
                     <!-- BEGIN PAGE BAR -->
-                    <div class="page-bar">
-                        <ul class="page-breadcrumb">
-                            <li>
-                                <a href="/home">{{ $page_title or "Home" }}</a>
-                                <i class="fa fa-circle"></i>
-                            </li>
-                            <li>
-                                <span>Portlets</span>
-                            </li>
-                        </ul>
-                        @include('page-toolbar')
-                    </div>
+                    @include('page-toolbar', ['breadcrumb' => '代碼管理'])
                     <!-- END PAGE BAR -->
                     <!-- BEGIN PAGE TITLE-->
                     <h3 class="page-title"> Git 設定
@@ -81,15 +70,16 @@ License: You must have a valid license purchased only from themeforest(the above
                                     </span>
                                 </div>
                                 <div class="actions">
-                                    <div class="btn-group btn-group-devided" data-toggle="buttons">
-                                        <form action="/app-benchmarking-all-now" class="form-horizontal" method="post">
+                                    <div class="btn-group btn-group-devided">
+                                        <form action="/auth/github" class="form-horizontal" method="post">
+                                            {!! csrf_field() !!}
                                             <div class="form-actions">
                                                 <div class="row">
                                                     <div class="col-md-offset-3 col-md-9">
                                                         @if ( isset($github_user) ) 
-                                                        <button type="submit" class="btn red">解除</button>
+                                                            <button href="/auth/github" class="btn red">解除</button>
                                                         @else
-                                                        <button type="button" class="btn blue">綁定</button>
+                                                            <a href="/auth/github"  class="btn blue">綁定</a>
                                                         @endif
                                                     </div>
                                                 </div>
@@ -108,7 +98,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     </span>
                                 </div>
                                 <div class="actions">
-                                    <div class="btn-group btn-group-devided" data-toggle="buttons">
+                                    <div class="btn-group btn-group-devided">
                                         <form action="/app-benchmarking-all-now" class="form-horizontal" method="post">
                                             <div class="form-actions">
                                                 <div class="row">
@@ -135,7 +125,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     </span>
                                 </div>
                                 <div class="actions">
-                                    <div class="btn-group btn-group-devided" data-toggle="buttons">
+                                    <div class="btn-group btn-group-devided">
                                         <form action="/app-benchmarking-all-now" class="form-horizontal" method="post">
                                             <div class="form-actions">
                                                 <div class="row">
@@ -168,23 +158,11 @@ License: You must have a valid license purchased only from themeforest(the above
         @include('footer')
         <!-- END FOOTER -->
         <!--[if lt IE 9]>
-<script src="../assets/global/plugins/respond.min.js"></script>
-<script src="../assets/global/plugins/excanvas.min.js"></script> 
-<![endif]-->
+        <script src="../assets/global/plugins/respond.min.js"></script>
+        <script src="../assets/global/plugins/excanvas.min.js"></script>
+        <![endif]-->
         <!-- BEGIN CORE PLUGINS -->
         @include('js-plugin')
-        
-        <script src="{{ asset("/metronic/theme/assets/pages/scripts/form-samples.min.js") }}" type="text/javascript"></script>
-        <!--Chart plugins -->
-        <script src="{{ asset("/metronic/theme/assets/pages/scripts/charts-highcharts.js") }}" type="text/javascript"></script>
-        <script src="{{ asset("/metronic/theme/assets/global/plugins/highcharts/js/highcharts.js") }}" type="text/javascript"></script>
-        <script src="{{ asset("/metronic/theme/assets/global/plugins/highcharts/js/highcharts-3d.js") }}" type="text/javascript"></script>
-        <script src="{{ asset("/metronic/theme/assets/global/plugins/highcharts/js/highcharts-more.js") }}" type="text/javascript"></script>
-        
-        <!--Page level plugins -->
-        <script src="{{ asset("/metronic/theme/assets/pages/scripts/components-select2.min.js") }}" type="text/javascript"></script>
-        <script src="{{ asset("/metronic/theme/assets/global/plugins/select2/js/select2.full.min.js") }}" type="text/javascript"></script>
-
         <!-- END THEME LAYOUT SCRIPTS -->
 
     </body>
