@@ -156,10 +156,11 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-	/*
-	 * Third party plugin
+		/*
+	 	 * Third party plugin
          */ 
-	Collective\Html\HtmlServiceProvider::class,
+		Collective\Html\HtmlServiceProvider::class,
+		Laravel\Socialite\SocialiteServiceProvider::class,
     ],
 
     /*
@@ -206,10 +207,10 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
-	/* Third party plugin */
-	'Html'      => 'Collective\Html\HtmlFacade',
+		/* Third party plugin */
+		'Html'      => 'Collective\Html\HtmlFacade',
     	'Form'      => 'Collective\Html\FormFacade',
-
+		'Socialite' => Laravel\Socialite\Facades\Socialite::class,
     ],
 
 ];

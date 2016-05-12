@@ -79,7 +79,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                         @if ( isset($github_user) ) 
                                                             <button href="/auth/github" class="btn red">解除</button>
                                                         @else
-                                                            <a href="/auth/github"  class="btn blue">綁定</a>
+                                                            <button href="/auth/github"  class="btn blue">綁定</button>
                                                         @endif
                                                     </div>
                                                 </div>
@@ -104,9 +104,9 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 <div class="row">
                                                     <div class="col-md-offset-3 col-md-9">
                                                         @if ( isset($bitbucket_user) ) 
-                                                        <button type="submit" class="btn red">解除</button>
+                                                            <button type="submit" class="btn red">解除</button>
                                                         @else
-                                                        <button type="button" class="btn blue">綁定</button>
+                                                            <button type="button" class="btn blue">綁定</button>
                                                         @endif
                                                     </div>
                                                 </div>
@@ -130,10 +130,10 @@ License: You must have a valid license purchased only from themeforest(the above
                                             <div class="form-actions">
                                                 <div class="row">
                                                     <div class="col-md-offset-3 col-md-9">
-                                                        @if ( isset($codingnet_user) ) 
-                                                        <button type="submit" class="btn red">解除</button>
+                                                        @if ( isset($codingnet_user) )
+                                                            <button type="submit" class="btn red">解除</button>
                                                         @else
-                                                        <button type="button" class="btn blue">綁定</button>
+                                                            <button type="button" class="btn blue">綁定</button>
                                                         @endif
                                                     </div>
                                                 </div>
