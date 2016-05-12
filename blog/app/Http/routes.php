@@ -59,3 +59,8 @@ Route::post('/user-save-avatar', 'profileController@upload_image');
 //Optimize running app
 Route::get('/app-optimize-begin', 'appOptimizeController@index');
 Route::post('/app-optimize-save', 'appOptimizeController@appoptimize_save');
+
+//Github
+Route::get('auth/github', 'Auth\OauthController@redirectToProvider');
+Route::get('auth/github/callback', 'Auth\OauthController@handleProviderCallback');
+
