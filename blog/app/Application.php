@@ -19,6 +19,14 @@ class Application extends Model
     }
 
     /**
+     * Get the server monitors  for this application.
+     */
+    public function monitors()
+    {
+        return $this->hasMany('App\App_Monitor', 'app_id');
+    }
+
+    /**
      * Get the action history for this application.
      */
     public function history()

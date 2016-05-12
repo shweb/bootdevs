@@ -43,18 +43,7 @@ License: You must have a valid license purchased only from themeforest(the above
                     <!-- BEGIN PAGE HEADER-->
 
                     <!-- BEGIN PAGE BAR -->
-                    <div class="page-bar">
-                        <ul class="page-breadcrumb">
-                            <li>
-                                <a href="/home">{{ $page_title or "Home" }}</a>
-                                <i class="fa fa-circle"></i>
-                            </li>
-                            <li>
-                                <span>Portlets</span>
-                            </li>
-                        </ul>
-                        @include('page-toolbar')
-                    </div>
+                    @include('page-toolbar', ['breadcrumb' => '優化'])
                     <!-- END PAGE BAR -->
                     <!-- BEGIN PAGE TITLE-->
                     <h3 class="page-title"> 應用自動優化

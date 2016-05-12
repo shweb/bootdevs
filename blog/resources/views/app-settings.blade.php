@@ -41,18 +41,7 @@ License: You must have a valid license purchased only from themeforest(the above
                     <!-- BEGIN PAGE HEADER-->
 
                     <!-- BEGIN PAGE BAR -->
-                    <div class="page-bar">
-                        <ul class="page-breadcrumb">
-                            <li>
-                                <a href="/home">{{ $page_title or "Home" }}</a>
-                                <i class="fa fa-circle"></i>
-                            </li>
-                            <li>
-                                <span>應用</span>
-                            </li>
-                        </ul>
-                        @include('page-toolbar')
-                    </div>
+                    @include('page-toolbar', ['breadcrumb' => '應用'])
                     <!-- END PAGE BAR -->
                     <!-- BEGIN PAGE TITLE-->
                     <h3 class="page-title"> 應用設定
@@ -64,7 +53,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         <div class="note note-info">
                             <p> {{ $notice or "" }}
                                 <br> {{ $notice_details or "" }}
-                                <a href="/app-auto" target="_blank"> {{ $notice_url or "" }} </a>
+                                <a href="{{ $notice_url or "" }}" target="_blank"> {{ $notice_url or "" }} </a>
                             </p>
                         </div>
                     @endif
@@ -109,7 +98,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 <a href="#tab_1_4" tabindex="-1" data-toggle="tab"> 部署歷史 </a>
                                             </li>
                                             <li>
-                                                <a href="#apmbindingpage" tabindex="-1" data-toggle="tab"> 第三方監控</a>
+                                                <a href="#apmbindingpage" tabindex="-1" data-toggle="tab"> 監控綁定 </a>
                                             </li>
                                             <li>
                                                 <a href="#tab_1_3" tabindex="-1" data-toggle="tab"> 手動重起 </a>
@@ -164,7 +153,9 @@ License: You must have a valid license purchased only from themeforest(the above
                                         @include('history-list')
                                     </div>
                                     <div class="tab-pane fade" id="apmbindingpage">
+                                    @foreach ($apm_vendors as $apm_vendor => $apm_logo)
                                         @include('monitor-manager')
+                                    @endforeach
                                     </div>
                                 </div>
                                 <div class="clearfix margin-bottom-20"> </div>

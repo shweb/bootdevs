@@ -23,7 +23,7 @@ Route::get('/home', 'HomeController@appstat');
 Route::get('/app-settings', 'appController@appsettings');
 Route::post('/app-settings-save', 'appController@appsettings_save');
 Route::get('/app-settings-save', 'appController@appsettings');
-Route::post('/app-codesettings-save', 'appController@appsettings_codesave');
+Route::post('/app-codedeploy', 'appController@appsettings_codedeploy');
 
 //Wizard
 Route::get('/app-wizard-begin', 'HomeController@appwizard');
@@ -42,12 +42,17 @@ Route::get('/git-manager', 'gitController@gitlist');
 
 //Monitor related
 Route::get('/monitor-list', 'monitorController@monitorlist');
+Route::post('/monitor-manager-save', 'monitorController@monitor_manager');
+
+
 
 //User profile page
 Route::get('/user-profile', 'profileController@index');
+Route::post('/user-profile-save', 'profileController@profile_save');
 Route::get('/user-package-save', 'profileController@package_save');
 Route::get('/user-creditcode-save', 'profileController@package_save');
 Route::get('/user-payment-list', 'profileController@payment_list');
+Route::post('/user-validate-password', 'profileController@change_password');
 
 //Optimize running app
 Route::get('/app-optimize-begin', 'appOptimizeController@index');

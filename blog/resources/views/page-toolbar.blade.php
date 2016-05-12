@@ -1,3 +1,14 @@
+                   <!-- BEGIN PAGE BAR -->
+                    <div class="page-bar">
+                        <ul class="page-breadcrumb">
+                            <li>
+                                <a href="/home">{{ $page_title or "主頁" }}</a>
+                                <i class="fa fa-circle"></i>
+                            </li>
+                            <li>
+                                <span> {{ $breadcrumb or "" }}</span>
+                            </li>
+                        </ul>          
                         <div class="page-toolbar">
                             <div class="btn-group pull-right">
                                 <button type="button" class="btn green btn-sm btn-outline dropdown-toggle" data-toggle="dropdown"> 操作
@@ -28,3 +39,5 @@
                                 </ul>
                             </div>
                         </div>
+                    </div>
+                    <!-- END PAGE BAR -->

@@ -14,7 +14,7 @@
     </div>
     <div class="portlet-body form">
         <!-- BEGIN FORM-->
-        <form action="/app-codesettings-save?appid={{ $appid or "" }}" class="form-horizontal" method="post">
+        <form action="/app-codedeploy?appid={{ $appid or "" }}" class="form-horizontal" method="post">
             {!! csrf_field() !!}
             <div class="form-body">
                 <div class="form-group">
@@ -28,7 +28,7 @@
                     <label for="select2-single-append" class="control-label col-md-3">使用已綁定這應用的 Git 庫</label>
                     <div class="col-md-4 input-group select2-bootstrap-prepend">
                         <span class="input-group-addon">
-                            <input type="checkbox" name="select2_codedeploy_git_checked" value="checked" {{ $select2_codedeploy_git_checked or ""}}>
+                            <input type="checkbox" name="select2_codedeploy_git_checked" value="checked" checked disabled="disabled">
                         </span>
                         {{ 
                             Form::select(
@@ -129,7 +129,7 @@
                 <div class="row">
                     <div class="col-md-offset-3 col-md-9">
                         <button type="submit" class="btn green">部署最新代碼到服務器</button>
-                        <button type="button" class="btn default">取消</button>
+                        <button type="button" class="btn default">代碼回滾</button>
                     </div>
                 </div>
             </div>

@@ -42,21 +42,7 @@ License: You must have a valid license purchased only from themeforest(the above
                 <!-- BEGIN CONTENT BODY -->
                 <div class="page-content">
                     <!-- BEGIN PAGE HEADER-->
-
-                    <!-- BEGIN PAGE BAR -->
-                    <div class="page-bar">
-                        <ul class="page-breadcrumb">
-                            <li>
-                                <a href="/home">{{ $page_title or "Home" }}</a>
-                                <i class="fa fa-circle"></i>
-                            </li>
-                            <li>
-                                <span>用戶</span>
-                            </li>
-                        </ul>
-                        @include('page-toolbar')
-                    </div>
-                    <!-- END PAGE BAR -->
+                    @include('page-toolbar', ['breadcrumb' => '用戶'])
                     <!-- END PAGE HEADER-->
                     @if( isset($notice) )
                         <div class="note note-info">
@@ -105,7 +91,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                     </li>
                                                     <li>
                                                         <a href="javascript:;"> 账户余额 
-                                                            <span> {{ Auth::User()->moneyleft }} 999 </span>
+                                                            <span> {{ Auth::User()->credit_amount }} </span>
                                                         </a>
                                                     </li>
                                                     <!--
@@ -127,13 +113,14 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 <div class="row">
                                                     <div class="col-md-8 profile-info">
                                                         <h1 class="font-green sbold uppercase"> {{ Auth::User()->name }} </h1>
-                                                        <p> 当前套餐： {{ Auth::User()->package }}
+                                                        <p> 当前套餐： {{ Auth::User()->current_package()->first()->name }}
                                                             </p>
                                                         <p>
-                                                            <a href="javascript:;"> <a href="#pacakgeModal" role="button" class="btn btn-outline" data-toggle="modal"> 更改套餐 </a>                                                         </p>
+                                                            <a href="javascript:;"> <a href="#pacakgeModal" role="button" class="btn btn-outline" data-toggle="modal"> 升級套餐 </a>                                                         </p>
                                                         <ul class="list-inline">
                                                             <li>
                                                                 <i class="fa fa-map-marker"></i> {{ Auth::User()->country }} </li>
+                                                            <!--
                                                             <li>
                                                                 <i class="fa fa-calendar"></i> {{ Auth::User()->birth }} </li>
                                                             <li>
@@ -142,6 +129,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                 <i class="fa fa-star"></i> {{ Auth::User()->nick }} </li>
                                                             <li>
                                                                 <i class="fa fa-heart"></i> {{ Auth::User()->interest }} </li>
+                                                            -->
                                                         </ul>
                                                     </div>
                                                     <div id="pacakgeModal" class="modal fade" role="dialog" aria-hidden="true">
@@ -149,20 +137,20 @@ License: You must have a valid license purchased only from themeforest(the above
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
                                                                     <a href="javascript:;" class="close" data-dismiss="modal" aria-hidden="true"></a>
-                                                                    <h4 class="modal-title">更改套餐</h4>
+                                                                    <h4 class="modal-title">升級套餐</h4>
                                                                 </div>
                                                                 <div class="modal-body">
                                                                     <div class="portlet light bordered">
                                                                         <div class="portlet-title">
                                                                             <div class="caption">
                                                                                 <i class="icon-equalizer font-green-haze"></i>
-                                                                                <span class="caption-subject font-green-haze bold uppercase">当前套餐： </span>
-                                                                                <span class="caption-helper">包年 {{ Auth::User()->package }}</span>
+                                                                                <span class="caption-subject font-green-haze bold uppercase">{{ Auth::User()->current_package()->first()->name }} :: </span>
+                                                                                <span class="caption-helper"> {{ Auth::User()->current_package()->first()->charge_method }}</span>
                                                                             </div>
                                                                         </div> 
                                                                         <div class="portlet-body form">
                                                                             <!-- BEGIN FORM-->
-                                                                            <form class="form-horizontal" role="form" acion="/user-package-save">
+                                                                            <form class="form-horizontal" role="form" action="/user-package-save" method="POST">
                                                                                 <div class="form-body">
                                                                                     <h2 class="margin-bottom-20"> 专业版功能： </h2>
                                                                                     <h3 class="form-section">包括所有社区版功能，另外支持：</h3>
@@ -175,7 +163,8 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                                         <!--/span-->
                                                                                         <div class="col-md-6">
                                                                                             <div class="form-group">
-                                                                                                <label class="control-label col-md-6"><li>持续集成</li></label>                                                                                            </div>
+                                                                                                <label class="control-label col-md-6"><li>持续集成</li></label>
+                                                                                            </div>
                                                                                         </div>
                                                                                         <!--/span-->
                                                                                     </div>
@@ -189,7 +178,8 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                                         <!--/span-->
                                                                                         <div class="col-md-6">
                                                                                             <div class="form-group">
-                                                                                                <label class="control-label col-md-6"><li>Docker部署</li></label>                                                                                            </div>
+                                                                                                <label class="control-label col-md-6"><li>Docker部署</li></label>   
+                                                                                            </div>
                                                                                         </div>
                                                                                         <!--/span-->
                                                                                     </div>
@@ -203,7 +193,8 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                                         <!--/span-->
                                                                                         <div class="col-md-6">
                                                                                             <div class="form-group">
-                                                                                                <label class="control-label col-md-6"><li>开放 API</li></label>                                                                                            </div>
+                                                                                                <label class="control-label col-md-6"><li>开放 API</li></label> 
+                                                                                            </div>
                                                                                         </div>
                                                                                         <!--/span-->
                                                                                     </div>
@@ -234,7 +225,6 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
-                                                                                        <div class="col-md-6"> </div>
                                                                                     </div>
                                                                                 </div>
                                                                             </form>
@@ -257,21 +247,21 @@ License: You must have a valid license purchased only from themeforest(the above
                                                             <div class="portlet-body">
                                                                 <ul class="list-unstyled">
                                                                     <li>
-                                                                        <span class="sale-info"> 已優化應用
+                                                                        <span class="sale-info"> 已優化應用次
                                                                             <i class="fa fa-img-up"></i>
                                                                         </span>
-                                                                        <span class="sale-num"> 23 </span>
+                                                                        <span class="sale-num"> {{ $optimization_count or "0" }} </span>
                                                                     </li>
                                                                     <li>
                                                                         <span class="sale-info"> 已部署代碼次
                                                                             <i class="fa fa-img-down"></i>
                                                                         </span>
-                                                                        <span class="sale-num"> 87 </span>
+                                                                        <span class="sale-num"> {{ $deploy_count or "0" }} </span>
                                                                     </li>
-                                                                    <li>
+                                                                    <!-- <li>
                                                                         <span class="sale-info"> 性能提升 </span>
                                                                         <span class="sale-num"> 2377 </span>
-                                                                    </li>
+                                                                    </li> -->
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -343,14 +333,14 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                         </tr>
                                                                     </thead>
                                                                     <tbody>
-                                                                        @foreach ( $sales_records as $key => $record)
+                                                                        @foreach ( $payment_records as $key => $record)
                                                                         <tr>
                                                                             <td>
-                                                                                <a href="javascript:;"> {{ $key or "error" }} {{ $record['product'] or "error" }} </a>
+                                                                                <a href="javascript:;"> {{ $record['product_paid'] or "error" }} </a>
                                                                             </td>
-                                                                            <td class="hidden-xs"> {{ $record['time'] or "error" }} </td>
-                                                                            <td> {{ $record['amount'] or "error" }}
-                                                                                <span class="label label-sm label-success label-mini"> 已付 </span>
+                                                                            <td class="hidden-xs"> {{ $record['created_at'] or "error" }} </td>
+                                                                            <td> {{ $record['payment_amount'] or "error" }}
+                                                                                <span class="label label-sm label-success label-mini"> {{ $record['payment_status'] or "未知" }} </span>
                                                                             </td>
                                                                             <td>
                                                                                 <a href="#/sales-record-detials" class="btn dark btn-sm btn-outline sbold uppercase">
@@ -373,7 +363,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                             <div class="col-md-3">
                                                 <ul class="ver-inline-menu tabbable margin-bottom-10">
                                                     <li class="active">
-                                                        <a data-toggle="tab" href="#tab_1-1">
+                                                        <a data-toggle="tab" href="#personal_info">
                                                             <i class="fa fa-cog"></i> 個人信息 </a>
                                                         <span class="after"> </span>
                                                     </li>
@@ -393,23 +383,24 @@ License: You must have a valid license purchased only from themeforest(the above
                                             </div>
                                             <div class="col-md-9">
                                                 <div class="tab-content">
-                                                    <div id="tab_1-1" class="tab-pane active">
-                                                        <form role="form" action="/userinfo-save">
-                                                            <div class="form-group">
-                                                                <label class="control-label">姓名</label>
-                                                                <input type="text" placeholder="丘秉宜" class="form-control" /> </div>
-                                                            <div class="form-group">
-                                                                <label class="control-label">手機</label>
-                                                                <input type="text" placeholder="18621194620" class="form-control" /> </div>
+                                                    <div id="personal_info" class="tab-pane active">
+                                                        <form class="form-horizontal" action="/user-profile-save" id="submit_form" method="POST">
+                                                            {!! csrf_field() !!}
                                                             <div class="form-group">
                                                                 <label class="control-label">關於</label>
-                                                                <textarea class="form-control" rows="3" placeholder="寫下自己吧"></textarea>
+                                                                <textarea class="form-control" rows="3" placeholder="寫下自己吧" name="about" value={{ Auth::User()->about }} >{{ Auth::User()->about }}</textarea>
                                                             </div>
                                                             <div class="form-group">
+                                                                <label class="control-label">姓名</label>
+                                                                <input type="text" placeholder="丘秉宜" class="form-control" name="nickname" value={{ Auth::User()->nickname }} /> </div>
+                                                            <div class="form-group">
+                                                                <label class="control-label">手機</label>
+                                                                <input type="text" placeholder="18621194620" class="form-control" name="phone" value={{ Auth::User()->phone }} /> </div>
+                                                            <div class="form-group">
                                                                 <label class="control-label">個人網址</label>
-                                                                <input type="text" placeholder="http://www.mywebsite.com" class="form-control" /> </div>
-                                                            <div class="margiv-top-10">
-                                                                <a href="javascript:;" class="btn green"> 保存 </a>
+                                                                <input type="text" placeholder="http://www.mywebsite.com" class="form-control" name="website" value={{ Auth::User()->website }} /> </div>
+                                                            <div class="form-actions">
+                                                                <button type="submit" class="btn green">保存</button>
                                                                 <a href="javascript:;" class="btn default"> 取消 </a>
                                                             </div>
                                                         </form>
@@ -442,10 +433,11 @@ License: You must have a valid license purchased only from themeforest(the above
                                                         </form>
                                                     </div>
                                                     <div id="tab_3-3" class="tab-pane">
-                                                        <form action="/valid-change-password" id="submit_form">
+                                                        <form action="/user-validate-password" id="submit_form" method="POST">
+                                                            {!! csrf_field() !!}
                                                             <div class="form-group">
                                                                 <label class="control-label">現在密碼</label>
-                                                                <input type="password" placeholder="old password" class="form-control" /> </div>
+                                                                <input type="password" placeholder="old password" name="current_password" class="form-control" /> </div>
                                                             <div class="form-group">
                                                                 <label class="control-label">更改密碼</label>
                                                                 <input type="password" placeholder="new password" name="password" class="form-control" id="submit_form_password"/> </div>
@@ -453,7 +445,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                 <label class="control-label">確應密碼</label>
                                                                 <input type="password" placeholder="retype password" name="rpassword" class="form-control" /> </div>
                                                             <div class="margin-top-10">
-                                                                <a href="javascript:;" class="btn green"> Change Password </a>
+                                                                <button type="submit" class="btn green">保存</button>
                                                                 <a href="javascript:;" class="btn default"> Cancel </a>
                                                             </div>
                                                         </form>
@@ -482,6 +474,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                     </td>
                                                                 </tr>
                                                                 @endforeach
+
                                                             </table>
                                                              <div class="form-group">
                                                                     <label class="control-label">新增EMAIL</label>
@@ -516,18 +509,17 @@ License: You must have a valid license purchased only from themeforest(the above
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        @foreach ( $payment as $key => $value )
+                                                        @foreach ( $recharge_records as $key => $value )
                                                         <tr>
                                                             <td> 
-                                                                {{ $value['product'] or "error" }}
-                                                                <span class="label label-sm label-success label-mini"> {{ $key or "error" }} </span>
+                                                                {{ $value['payment_gateway'] or "未知" }}
                                                             </td>
                                                             <td> 
-                                                                {{ $value['time'] or "error" }}
+                                                                {{ $value['created_at'] or "error" }}
                                                             </td>
                                                             <td> 
-                                                                {{ $value['amount'] or "error" }}
-                                                                <span class="label label-sm label-success label-mini"> {{ $value['confirmed'] or "未支付" }} </span>
+                                                                {{ $value['currency'] or "error" }} {{ $value['amount'] or "error" }}
+                                                                <span class="label label-sm label-success label-mini"> {{ $value['status'] or "未支付" }} </span>
                                                             </td>
                                                         </tr>
                                                         @endforeach
@@ -620,9 +612,9 @@ License: You must have a valid license purchased only from themeforest(the above
 <script src="../assets/global/plugins/respond.min.js"></script>
 <script src="../assets/global/plugins/excanvas.min.js"></script> 
 <![endif]-->
+
         <!-- BEGIN CORE PLUGINS -->
         @include('js-plugin')
-        
         <script src="{{ asset("/metronic/theme/assets/pages/scripts/form-samples.min.js") }}" type="text/javascript"></script>
         
         <!-- BEGIN PAGE LEVEL PLUGINS -->
@@ -631,18 +623,13 @@ License: You must have a valid license purchased only from themeforest(the above
         <script src="{{ asset("/metronic/theme/assets/global/plugins/gmaps/gmaps.min.js") }}" type="text/javascript"></script>
         <!-- END PAGE LEVEL PLUGINS -->
         
-        <script src="{{ asset("/metronic/theme/assets/pages/scripts/components-select2.min.js") }}" type="text/javascript"></script>
         <!-- BEGIN PAGE LEVEL PLUGINS -->
-        <script src="{{ asset("/metronic/theme/assets/global/plugins/select2/js/select2.full.min.js") }}" type="text/javascript"></script>
         <script src="{{ asset("/metronic/theme/assets//pages/scripts/components-bootstrap-switch.min.js") }}" type="text/javascript"></script>
         <!-- Control validation here -->
         <script src="{{ asset("/metronic/theme/assets/global/plugins/jquery-validation/js/jquery.validate.min.js") }}" type="text/javascript"></script>
         <script src="{{ asset("/metronic/theme/assets/global/plugins/jquery-validation/js/additional-methods.min.js") }}" type="text/javascript"></script>
         <script src="{{ asset("/metronic/theme/assets/global/plugins/bootstrap-wizard/jquery.bootstrap.wizard.min.js") }}" type="text/javascript"></script>
         <script src="{{ asset("/metronic/theme/assets/pages/scripts/form-wizard.js") }}" type="text/javascript"></script>
-
         <!-- END THEME LAYOUT SCRIPTS -->
-
     </body>
-
 </html>

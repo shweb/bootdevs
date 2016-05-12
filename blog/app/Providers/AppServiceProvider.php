@@ -23,6 +23,14 @@ class AppServiceProvider extends ServiceProvider
         $notifications['count'] = '3';
 
 	view()->share('notifications', $notifications);
+
+	$apm_vendors = [
+	    'newrelic' => 'https://d0.awsstatic.com/events/aws-hosted-events/2016/US/NewRelic-logo-square.png', 
+	    'oneapm' => 'http://news.oneapm.com/content/images/2015/08/logo---01-3.png', 
+            'tinCloud' => 'http://mobile.51cto.com/exp/apm/images/2.png'
+	];
+	
+	view()->share('apm_vendors', $apm_vendors);
     }
 
     /**

@@ -43,18 +43,7 @@ License: You must have a valid license purchased only from themeforest(the above
                     <!-- BEGIN PAGE HEADER-->
 
                     <!-- BEGIN PAGE BAR -->
-                    <div class="page-bar">
-                        <ul class="page-breadcrumb">
-                            <li>
-                                <a href="/home">{{ $page_title or "Home" }}</a>
-                                <i class="fa fa-circle"></i>
-                            </li>
-                            <li>
-                                <span>Portlets</span>
-                            </li>
-                        </ul>
-                        @include('page-toolbar')
-                    </div>
+                    @include('page-toolbar', ['breadcrumb' => '第三方監控'])
                     <!-- END PAGE BAR -->
                     <!-- BEGIN PAGE TITLE-->
                     <h3 class="page-title"> 應用監控接入例表
@@ -98,12 +87,13 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ( $app_monitors as $monitor)
+                                            @foreach ( $monitored_applications as $appname => $monitors)
+                                                @foreach ( $monitors as $monitor )
                                                 <tr>
                                                     <td>
-                                                        <a href="javascript:;"> {{ $monitor['select2_appmonitor'] or "error" }} </a>
+                                                        <a href="javascript:;"> {{ $monitor['vendor'] or "error" }} </a>
                                                     </td>
-                                                    <td class="hidden-xs"> {{ $monitor['domainname'] or "error" }} </td>
+                                                    <td class="hidden-xs"> {{ $appname or "error" }} </td>
                                                     <td> {{ Auth::User()->name }}
                                                         <span class="label label-sm label-success label-mini"> 有效 </span>
                                                     </td>
@@ -113,6 +103,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                     </td>
                                                 </tr>
                                                 @endforeach
+                                            @endforeach
                                             </tbody>
                                         </table>
                                     </div>

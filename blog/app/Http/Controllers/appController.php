@@ -10,6 +10,7 @@ use App\Http\Requests;
 use App\Application;
 use App\Action_History;
 use App\optimzation_record;
+use App\App_Monitor;
 
 class appController extends Controller
 {
@@ -47,6 +48,9 @@ class appController extends Controller
         // Bind the current application's git repo 
         $data['select2_codedeploy_git'] = $application->select2_gitrepo;
 
+        // Prepare deploy history
+        $data['codedeploy_list'] = $application->history()->where('action_type', 'codedeploy')->get();
+
         return view('app-settings')->with($data);
     }
 
@@ -55,7 +59,7 @@ class appController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function appsettings_codesave(Request $request)
+    public function appsettings_codedeploy(Request $request)
     {
         $appid = $request->input('appid');
         $application = \Auth::User()->applications()->find($appid);
@@ -72,7 +76,8 @@ class appController extends Controller
         $history->user_id = \Auth::User()->id;
         $history->app_id = $appid;
         $history->type = 'user';
-        $history->action_type = 'update_new_app';
+        $history->action_type = 'codedeploy';
+        $history->action_appname = $application->domainname;
         $history->action_desc = $application->app_autoconf;
         $history->save();
 
@@ -81,16 +86,25 @@ class appController extends Controller
         $array = unserialize($application->app_codedeploy_conf);
         $data = array_merge($data, $array);
 
-        $array = unserialize($application->app_autoconf);
-        $data = array_merge($data, $array);
+        if ( $application->app_autoconf != NULL) {
+            $array = unserialize($application->app_autoconf);
+            $data = array_merge($data, $array);
+        }
         
         // Bind the current application's git repo 
         $data['select2_codedeploy_git'] = $application->select2_gitrepo;
 
         // For history tab
         $data['history_list'] = \Auth::User()->history()->where('action_type', 'Create new app')->get();
+
+        // Prepare deploy history
+        $data['codedeploy_list'] = $application->history()->where('action_type', 'codedeploy')->get();
+
         //Check server status after deploy new conf and store to history
        //$history->action_status = 'server return';
+
+        // Get the tag id / commit id from github and store in action history
+        //github url - get id , or get from chef server
 
         return view('app-settings')->with($data);
     }
@@ -118,13 +132,16 @@ class appController extends Controller
         $history->app_id = $appid;
         $history->type = 'user';
         $history->action_type = 'update_new_app';
+        $history->action_appname = $application->domainname;
         $history->action_desc = $application->app_autoconf;
         $history->save();
 
         //Load and prepare current settings
         //Control if default value display checkbox on or off
-        $array = unserialize($application->app_codedeploy_conf);
-        $data = array_merge($data, $array);
+        if ($application->app_codedeploy_conf != NULL) {
+            $array = unserialize($application->app_codedeploy_conf);
+            $data = array_merge($data, $array);
+        }
 
         $array = unserialize($application->app_autoconf);
         $data = array_merge($data, $array);
@@ -134,9 +151,12 @@ class appController extends Controller
 
         // For history tab
         $data['history_list'] = \Auth::User()->history()->where('action_type', 'Create new app')->get();
+
+        // Prepare deploy history
+        $data['codedeploy_list'] = $application->history()->where('action_type', 'codedeploy')->get();
+
         //Check server status after deploy new conf and store to history
 	   //$history->action_status = 'server return';
-
 
         return view('app-settings')->with($data);
     }
@@ -187,9 +207,9 @@ class appController extends Controller
             foreach ($application->history()->get() as $action) {
                 $result = $action->optimization_result()->orderBy('created_at', 'desc')->get();
                 $data['applications'][$key]['optimization_result'] = $result->toArray();
-            }
-        
-            if ( isset($result) ) {
+                break; //Only get the first one
+            }   
+            if ( isset($result[0]) ) {
                 //Calculate response_time %, lower better
                 $data['applications'][$key]['response_time_measure'] = round( ( $measurement->response_time / $result[0]->response_time ) * 100 ); 
 
@@ -202,8 +222,6 @@ class appController extends Controller
 
             unset($result);
         }
-
-  //      print_r($data['applications']); exit;
 
         return view('app-benchmarking-ci')->with($data);
     }

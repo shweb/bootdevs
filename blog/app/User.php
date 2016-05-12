@@ -41,4 +41,28 @@ class User extends Authenticatable
      {
   	return $this->hasMany('App\Action_History');
      }
+
+    /* 
+     * Define User and payment dependencies
+     *
+     */
+     public function payment_records()
+     {
+  	return $this->hasMany('App\payment_record');
+     }
+
+    /* 
+     * Define User and payment dependencies
+     *
+     */
+     public function recharge_records()
+     {
+  	return $this->hasMany('App\recharge_record');
+     }
+
+    // A package has many to User
+    public function current_package()
+    {
+        return $this->belongsTo('App\payment_package', 'current_packageId');
+    }
 }

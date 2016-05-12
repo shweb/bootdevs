@@ -9,6 +9,7 @@ use App\Http\Requests;
 //ORM
 use App\Application;
 use App\Action_History;
+use App\App_Monitor;
 
 class appOptimizeController extends Controller
 {
@@ -29,19 +30,8 @@ class appOptimizeController extends Controller
      */
     public function index(Request $request)
     {
-
-        $data['test'] = [
-              'App/Server 1',
-              'App/Server 2',
-              'App/Server 3',
-              'App/Server 4',
-        ];
-
-
         // Get current users' all apps
-        $data['appnames'] = $data['test'];
         $data['github_user'] = 'keithyau';
-        // print_r($data['appnames']); exit;
 
         return view('app-optimize-begin')->with($data);
     }
@@ -53,7 +43,6 @@ class appOptimizeController extends Controller
      */
     public function appoptimize_save(Request $request)
     {
-        //print_r($request->all()); exit;
         $application = new Application;
         $application->type = 'existing_app';
         $application->user_id = \Auth::user()->id;
@@ -90,6 +79,22 @@ class appOptimizeController extends Controller
         $history->action_desc = serialize( $application->get()->toArray() ) ;
 
         $history->save();
+
+        //Bind third party monitor if provided in create
+        //If the vendor already existing for this app, dont create new
+        if ($application->select2_appmonitor != NULL) {
+            $monitor = App_Monitor::firstOrNew([
+                'vendor' => $application->select2_appmonitor,
+                'app_id' => $application->id,
+            ]);
+            $monitor->app_id = $application->id;
+            $monitor->app_key = $application->key;
+            $monitor->vendor = $application->select2_appmonitor;
+            //$monitor->apm_app_secret = $request->input('apm_app_secret');
+            $monitor->email = $application->email;
+            
+            $monitor->save();
+        }
 
         //Store below history after server return, may put it in a restful function
         //$history->status = '';
