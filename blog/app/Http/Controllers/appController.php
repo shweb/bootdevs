@@ -24,6 +24,7 @@ class appController extends Controller
     {
         $this->middleware('auth');
 
+        // Populate variables for its methods
         $appid = $request->input('appid');
         $application = \Auth::User()->applications()->find($appid);
 
