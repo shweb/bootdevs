@@ -65,7 +65,7 @@ class monitorController extends Controller
 
         $data['notice'] = 'Your monitor saved, if you want to view binding, please go';
         $data['notice_url'] = 'monitor-list';
-        
+
         return view('app-settings')->with($data);
     }
 
