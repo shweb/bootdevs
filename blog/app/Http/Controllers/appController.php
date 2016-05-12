@@ -20,16 +20,18 @@ class appController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Request $request)
     {
         $this->middleware('auth');
 
+        $appid = $request->input('appid');
+        $application = \Auth::User()->applications()->find($appid);
+
+        if ( isset($application) ) // Prepare deploy history
+            $this->data['codedeploy_list'] = $application->history()->where('action_type', 'codedeploy')->get();
+
         // For history tab
-        $this->data['history_list'] = \Auth::User()->history()->where('action_type', 'Create new app')->get();
-
-        // Prepare deploy history
-        $this->data['codedeploy_list'] = $application->history()->where('action_type', 'codedeploy')->get();
-
+        $this->data['history_list'] = \Auth::User()->history()->where('app_id', $appid)->get();
     }
 
     /**
@@ -44,11 +46,13 @@ class appController extends Controller
         $appid = $request->input('appid');
         $application = \Auth::User()->applications()->find($appid);
 
-        //Load and prepare current settings
-        $array = unserialize($application->app_autoconf);
+        if ( $application->app_autoconf != NULL ) {
+            //Load and prepare current settings
+            $array = unserialize($application->app_autoconf);
 
-        //Control if default value display checkbox on or off
-        $data = $array;
+            //Control if default value display checkbox on or off
+            $data = array_merge($data, $array);
+        }
 
         $data['appname'] = $application->domainname;
         $data['appid'] = $appid;
@@ -79,25 +83,29 @@ class appController extends Controller
 
         $data['notice'] = 'Your codedeploy settings being saved';
 
-        $history = new Action_History;
-        $history->user_id = \Auth::User()->id;
-        $history->app_id = $appid;
-        $history->type = 'user';
-        $history->action_type = 'codedeploy';
-        $history->action_appname = $application->domainname;
-        $history->action_desc = $application->app_autoconf;
-        $history->save();
-
         //Load and prepare current settings
         //Control if default value display checkbox on or off
         $array = unserialize($application->app_codedeploy_conf);
         $data = array_merge($data, $array);
 
         if ( $application->app_autoconf != NULL) {
-            $array = unserialize($application->app_autoconf);
-            $data = array_merge($data, $array);
-        }
-        
+            $array2 = unserialize($application->app_autoconf);
+            $data = array_merge($data, $array2);
+        } else
+            $array2 = [];
+
+        $total_conf = array_merge($array, $array2);
+
+        // Store the new codedeploy as history after merging codedeploy and autoconf
+        $history = new Action_History;
+        $history->user_id = \Auth::User()->id;
+        $history->app_id = $appid;
+        $history->type = 'user';
+        $history->action_type = 'codedeploy';
+        $history->action_appname = $application->domainname;
+        $history->action_desc = serialize($total_conf);
+        $history->save();
+
         // Bind the current application's git repo 
         $data['select2_codedeploy_git'] = $application->select2_gitrepo;
 
@@ -106,6 +114,9 @@ class appController extends Controller
 
         // Get the tag id / commit id from github and store in action history
         //github url - get id , or get from chef server
+
+        //Reload the new saved history
+        $data['codedeploy_list'] = $application->history()->where('action_type', 'codedeploy')->get();
 
         return view('app-settings')->with($data);
     }
@@ -159,33 +170,6 @@ class appController extends Controller
     }
 
     /**
-     * Save app settings and route it back to the settings page.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function appbenchmarking(Request $request)
-    {
-
-        $data = $this->data;
-
-        return view('app-benchmarking')->with($data);
-    }
-
-    /**
-     * Server benchmarking function before deploying apps.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function appbenchmarking_start(Request $request)
-    {
-
-	$data['testing'] = 'testing';
-	$data['select2_serverconf'] = $request->input('select2_serverconf');
-
-        return view('app-benchmarking')->with($data);
-    }
-
-    /**
      * Server benchmarking function before deploying apps.
      *
      * @return \Illuminate\Http\Response
@@ -203,12 +187,14 @@ class appController extends Controller
         $measurement = optimzation_record::find(2);
 
         foreach ( $data['applications'] as $key => $application ) {
-            foreach ($application->history()->get() as $action) {
-                $result = $action->optimization_result()->orderBy('created_at', 'desc')->get();
+                $action = $application->history()->first();
+
+                $result = $action->optimization_result()->orderBy('created_at', 'desc')->first();
+            if ( isset($result) && $result != NULL ) {
                 $data['applications'][$key]['optimization_result'] = $result->toArray();
-                break; //Only get the first one
-            }   
-            if ( isset($result[0]) ) {
+            }
+
+            if ( isset($result) ) {
                 //Calculate response_time %, lower better
                 $data['applications'][$key]['response_time_measure'] = round( ( $measurement->response_time / $result[0]->response_time ) * 100 ); 
 
@@ -222,17 +208,5 @@ class appController extends Controller
         }
 
         return view('app-benchmarking-ci')->with($data);
-    }
-
-    /**
-     * Server benchmarking history list.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function appbenchmarking_history(Request $request)
-    {
-        $data = $this->data;
-
-        return view('app-benchmarking-history')->with($data);
     }
 }

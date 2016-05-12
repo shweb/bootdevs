@@ -12,24 +12,26 @@
                 <div class="mt-list-head list-simple font-white bg-red">
                     <div class="list-head-title-container">
                         <div class="list-date"></div>
-                        <h3 class="list-title">{{$appname or "Please choose a repo for the app"}}</h3>
+                        <h3 class="list-title">{{ $appname or "Please choose a repo for the app" }} </h3>
                     </div>
                 </div>
                 <div class="mt-list-container list-simple">
                     <ul>
-                    @foreach ( $codedeploy_list as $deploy_history )
-                        <li class="mt-list-item">
-                            <div class="list-icon-container done">
-                                <i class="icon-check"></i>
-                            </div>
-                            <div class="list-datetime"> {{ $deploy_history->created_at }}</div>
-                            <div class="list-item-content">
-                                <h3 class="uppercase">
-                                    <a href="javascript:;"> 進行了 {{ $deploy_history->action_type }} 標簽：sodfgho </a>
-                                </h3>
-                            </div>
-                        </li>
-                    @endforeach
+                    @if ( isset($codedeploy_list) && !empty($codedeploy_list) )
+                        @foreach ( $codedeploy_list as $deploy_history )
+                            <li class="mt-list-item">
+                                <div class="list-icon-container done">
+                                    <i class="icon-check"></i>
+                                </div>
+                                <div class="list-datetime"> {{ $deploy_history->created_at }}</div>
+                                <div class="list-item-content">
+                                    <h3 class="uppercase">
+                                        <a href="javascript:;"> 進行了 {{ $deploy_history->action_type }} 標簽：sodfgho </a>
+                                    </h3>
+                                </div>
+                            </li>
+                        @endforeach
+                    @endif
                     </ul>
                 </div>
             </div>

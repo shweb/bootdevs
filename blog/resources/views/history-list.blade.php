@@ -23,6 +23,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                            @if ( isset($history_list) && !empty($history_list) )
                                                 @foreach ($history_list as $key => $history)
                                                 <tr>
                                                     <td>
@@ -38,6 +39,7 @@
                                                     </td>
                                                 </tr>
                                                 @endforeach
+                                            @endif
                                             </tbody>
                                         </table>
                                     </div>
