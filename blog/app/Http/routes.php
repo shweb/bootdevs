@@ -67,3 +67,6 @@ Route::get('/auth/github/callback', 'Auth\OauthController@github_handleProviderC
 //Bitbucket
 Route::get('/auth/bitbucket', 'Auth\OauthController@bitbucket_redirectToProvider');
 Route::get('/auth/bitbucket/callback', 'Auth\OauthController@bitbucket_handleProviderCallback');
+
+//Oauth
+Route::get('/oauth/unbind', 'Auth\OauthController@unbind');

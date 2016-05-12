@@ -76,7 +76,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                             <div class="form-actions">
                                                 <div class="row">
                                                     <div class="col-md-offset-3 col-md-9">
-                                                        @if ( isset( Auth::User()->github_id ) )
+                                                        @if ( isset( Auth::User()->github_id) && Auth::User()->github_id != NULL )
                                                             <a href="/oauth/unbind?type=github" class="btn red">解除</a>
                                                         @else
                                                             <button class="btn blue">綁定</button>
@@ -104,7 +104,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                             <div class="form-actions">
                                                 <div class="row">
                                                     <div class="col-md-offset-3 col-md-9">
-                                                        @if ( isset( Auth::User()->bitbucket_id ))
+                                                        @if ( isset( Auth::User()->bitbucket_id ) && Auth::User()->bitbucket_id != NULL )
                                                             <a href="/oauth/unbind?type=bitbucket" class="btn red">解除</a>
                                                         @else
                                                             <button class="btn blue">綁定</button>

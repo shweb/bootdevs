@@ -60,29 +60,35 @@ class OauthController extends Controller
      */
     public function bitbucket_redirectToProvider()
     {
-        return \Socialite::driver('bitbucket')->redirect(); //Bitbucket scope define in UI
+        return Redirect::to('https://bitbucket.org/site/oauth2/authorize?client_id=' . config('services.bitbucket.client_id') . '&response_type=code');
+        //return \Socialite::driver('bitbucket')->redirect(); //Bitbucket scope define in UI
     }
 
     /**
      * Obtain the user information from Bitbucket.
+     * Bitbucket is in Oauth1 which cannot do direct code pull
      *
      * @return Response
      */
-    public function bitbucket_handleProviderCallback()
+    public function bitbucket_handleProviderCallback(Request $request)
     {
-        try {
-            $user = \Socialite::driver('bitbucket')->user();
-        } catch (Exception $e) {
-            return Redirect::to('auth/bitbucket');
-        }
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, 'https://bitbucket.org/site/oauth2/access_token');
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_USERPWD, config('services.bitbucket.client_id') . ':' . config('services.bitbucket.client_secret'));
+        curl_setopt($ch, CURLOPT_POSTFIELDS, "grant_type=authorization_code&code=" . $request->input('code'));
+        curl_setopt($ch, CURLOPT_URL, 'https://bitbucket.org/site/oauth2/access_token');
 
-        // If the user is not logged in
-        if ( \Auth::guest() )
-            $authUser = $this->findOrCreateUser($user, 'bitbucket');
-        else
-            $authUser = $this->bindAccount($user, 'bitbucket');
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-        \Auth::login($authUser, true);
+        $server_output = curl_exec ($ch);
+
+        curl_close ($ch);
+
+        $access_token = json_decode($server_output)->access_token;
+
+        \Auth::User()->bitbucket_id = $access_token;
+        \Auth::User()->save();
 
         return Redirect::to('git-manager');
     }
@@ -117,8 +123,9 @@ class OauthController extends Controller
      */
     private function bindAccount($git_User, $type)
     {
+        //Store OAuth 1 token, work on OAuth 2 later
         $type = $type . "_id";
-        \Auth::User()->$type = $git_User->id . ',' . $git_User->token;
+        \Auth::User()->$type = $git_User->id . ',' . $git_User->token . ',' . $git_User->tokenSecret;
         \Auth::User()->save();
 
         return \Auth::User();
