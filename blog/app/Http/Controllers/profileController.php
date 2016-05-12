@@ -37,7 +37,7 @@ class profileController extends Controller
         ];
 
         // Init variables in the page
-        $data['deploy_count'] = \Auth::User()->history()->where('action_type', 'codedeploy')->count();
+        $this->data['deploy_count'] = \Auth::User()->history()->where('action_type', 'codedeploy')->count();
         $this->data['optimization_count'] = Action_History::has('optimization_result')->count();
         $this->data['payment_records'] = \Auth::User()->payment_records()->get()->toArray();
         $this->data['recharge_records'] = \Auth::User()->recharge_records()->get()->toArray();
