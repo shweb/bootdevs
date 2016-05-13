@@ -43,7 +43,8 @@ class profileController extends Controller
         $this->data['recharge_records'] = \Auth::User()->recharge_records()->get()->toArray();
 
         $array = unserialize(\Auth::User()->notifications_conf);
-        $this->data = array_merge($this->data, $array);
+        if ( is_array($array) )
+            $this->data = array_merge($this->data, $array);
     }
 
     /**
@@ -54,6 +55,9 @@ class profileController extends Controller
     public function payment_list(Request $request)
     {
         $data = $this->data;
+
+        $data['sales_records'] = array_merge($data['payment_records'], $data['recharge_records']);
+
         return view('user-payment-list')->with($data);
     }
 

@@ -37,18 +37,7 @@ License: You must have a valid license purchased only from themeforest(the above
                     <!-- BEGIN PAGE HEADER-->
 
                     <!-- BEGIN PAGE BAR -->
-                    <div class="page-bar">
-                        <ul class="page-breadcrumb">
-                            <li>
-                                <a href="/home">{{ $page_title or "Home" }}</a>
-                                <i class="fa fa-circle"></i>
-                            </li>
-                            <li>
-                                <span>費用</span>
-                            </li>
-                        </ul>
-                        @include('page-toolbar')
-                    </div>
+                    @include('page-toolbar', ['breadcrumb' => '費用'])
                     <!-- END PAGE BAR -->
                     <!-- BEGIN PAGE TITLE-->
                     <h3 class="page-title"> 費用管理
@@ -69,7 +58,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         <div class="tabbable-line tabbable-custom-profile">
                             <ul class="nav nav-tabs">
                                 <li class="active">
-                                    <a href="#paymentrecord" data-toggle="tab"> 消費記錄 </a>
+                                    <a href="#paymentrecord" data-toggle="tab"> 總消費記錄 </a>
                                 </li>
                                 <li>
                                     <a href="#payment" data-toggle="tab"> 充值 </a>
@@ -95,14 +84,15 @@ License: You must have a valid license purchased only from themeforest(the above
                                             </tr>
                                         </thead>
                                         <tbody>
+                                        @if ( isset($sales_records) )
                                             @foreach ( $sales_records as $key => $record)
                                             <tr>
                                                 <td>
-                                                    <a href="javascript:;"> {{ $key or "error" }} {{ $record['product'] or "error" }} </a>
+                                                    <a href="javascript:;"> {{ $record['product_paid'] or "充值" }} </a>
                                                 </td>
-                                                <td class="hidden-xs"> {{ $record['time'] or "error" }} </td>
-                                                <td> {{ $record['amount'] or "error" }}
-                                                    <span class="label label-sm label-success label-mini"> 已付 </span>
+                                                <td class="hidden-xs"> {{ $record['created_at'] or "-" }} </td>
+                                                <td> {{ $record['amount'] or $record['payment_amount'] }}
+                                                    <span class="label label-sm label-success label-mini"> {{ $record['status'] or $record['payment_status'] }} </span>
                                                 </td>
                                                 <td>
                                                     <a href="#/sales-record-detials" class="btn dark btn-sm btn-outline sbold uppercase">
@@ -110,6 +100,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 </td>
                                             </tr>
                                             @endforeach
+                                        @endif
                                         </tbody>
                                     </table>
                                 </div>

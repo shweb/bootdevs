@@ -148,7 +148,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">代碼路徑</label>
+                                                            <label class="control-label col-md-3">服務器上代碼路徑</label>
                                                             <div class="col-md-4">
                                                                 <input type="text" class="form-control" name="codepath" />
                                                                 <span class="help-block"> 不指名路徑，系統會自動安排 </span>
@@ -172,47 +172,49 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">用戶名
+                                                            <label class="control-label col-md-3">第三方 Git 庫 地址
                                                                 <span class="required"> * </span>
                                                             </label>
                                                             <div class="col-md-4">
-                                                                <input type="text" class="form-control" name="gitusername" />
-                                                                <span class="help-block"> 第三方 Git 庫 用戶名 </span>
+                                                                <input type="text" class="form-control" name="git_address" />
+                                                                <span class="help-block"> 系統會由這下載代碼 </span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="control-label col-md-3">第三方 Git 用戶名
+                                                                <!-- <span class="required"> * </span> -->
+                                                            </label>
+                                                            <div class="col-md-4">
+                                                                <input type="text" class="form-control" name="git_username" />
+                                                                <span class="help-block"> 留空會使用 <a href="/git-manager"> 已綁定用戶</a> </span>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label col-md-3">密碼
-                                                                <span class="required"> * </span>
+
                                                             </label>
                                                             <div class="col-md-4">
-                                                                <input type="password" class="form-control" name="password" id="submit_form_password" />
+                                                                <input type="password" class="form-control" name="git_password" id="submit_form_password" />
+                                                                <span class="help-block"> 留空會使用 <a href="/git-manager"> 已綁定用戶</a> </span>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label col-md-3">確應密碼
-                                                                <span class="required"> * </span>
+
                                                             </label>
                                                             <div class="col-md-4">
-                                                                <input type="password" class="form-control" name="rpassword" />
-                                                                <span class="help-block"> 確應密碼 </span>
+                                                                <input type="password" class="form-control" name="git_rpassword" />
+                                                                <span class="help-block"> 留空會使用 <a href="/git-manager"> 已綁定用戶</a> </span>
                                                             </div>
                                                         </div>
-                                                        <!--
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">Gender
-                                                                <span class="required"> * </span>
+                                                            <label class="control-label col-md-3">數據庫地址
                                                             </label>
                                                             <div class="col-md-4">
-                                                                <div class="radio-list">
-                                                                    <label>
-                                                                        <input type="radio" name="gender" value="M" data-title="Male" /> Male </label>
-                                                                    <label>
-                                                                        <input type="radio" name="gender" value="F" data-title="Female" /> Female </label>
-                                                                </div>
-                                                                <div id="form_gender_error"> </div>
+                                                                <input type="password" class="form-control" name="database_address" placeholder="username:password@yourdbaddress.com:3306" />
+                                                                <span class="help-block"> 留空會使用 localhost:3306 </span>
                                                             </div>
                                                         </div>
-                                                        -->
                                                     </div>
                                                     <div class="tab-pane" id="tab3">
                                                         <h3 class="block">第三方監控接入</h3>

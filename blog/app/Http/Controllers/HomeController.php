@@ -112,7 +112,10 @@ class HomeController extends Controller
         $application->codepath = $request->input('codepath'); 
         $application->select2_gitrepo_checked = $request->input('select2_gitrepo_checked'); 
         $application->select2_gitrepo = $request->input('select2_gitrepo'); 
-        $application->gitusername = $request->input('gitusername'); 
+        $application->git_username = $request->input('git_username') ? $request->input('git_username') : "default";
+        $application->git_password = $request->input('git_password') ? $request->input('git_password') : "default";
+        $application->git_address = $request->input('git_address') ? $request->input('git_address') : "default";
+        $application->database_address = $request->input('database_address') ? $request->input('database_address') : "default";
         $application->select2_appmonitor_checked = $request->input('select2_appmonitor_checked'); 
         $application->select2_appmonitor = $request->input('select2_appmonitor'); 
         $application->key = $request->input('key'); 

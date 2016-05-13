@@ -26,7 +26,10 @@ class Applications extends Migration
             $table->string('codepath');
             $table->string('select2_gitrepo_checked');
             $table->string('select2_gitrepo');
-            $table->string('gitusername');
+            $table->string('git_username');
+            $table->string('git_password');
+            $table->string('git_address');
+            $table->string('database_address');
             $table->string('select2_appmonitor_checked');
             $table->string('select2_appmonitor');
             $table->string('key');

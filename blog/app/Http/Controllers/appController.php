@@ -185,26 +185,26 @@ class appController extends Controller
         // Get each app's status and optimization history app --> action_id(s) -> app_optimization_log
         // % of improvement measure by ( current improved measurement / BootDev's optimial result on same conf ) * 100%
         // So if BootDev improved, the measurement increased
-        $measurement = optimzation_record::find(2);
+        $measurement = optimzation_record::find(1);
 
         foreach ( $data['applications'] as $key => $application ) {
                 $action = $application->history()->first();
 
-                $result = $action->optimization_result()->orderBy('created_at', 'desc')->first();
+                $result = $action->optimization_result()->where('id', '>', 1 )->orderBy('created_at', 'desc')->first();
+
             if ( isset($result) && $result != NULL ) {
                 $data['applications'][$key]['optimization_result'] = $result->toArray();
-            }
 
-            if ( isset($result) ) {
                 //Calculate response_time %, lower better
-                $data['applications'][$key]['response_time_measure'] = round( ( $measurement->response_time / $result[0]->response_time ) * 100 ); 
+                $data['applications'][$key]['response_time_measure'] = round( ( $measurement->response_time / $result->response_time ) * 100 );
 
                 //Calculate request per sec %, higher better
-                $data['applications'][$key]['request_per_sec_measure'] =  round( ( $result[0]->request_per_sec / $measurement->request_per_sec ) * 100 ); 
+                $data['applications'][$key]['request_per_sec_measure'] =  round( ( $result->request_per_sec / $measurement->request_per_sec ) * 100 );
 
                 //Calculate bandwidth_per_request %, lower better
-                $data['applications'][$key]['bandwidth_per_request_measure'] =  round( ( $measurement->bandwidth_per_request / $result[0]->bandwidth_per_request ) * 100 ); 
+                $data['applications'][$key]['bandwidth_per_request_measure'] =  round( ( $measurement->bandwidth_per_request / $result->bandwidth_per_request ) * 100 );
             }
+            
             unset($result);
         }
 

@@ -11,7 +11,7 @@ class optimzation_record extends Model
      *
      * @var string
      */
-    protected $table = 'app_optmization_log';
+    protected $table = 'app_optimization_log';
 
     public function history()
     {

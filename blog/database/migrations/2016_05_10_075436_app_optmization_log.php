@@ -12,7 +12,7 @@ class AppOptmizationLog extends Migration
      */
     public function up()
     {
-        Schema::create('app_optmization_log', function (Blueprint $table) {
+        Schema::create('app_optimization_log', function (Blueprint $table) {
             $table->increments('id');
             $table->string('entry');
             //$table->integer('app_id'); // an optmization should belongs to an app, and this app contains many actions
@@ -25,6 +25,21 @@ class AppOptmizationLog extends Migration
             
             $table->timestamps();
         });
+
+	//Set the optimial result
+        DB::table('app_optimization_log')->insert(
+            array(
+                 array(
+                   'entry' => 'Bootdev_optimal',
+		   'type' => 'create_init',
+                   'action_id' => '1',
+                   'response_time' => '200',
+		   'request_per_sec' => '500',
+                   'bandwidth_per_request' => '50000',
+                   'query_per_sec' => '70'
+                 ),
+            ));
+
     }
 
     /**
