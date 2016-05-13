@@ -74,3 +74,14 @@ Route::get('/auth/codingnet/callback', 'Auth\OauthController@codingnet_handlePro
 
 //Oauth
 Route::get('/oauth/unbind', 'Auth\OauthController@unbind');
+
+//Paypal
+Route::get('payment', array(
+    'as' => 'payment',
+    'uses' => 'paymentController@postPayment',
+));
+Route::get('payment/status', array( // this is after make the payment, PayPal redirect back to your site
+    'as' => 'payment.status',
+    'uses' => 'paymentController@getPaymentStatus',
+));
+
