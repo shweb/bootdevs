@@ -68,5 +68,9 @@ Route::get('/auth/github/callback', 'Auth\OauthController@github_handleProviderC
 Route::get('/auth/bitbucket', 'Auth\OauthController@bitbucket_redirectToProvider');
 Route::get('/auth/bitbucket/callback', 'Auth\OauthController@bitbucket_handleProviderCallback');
 
+//Coding.net
+Route::get('/auth/codingnet', 'Auth\OauthController@codingnet_redirectToProvider');
+Route::get('/auth/codingnet/callback', 'Auth\OauthController@codingnet_handleProviderCallback');
+
 //Oauth
 Route::get('/oauth/unbind', 'Auth\OauthController@unbind');

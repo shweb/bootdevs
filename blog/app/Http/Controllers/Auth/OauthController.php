@@ -77,7 +77,6 @@ class OauthController extends Controller
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_USERPWD, config('services.bitbucket.client_id') . ':' . config('services.bitbucket.client_secret'));
         curl_setopt($ch, CURLOPT_POSTFIELDS, "grant_type=authorization_code&code=" . $request->input('code'));
-        curl_setopt($ch, CURLOPT_URL, 'https://bitbucket.org/site/oauth2/access_token');
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
@@ -92,6 +91,49 @@ class OauthController extends Controller
 
         return Redirect::to('git-manager');
     }
+
+    /**
+     * Redirect the user to the Coding.net authentication page.
+     *
+     * @return Response
+     */
+    public function codingnet_redirectToProvider()
+    {
+        return Redirect::to('https://coding.net/oauth_authorize.html?client_id=' .
+            config('services.codingnet.client_id') . '&redirect_uri=' .
+            config('services.codingnet.redirect') . '&response_type=code&scope=project,user,project:depot,project:file,project:task');
+    }
+
+    /**
+     * Obtain the user information from Coding.net.
+     * Bitbucket is in Oauth1 which cannot do direct code pull
+     *
+     * @return Response
+     */
+    public function codingnet_handleProviderCallback(Request $request)
+    {
+        $url = 'https://coding.net/api/oauth/access_token?' .
+                    "client_id=" . config('services.codingnet.client_id') .
+                    '&client_secret=' . config('services.codingnet.client_secret') .
+                    '&grant_type=authorization_code&code=' . $request->input('code');
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+        $server_output = curl_exec ($ch);
+
+        curl_close ($ch);
+
+        $access_token = json_decode($server_output)->access_token;
+
+        \Auth::User()->codingnet_id = $access_token;
+        \Auth::User()->save();
+
+        return Redirect::to('git-manager');
+    }
+
 
     /**
      * Return user if exists; create and return if doesn't

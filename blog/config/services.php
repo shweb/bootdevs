@@ -47,4 +47,10 @@ return [
         'redirect' => env('BITBUKCET_URL'),
     ],
 
+    'codingnet' => [
+        'client_id' => env('CODINGNET_ID'),
+        'client_secret' => env('CODINGNET_SECRET'),
+        'redirect' => env('CODINGNET_URL'),
+    ],
+
 ];
