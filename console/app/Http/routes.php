@@ -76,7 +76,7 @@ Route::get('/auth/codingnet/callback', 'Auth\OauthController@codingnet_handlePro
 Route::get('/oauth/unbind', 'Auth\OauthController@unbind');
 
 //Paypal
-Route::get('payment', array(
+Route::get('payby-paypal', array(
     'as' => 'payment',
     'uses' => 'paymentController@postPayment',
 ));
