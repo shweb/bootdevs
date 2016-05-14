@@ -390,17 +390,17 @@ License: You must have a valid license purchased only from themeforest(the above
                                                             {!! csrf_field() !!}
                                                             <div class="form-group">
                                                                 <label class="control-label">關於</label>
-                                                                <textarea class="form-control" rows="3" placeholder="寫下自己吧" name="about" value={{ Auth::User()->about }} >{{ Auth::User()->about or "" }}</textarea>
+                                                                <textarea class="form-control" rows="3" placeholder="寫下自己吧" name="about" value={{ Auth::User()->about }} >{{ Auth::User()->about }}</textarea>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label class="control-label">姓名</label>
-                                                                <input type="text" placeholder="丘秉宜" class="form-control" name="nickname" value={{ Auth::User()->nickname or "" }} /> </div>
+                                                                <input type="text" placeholder="丘秉宜" class="form-control" name="nickname" value={{ Auth::User()->nickname }} /> </div>
                                                             <div class="form-group">
                                                                 <label class="control-label">手機</label>
-                                                                <input type="text" placeholder="18621194620" class="form-control" name="phone" value={{ Auth::User()->phone or "" }} /> </div>
+                                                                <input type="text" placeholder="18621194620" class="form-control" name="phone" value={{ Auth::User()->phone }} /> </div>
                                                             <div class="form-group">
                                                                 <label class="control-label">個人網址</label>
-                                                                <input type="text" placeholder="http://www.mywebsite.com" class="form-control" name="website" value={{ Auth::User()->website or "" }} /> </div>
+                                                                <input type="text" placeholder="http://www.mywebsite.com" class="form-control" name="website" value={{ Auth::User()->website }} /> </div>
                                                             <div class="form-actions">
                                                                 <button type="submit" class="btn green">保存</button>
                                                                 <a href="javascript:;" class="btn default"> 取消 </a>
