@@ -144,8 +144,8 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                         <div class="portlet-title">
                                                                             <div class="caption">
                                                                                 <i class="icon-equalizer font-green-haze"></i>
-                                                                                <span class="caption-subject font-green-haze bold uppercase">{{ Auth::User()->current_package()->first()->name or ""}} :: </span>
-                                                                                <span class="caption-helper"> {{ Auth::User()->current_package()->first()->charge_method or ""}}</span>
+                                                                                <span class="caption-subject font-green-haze bold uppercase">{{ Auth::User()->current_package()->first()->name }} :: </span>
+                                                                                <span class="caption-helper"> {{ Auth::User()->current_package()->first()->charge_method }}</span>
                                                                             </div>
                                                                         </div> 
                                                                         <div class="portlet-body form">
@@ -203,7 +203,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                                     <div class="row">
                                                                                         <div class="col-md-6">
                                                                                             <div class="form-group">
-                                                                                                <label class="control-label col-md-9"> {{ Auth::User()->monthlyoffer or "" }} 
+                                                                                                <label class="control-label col-md-9"> {{ Auth::User()->monthlyoffer }} 
                                                                                                     <h3> 499元 / 月 </h3> 
                                                                                                 </label>
                                                                                                 <div class="col-md-9">
