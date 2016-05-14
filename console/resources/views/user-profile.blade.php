@@ -86,12 +86,12 @@ License: You must have a valid license purchased only from themeforest(the above
                                             <div class="col-md-3">
                                                 <ul class="list-unstyled profile-nav">
                                                     <li>
-                                                        <img src="{{ asset( Auth::User()->avatar_path ) }}" class="img-responsive pic-bordered" alt="Auth::User()->name " />
+                                                        <img src={{ asset( Auth::User()->avatar_path ) }} class="img-responsive pic-bordered" alt="" />
                                                         <!-- <a href="/user-profile#tab_2-2" class="profile-edit"> edit </a> -->
                                                     </li>
                                                     <li>
                                                         <a href="javascript:;"> 账户余额 
-                                                            <span> {{ Auth::User()->credit_amount }} </span>
+                                                            <span> {{ Auth::User()->credit_amount or ""}} </span>
                                                         </a>
                                                     </li>
                                                     <!--
@@ -144,8 +144,8 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                         <div class="portlet-title">
                                                                             <div class="caption">
                                                                                 <i class="icon-equalizer font-green-haze"></i>
-                                                                                <span class="caption-subject font-green-haze bold uppercase">{{ Auth::User()->current_package()->first()->name }} :: </span>
-                                                                                <span class="caption-helper"> {{ Auth::User()->current_package()->first()->charge_method }}</span>
+                                                                                <span class="caption-subject font-green-haze bold uppercase">{{ Auth::User()->current_package()->first()->name or ""}} :: </span>
+                                                                                <span class="caption-helper"> {{ Auth::User()->current_package()->first()->charge_method or ""}}</span>
                                                                             </div>
                                                                         </div> 
                                                                         <div class="portlet-body form">
@@ -203,7 +203,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                                     <div class="row">
                                                                                         <div class="col-md-6">
                                                                                             <div class="form-group">
-                                                                                                <label class="control-label col-md-9"> {{ Auth::User()->monthlyoffer }} 
+                                                                                                <label class="control-label col-md-9"> {{ Auth::User()->monthlyoffer or "" }} 
                                                                                                     <h3> 499元 / 月 </h3> 
                                                                                                 </label>
                                                                                                 <div class="col-md-9">
@@ -279,7 +279,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                         </li>
                                                     </ul>
                                                     
-                                                    <div id="myModal" class="modal fade" role="dialog" aria-hidden="{{ $hidden or "true" }}">
+                                                    <div id="myModal" class="modal fade" role="dialog" aria-hidden={{ $hidden or "true" }}>
                                                         <div class="modal-dialog">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
@@ -333,6 +333,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                         </tr>
                                                                     </thead>
                                                                     <tbody>
+                                                                    @if ( isset($payment_records) )
                                                                         @foreach ( $payment_records as $key => $record)
                                                                         <tr>
                                                                             <td>
@@ -348,6 +349,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                             </td>
                                                                         </tr>
                                                                         @endforeach
+                                                                    @endif
                                                                     </tbody>
                                                                 </table>
                                                             </div>
@@ -388,17 +390,17 @@ License: You must have a valid license purchased only from themeforest(the above
                                                             {!! csrf_field() !!}
                                                             <div class="form-group">
                                                                 <label class="control-label">關於</label>
-                                                                <textarea class="form-control" rows="3" placeholder="寫下自己吧" name="about" value={{ Auth::User()->about }} >{{ Auth::User()->about }}</textarea>
+                                                                <textarea class="form-control" rows="3" placeholder="寫下自己吧" name="about" value={{ Auth::User()->about }} >{{ Auth::User()->about or "" }}</textarea>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label class="control-label">姓名</label>
-                                                                <input type="text" placeholder="丘秉宜" class="form-control" name="nickname" value={{ Auth::User()->nickname }} /> </div>
+                                                                <input type="text" placeholder="丘秉宜" class="form-control" name="nickname" value={{ Auth::User()->nickname or "" }} /> </div>
                                                             <div class="form-group">
                                                                 <label class="control-label">手機</label>
-                                                                <input type="text" placeholder="18621194620" class="form-control" name="phone" value={{ Auth::User()->phone }} /> </div>
+                                                                <input type="text" placeholder="18621194620" class="form-control" name="phone" value={{ Auth::User()->phone or "" }} /> </div>
                                                             <div class="form-group">
                                                                 <label class="control-label">個人網址</label>
-                                                                <input type="text" placeholder="http://www.mywebsite.com" class="form-control" name="website" value={{ Auth::User()->website }} /> </div>
+                                                                <input type="text" placeholder="http://www.mywebsite.com" class="form-control" name="website" value={{ Auth::User()->website or "" }} /> </div>
                                                             <div class="form-actions">
                                                                 <button type="submit" class="btn green">保存</button>
                                                                 <a href="javascript:;" class="btn default"> 取消 </a>
@@ -422,7 +424,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                             <div class="form-group">
                                                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                                                     <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
-                                                                        <img src="{{ asset( Auth::User()->avatar_path ) }}" alt="{{ Auth::User()->name }}" /> </div>
+                                                                        <img src="{{ asset( Auth::User()->avatar_path )  }}" alt="{{ Auth::User()->name or "" }}" /> </div>
                                                                     <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"> </div>
                                                                     <div>
                                                                         <span class="btn default btn-file">
@@ -522,6 +524,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                         </tr>
                                                     </thead>
                                                     <tbody>
+                                                    @if ( isset($recharge_records) )
                                                         @foreach ( $recharge_records as $key => $value )
                                                         <tr>
                                                             <td> 
@@ -536,6 +539,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                             </td>
                                                         </tr>
                                                         @endforeach
+                                                    @endif
                                                     </tbody>
                                                 </table>
                                             </div>

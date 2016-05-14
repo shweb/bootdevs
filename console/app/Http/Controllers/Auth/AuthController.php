@@ -69,6 +69,8 @@ class AuthController extends Controller
             'email' => $data['email'],
             'country' => $data['country'],
             'password' => bcrypt($data['password']),
+            'credit_amount' => 30,
+            'current_packageId' => 1
         ]);
     }
 
@@ -82,5 +84,4 @@ class AuthController extends Controller
         $this->auth->logout();
         return redirect('login');
     }
-
 }
