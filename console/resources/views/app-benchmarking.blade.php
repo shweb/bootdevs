@@ -53,8 +53,8 @@ License: You must have a valid license purchased only from themeforest(the above
                     <!-- END PAGE HEADER-->
                     @if( isset($notice) )
                         <div class="note note-info">
-                            <p> {{ $notice or "" }}
-                                <br> {{ $notice_details or "" }}
+                            <p> {{ $notice or "no notice" }}
+                                <br> {{ $notice_details or "testing" }}
                                 <a href="/app-auto" target="_blank"> {{ $notice_url or "" }} </a>
                             </p>
                         </div>
@@ -86,7 +86,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                         <div class="form-body">
                                             <div class="form-group">
                                                 <label class="control-label">IP / 域名</label>
-                                                <input type="text" class="form-control" placeholder="www.yourdomain.com">
+                                                <input type="text" class="form-control" placeholder="www.yourdomain.com" name="domainname">
                                                 <span class="help-block">www.yourdomain.com</span>
                                             </div>
                                             <div class="form-group">

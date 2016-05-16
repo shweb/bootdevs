@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use SSH;
+
+
 class benchmarkingController extends Controller
 {
 
@@ -20,6 +23,11 @@ class benchmarkingController extends Controller
 
         // For history tab
         $this->data['history_list'] = \Auth::User()->history()->get();
+
+        ini_set('display_errors', 1);
+        ini_set('display_startup_errors', 1);
+        error_reporting(E_ALL);
+
     }
 
     /**
@@ -42,9 +50,31 @@ class benchmarkingController extends Controller
      */
     public function benchmarking_start(Request $request)
     {
+        $data = $this->data;
 
-        $data['testing'] = 'testing';
-        $data['select2_serverconf'] = $request->input('select2_serverconf');
+        $commands = 'hostname';
+
+        //Running single command and get return
+        SSH::into('production')->run($commands, function($line)
+        {
+            //Using local variable cannot get the data out from this function
+            $this->data['notice'] = (string) $line.PHP_EOL;
+        });
+        $data['notice'] = $this->data['notice'];
+
+
+        SSH::into('production')->define('testingtask', [
+            'cd /root',
+            'touch testingfromkeith'
+        ]);
+
+        SSH::task('testingtask', function($line)
+        {
+            $this->data['notice'] = (string) $line.PHP_EOL;
+            exit;
+        });
+
+        $data['notice'] = $this->data['notice'];
 
         return view('app-benchmarking')->with($data);
     }

@@ -156,11 +156,12 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-		/*
-	 	 * Third party plugin
+	    /*
+	     * Third party plugin
          */ 
 		Collective\Html\HtmlServiceProvider::class,
 		Laravel\Socialite\SocialiteServiceProvider::class,
+		Collective\Remote\RemoteServiceProvider::class,
     ],
 
     /*
@@ -208,9 +209,10 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
 		/* Third party plugin */
-		'Html'      => 'Collective\Html\HtmlFacade',
+	    'Html'      => 'Collective\Html\HtmlFacade',
     	'Form'      => 'Collective\Html\FormFacade',
-		'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+	    'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+		'SSH' => Collective\Remote\RemoteFacade::class,
     ],
 
 ];
