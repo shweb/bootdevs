@@ -212,7 +212,8 @@ return [
 	    'Html'      => 'Collective\Html\HtmlFacade',
     	'Form'      => 'Collective\Html\FormFacade',
 	    'Socialite' => Laravel\Socialite\Facades\Socialite::class,
-		'SSH' => Collective\Remote\RemoteFacade::class,
+		'SSH'       => Collective\Remote\RemoteFacade::class,
+		'chef'      => LeaseWeb\ChefGuzzle\Plugin\ChefAuth\ChefAuthPlugin::class
     ],
 
 ];

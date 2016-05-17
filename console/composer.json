@@ -10,7 +10,8 @@
         "laravelcollective/html": "5.2.*",
         "laravel/socialite": "^2.0",
         "paypal/rest-api-sdk-php": "*",
-        "laravelcollective/remote": "5.2.*"
+        "laravelcollective/remote": "5.2.*",
+        "leaseweb/chefauth-guzzle-plugin": "1.0.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

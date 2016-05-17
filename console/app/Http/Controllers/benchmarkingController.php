@@ -8,6 +8,8 @@ use App\Http\Requests;
 
 use SSH;
 
+use chef;
+
 
 class benchmarkingController extends Controller
 {
@@ -22,11 +24,32 @@ class benchmarkingController extends Controller
         $this->middleware('auth');
 
         // For history tab
-        $this->data['history_list'] = \Auth::User()->history()->get();
+        if ( \Auth::User() )
+          $this->data['history_list'] = \Auth::User()->history()->get();
 
-        ini_set('display_errors', 1);
-        ini_set('display_startup_errors', 1);
-        error_reporting(E_ALL);
+        //ini_set('display_errors', 1);
+        //ini_set('display_startup_errors', 1);
+        //error_reporting(E_ALL);
+
+        // create chef object
+        $chefAuthPlugin = new chef("keithyau", "/etc/chef/keithyau.pem");
+
+        // Create a new guzzle client
+        $client = new \Guzzle\Http\Client('https://api.chef.io');
+        $client->addSubscriber($chefAuthPlugin);
+
+        // Now you can make calls to the chef server
+        try {
+            $response = $client->get('/license')->send();
+        } catch (Guzzle\Http\Exception\BadResponseException $e) {
+            echo 'ERROR Uh oh! ' . $e->getMessage();
+            echo 'ERROR HTTP request URL: ' . $e->getRequest()->getUrl() . "\n";
+            echo 'ERROR HTTP request: ' . $e->getRequest() . "\n";
+            echo 'ERROR HTTP response status: ' . $e->getResponse()->getStatusCode() . "\n";
+            echo 'ERROR HTTP response: ' . $e->getResponse() . "\n";
+        }
+
+        print_r($response->json()); exit;
 
     }
 
@@ -62,19 +85,7 @@ class benchmarkingController extends Controller
         });
         $data['notice'] = $this->data['notice'];
 
-
-        SSH::into('production')->define('testingtask', [
-            'cd /root',
-            'touch testingfromkeith'
-        ]);
-
-        SSH::task('testingtask', function($line)
-        {
-            $this->data['notice'] = (string) $line.PHP_EOL;
-            exit;
-        });
-
-        $data['notice'] = $this->data['notice'];
+        $data['notice_details'] = $request->input('domainname');
 
         return view('app-benchmarking')->with($data);
     }
