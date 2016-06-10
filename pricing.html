@@ -1,67 +1,150 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta http-equiv=Content-Type content="text/html; charset=UTF-8">
-    <meta charset=utf-8>
-    <meta name=viewport content="width=device-width,initial-scale=1">
-    <meta name=author content=bootdev>
-    <link rel="shortcut icon" href="http://res.cloudinary.com/hrscywv4p/image/upload/c_limit,h_64,w_64/v1/715149/drupal-8-logo_0_m4lr8p.png">
-    <title>BootDev 企业级优化云平台</title>
-    <meta name=description content="BootDev是代码即架构和性能优化 SaaS 解决方案提供商，为企业打造面向下一代互联网应用的交付和运维平台，帮助客户实现云端持续创新。BootDev采用混合云模式，以云端SaaS化主机或容器管理平台，对接各类主机资源，构建跨云跨网的云主机资源池，提供全流程标准化的自动性能优化运维服务。BootDev在开发运维联动、渐进式混合云构建、大规模高并发集群、微服务架构设计、分布式应用运维等场景拥有丰富经验和成功案例。BootDev总部位于中国上海，并在香港设有分支机构。">
-    <link rel=stylesheet href="/css/pricing_vendor.css">
-    <link rel=stylesheet href="/css/pricing.css">
-
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <meta name="author" content="bootdev">
+        <link rel="shortcut icon" href="images/drupal-8-logo_0_m4lr8p.png">
+        <title>BootDev 企业级优化云平台</title>
+        <meta name="description" content="BootDev是代码即架构和性能优化 SaaS 解决方案提供商，为企业打造面向下一代互联网应用的交付和运维平台，帮助客户实现云端持续创新。BootDev采用混合云模式，以云端SaaS化主机或容器管理平台，对接各类主机资源，构建跨云跨网的云主机资源池，提供全流程标准化的自动性能优化运维服务。BootDev在开发运维联动、渐进式混合云构建、大规模高并发集群、微服务架构设计、分布式应用运维等场景拥有丰富经验和成功案例。BootDev总部位于中国上海，并在香港设有分支机构。">
+        <link rel="stylesheet" href="css/pricing_vendor.css">
+        <link rel="stylesheet" href="css/pricing.css">
+        <link rel="stylesheet" href="css/vendor.css">
+        <link rel="stylesheet" href="css/main.css">
+    </head>
     <body>
-        <div class="navbar navbar-inverse" role=navigation>
-            <div class=container>
-                <div class=navbar-header> <button type=button class=navbar-toggle data-toggle=collapse data-target=.navbar-collapse> <span class=sr-only>Toggle navigation</span> <span class=icon-bar></span> <span class=icon-bar></span> <span class=icon-bar></span> </button>
-                    <a href="index.html"> <img src="/images/assets/bootdev-logo_reform.png"> </a>
+    <!-- Navbar -->
+            <div id="navbar-visibility-check"></div>
+        <div class="navbar navbar-inverse navbar-fixed-top" id="navbar" role="navigation">
+            <div class="container">
+                <div class="navbar-header"> 
+                    <button id="menu-toggle" type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span> 
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span> 
+                        <span class="icon-bar"></span> 
+                    </button>
+                    <a href="index.html" id="white-logo"> 
+                        <div></div>
+                    </a>
+                    <a href="index.html" id="colorful-logo">
+                        <div></div>
+                    </a>
                 </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav visible-xs">
-                        <li class=dropdown> <a class=dropdown-toggle href="http://blog.bootdev.com" target=_blank>博客</a> </li>
-                        <!--<li class=dropdown> <a class=dropdown-toggle href="http://open.bootdev.com/" target=_blank>社区</a> </li>-->
-                        <li class=dropdown> <a class=dropdown-toggle href="http://docs.bootdev.com/" target=_blank>文档</a> </li>
-                        <li class=dropdown> <a class=dropdown-toggle href="http://get.bootdev.com/" target=_blank>下载</a> </li>
-                        <li class=dropdown id=sign-up-xs> <a class=dropdown-toggle href="https://console.bootdev.com/" target=_self>注册</a> </li>
-                        <li class=dropdown id=sign-in-xs> <a class=dropdown-toggle href="https://console.bootdev.com/" target=_self>登录</a> </li>
-                        <li class="dropdown hidden" id=user-name-xs>
-                            <a href="https://dashboard.bootdev.com/" class=dropdown-toggle></a>
+                <div class="navbar-collapse collapse" id="folded-menu">
+                    <ul class="nav navbar-nav visible-xs" id="xs-list">
+                        <li class="dropdown"> 
+                            <a class="dropdown-toggle" href="index.html#product/bootdev.html">bootdev</a>
+                        </li>
+                        <li class="dropdown"> 
+                            <a class="dropdown-toggle" href="index.html#product/bootaws.html">BootHub</a>
+                        </li>
+                        <li class="dropdown"> 
+                            <a class="dropdown-toggle" href="index.html#product/bootcloud.html">BootCloud</a>
+                        </li>
+                        <!--<li  class="dropdown"> <a  class="dropdown-toggle"  href=""
+                 target="_blank">BootScale</a>
+            </li>-->
+                        <li class="dropdown"> 
+                            <a class="dropdown-toggle" href="pricing.html">定价</a> 
+                        </li>
+                        <li class="dropdown"> 
+                            <a class="dropdown-toggle" href="https://bootdev.wordpress.com/">博客</a> 
+                        </li>
+                        <!--<li  class="dropdown"> <a  class="dropdown-toggle"  href="http://open.bootdev.com"
+                 target="_blank">社区</a> </li>-->
+                        <li class="dropdown"> 
+                            <a class="dropdown-toggle" href="http://docs.bootdev.com" target="_blank">文档</a> 
+                        </li>
+                        <li class="dropdown"> 
+                            <a class="dropdown-toggle" href="https://github.com/bootdev" target="_blank">下载</a> 
+                        </li>
+                        <li class="dropdown" id="sign-up-xs"> 
+                            <a class="dropdown-toggle" href="http://console.bootdev.com/console/login.php" target="_self">注册</a> 
+                        </li>
+                        <li class="dropdown" id="sign-in-xs"> 
+                            <a class="dropdown-toggle" href="http://console.bootdev.com/console/login.php" target="_self">登录</a> 
+                        </li>
+                        <li class="dropdown hidden" id="user-name-xs">
+                            <a href="https://dashboard.bootdev.com/" class="dropdown-toggle"></a>
                         </li>
                     </ul>
-                    <ul class="nav navbar-nav navbar-right hidden-xs" style="padding: 19px 15px">
-                        <a href="https://console.bootdev.com/" target=_self> <button type=button class="btn btn-primary" id=sign-in>登录</button> </a>
-                        <a href="https://console.bootdev.com/" target=_self id=user-name></a>
+                    <ul class="nav navbar-nav navbar-right hidden-xs" style="padding: 15.5px 15px">
+                        <!-- <a href="https://account.bootdev.com/signup" target="_self">
+                            <button type="button" class="btn btn-success" id="sign-up">注册</button>                        </a> -->
+                        <a href="http://console.bootdev.com/console/login.php" target="_self"> 
+                            <button type="button" class="btn btn-primary" id="sign-in">登录</button>                             
+                        </a>
                     </ul>
                     <ul class="nav navbar-nav navbar-right hidden-xs">
-                        <!--                     <li class="dropdown">
-                        <a href="https://console.bootdev.com/" class="dropdown-toggle" target="_self">控制台</a>
-                    </li> -->
-                        <li class=dropdown> <a href="http://blog.bootdev.com" class=dropdown-toggle target=_blank>博客</a> </li>
-                        <!--<li class=dropdown> <a href="http://open.bootdev.com/" class=dropdown-toggle target=_blank>社区</a> </li> -->
-                        <li class=dropdown> <a href="http://docs.bootdev.com/" class=dropdown-toggle target=_blank>文档</a> </li>
-                        <li class=dropdown> <a href="http://get.bootdev.com/" class=dropdown-toggle target=_blank>下载</a> </li>
+                        <!-- <li class="dropdown">
+                            <a href="https://dashboard.bootdev.com/" class="dropdown-toggle" target="_self">控制台</a>                        </li> -->
+                        <li class="dropdown" id="product-link"> 
+                            <a class="dropdown-toggle">产品</a> 
+                        </li>
+                        <li class="dropdown"> 
+                            <a class="dropdown-toggle" href="pricing.html">定价</a> 
+                        </li>
+                        <li class="dropdown"> 
+                            <a href="http://blog.bootdev.com" class="dropdown-toggle">博客</a> 
+                        </li>
+                        <!--<li  class="dropdown"> <a  href="http://open.bootdev.com/"  class="dropdown-toggle"
+                 target="_blank">社区</a> </li> -->
+                        <li class="dropdown"> 
+                            <a href="http://docs.bootdev.com/" class="dropdown-toggle" target="_blank">文档</a> 
+                        </li>
+                        <li class="dropdown"> 
+                            <a href="https://github.com/bootdev" class="dropdown-toggle" target="_blank">下载</a> 
+                        </li>
                     </ul>
                 </div>
             </div>
-        </div>
-        <div class=container>
-            <div class=section style="margin-top: 35px">
-                <div class=title>按需收费 onDemand</div>
-                <div class=gray>我们提供按單次部署式付费计划，兼顾您对性能优化上的不同考慮</div>
-                <a href="http://console.bootdev.com"> <button class=free-registration>免费注册</button> </a>
+            <div class="product-list hide product-list-hide" id="product-list">
+                <div class="list-item" id="bootdev-button" onclick="location.href='#product/bootdev'">
+                    <div class="item-icon"></div>
+                    <p class="name">BootDev</p>
+                    <p class="description"> 应用自动性能优化 </p>
+                </div>
+                <div class="list-item" id="bootaws-button" onclick="location.href='#product/bootAWS'">
+                    <div class="item-icon"></div>
+                    <p class="name">BootAWS</p>
+                    <p class="description"> AWS高可用架构 </p>
+                </div>
+                <div class="list-item" id="bootcloud-button" onclick="location.href='#product/bootcloud'">
+                    <div class="item-icon"></div>
+                    <p class="name">BootCloud</p>
+                    <p class="description"> 企业级云部署平台 </p>
+                </div>
+                <div class="list-item" id="bootscale-button" onclick="window.open('http://bootscale.bootdev.com', '_blank')">
+                    <div class="item-icon"></div>
+                    <p class="name">BootScale</p>
+                    <p class="description"> 高可用架构定制 </p>
+                </div>
             </div>
         </div>
-        <div class=container>
-            <div class=section>
-                <div class="btn-group hidden" role=group id=btn-group> <button type=button class="btn btn-default selected" id=community-btn>社区版</button> <button type=button class="btn btn-default" id=profession-btn>专业版</button> <button type=button class="btn btn-default" id=enterprise-btn>企业版</button> </div>
+        <div class="container">
+            <div class="section" style="margin-top: 35px">
+                <div class="title">按需收费 onDemand</div>
+                <div class="gray">我们提供按單次部署式付费计划，兼顾您对性能优化上的不同考慮</div>
+                <a href="http://console.bootdev.com"> 
+                    <button class="free-registration">免费注册</button>                     
+                </a>
+            </div>
+        </div>
+        <div class="container">
+            <div class="section">
+                <div class="btn-group hidden" role="group" id="btn-group"> 
+                    <button type="button" class="btn btn-default selected" id="community-btn">社区版</button>                     
+                    <button type="button" class="btn btn-default" id="profession-btn">专业版</button>                     
+                    <button type="button" class="btn btn-default" id="enterprise-btn">企业版</button>                     
+                </div>
                 <table frame="box" id="table" rules="all">
                     <colgroup>
-                        <col width="25%" />
-                        <col width="25%" />
-                        <col class="js-is-hidden" width="25%" />
-                        <col class="js-is-hidden" width="25%" />
+                        <col width="25%">
+                        <col width="25%">
+                        <col class="js-is-hidden" width="25%">
+                        <col class="js-is-hidden" width="25%">
                     </colgroup>
                     <thead>
                         <tr>
@@ -75,25 +158,25 @@
                         <tr class="price">
                             <td scope="row">价格</td>
                             <td class="prices">
-                                <div class="price"><small>&yen; </small>99<small> / 次起</small></span>
+                                <div class="price">
+                                    <small>¥ </small>99
+                                    <small> / 次起</small>
                                 </div>
-                                <a class="more" href="javascript:;" id="community-more">
-                                    <font color="#333333">了解详情</font>
-                                </a>
+                                <a class="more" href="javascript:;" id="community-more"><font color="#333333">了解详情</font></a>
                             </td>
                             <td class="prices">
-                                <div class="price"><small>&yen; </small>500<small> / 月起</small></span>
+                                <div class="price">
+                                    <small>¥ </small>500
+                                    <small> / 月起</small>
                                 </div>
-                                <a class="more" href="javascript:;" id="profession-more">
-                                    <font color="#333333">了解详情</font>
-                                </a>
+                                <a class="more" href="javascript:;" id="profession-more"><font color="#333333">了解详情</font></a>
                             </td>
                             <td class="prices">
-                                <div class="price"><small>&yen; </small>9999<small> / 月起</small></span>
+                                <div class="price">
+                                    <small>¥ </small>9999
+                                    <small> / 月起</small>
                                 </div>
-                                <a class="more" href="javascript:;" id="enterprise-more">
-                                    <font color="#333333">了解详情</font>
-                                </a>
+                                <a class="more" href="javascript:;" id="enterprise-more"><font color="#333333">了解详情</font></a>
                             </td>
                         </tr>
                         <tr class="strong">
@@ -101,45 +184,71 @@
                         </tr>
                         <tr>
                             <td>自我检测</td>
-                            <td><img src="/images/assets/checkmark.svg" /></td>
-                            <td><img src="/images/assets/checkmark.svg" /></td>
-                            <td><img src="/images/assets/checkmark.svg" /></td>
+                            <td>
+                                <img src="images/checkmark.svg">
+                            </td>
+                            <td>
+                                <img src="images/checkmark.svg">
+                            </td>
+                            <td>
+                                <img src="images/checkmark.svg">
+                            </td>
                         </tr>
                         <tr>
                             <td><span style="color: rgb(67, 74, 84); font-family: 'Source Han Sans SC'; font-size: 16px; line-height: normal; white-space: pre-wrap;">自我修復</span></td>
                             <td><span style="line-height: 20.8px;">－</span></td>
-                            <td><img src="/images/assets/checkmark.svg" /></td>
-                            <td><img src="/images/assets/checkmark.svg" style="line-height: 20.8px;" /></td>
+                            <td>
+                                <img src="images/checkmark.svg">
+                            </td>
+                            <td>
+                                <img src="images/checkmark.svg" style="line-height: 20.8px;">
+                            </td>
                         </tr>
                         <tr>
                             <td>持续集成</td>
                             <td><span style="line-height: 20.8px;">－</span></td>
-                            <td><img src="/images/assets/checkmark.svg" style="line-height: 20.8px;" /></td>
+                            <td>
+                                <img src="images/checkmark.svg" style="line-height: 20.8px;">
+                            </td>
                             <td><span data-sheets-userformat="{&quot;2&quot;:14915,&quot;3&quot;:{&quot;1&quot;:0},&quot;4&quot;:{&quot;1&quot;:2,&quot;2&quot;:16777215},&quot;9&quot;:1,&quot;12&quot;:0,&quot;14&quot;:{&quot;1&quot;:2,&quot;2&quot;:6647160},&quot;15&quot;:&quot;\&quot;Source Han Sans SC\&quot;&quot;,&quot;16&quot;:12}" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;\u81ea\u5b9a\u4e49\u89c4\u5219&quot;}" style="font-size:120%;font-family:Source Han Sans SC;color:#656d78;text-align:center;">自定义规则</span></td>
                         </tr>
                         <tr>
                             <td>多主机部署</td>
                             <td><span style="line-height: 20.8px;">－</span></td>
-                            <td><img src="/images/assets/checkmark.svg" style="line-height: 20.8px;" /></td>
+                            <td>
+                                <img src="images/checkmark.svg" style="line-height: 20.8px;">
+                            </td>
                             <td><span data-sheets-userformat="{&quot;2&quot;:14915,&quot;3&quot;:{&quot;1&quot;:0},&quot;4&quot;:{&quot;1&quot;:2,&quot;2&quot;:16777215},&quot;9&quot;:1,&quot;12&quot;:0,&quot;14&quot;:{&quot;1&quot;:2,&quot;2&quot;:6647160},&quot;15&quot;:&quot;\&quot;Source Han Sans SC\&quot;&quot;,&quot;16&quot;:12}" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;\u81ea\u5b9a\u4e49\u89c4\u5219&quot;}" style="font-size:120%;font-family:Source Han Sans SC;color:#656d78;text-align:center;">自定义规则</span></td>
                         </tr>
                         <tr>
                             <td><span style="color: rgb(67, 74, 84); font-family: 'Source Han Sans SC'; font-size: 16px; line-height: normal; white-space: pre-wrap;">Docker部署</span></td>
                             <td><span style="line-height: 20.8px;">－</span></td>
-                            <td><img src="/images/assets/checkmark.svg" style="line-height: 20.8px;" /></td>
+                            <td>
+                                <img src="images/checkmark.svg" style="line-height: 20.8px;">
+                            </td>
                             <td><span data-sheets-userformat="{&quot;2&quot;:14915,&quot;3&quot;:{&quot;1&quot;:0},&quot;4&quot;:{&quot;1&quot;:2,&quot;2&quot;:16777215},&quot;9&quot;:1,&quot;12&quot;:0,&quot;14&quot;:{&quot;1&quot;:2,&quot;2&quot;:6647160},&quot;15&quot;:&quot;\&quot;Source Han Sans SC\&quot;&quot;,&quot;16&quot;:12}" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;\u81ea\u5b9a\u4e49\u89c4\u5219&quot;}" style="font-size:120%;font-family:Source Han Sans SC;color:#656d78;text-align:center;">自定义规则</span></td>
                         </tr>
                         <tr>
                             <td>主机接入</td>
-                            <td><img src="/images/assets/checkmark.svg" /></td>
-                            <td><img src="/images/assets/checkmark.svg" /></td>
-                            <td><img src="/images/assets/checkmark.svg" /></td>
+                            <td>
+                                <img src="images/checkmark.svg">
+                            </td>
+                            <td>
+                                <img src="images/checkmark.svg">
+                            </td>
+                            <td>
+                                <img src="images/checkmark.svg">
+                            </td>
                         </tr>
                         <tr>
                             <td><span style="color: rgb(67, 74, 84); font-family: 'Source Han Sans SC'; font-size: 16px; line-height: normal; white-space: pre-wrap;">按時优化</span></td>
                             <td><span style="line-height: 20.8px;">－</span></td>
-                            <td><img src="/images/assets/checkmark.svg" /></td>
-                            <td><img src="/images/assets/checkmark.svg" /></td>
+                            <td>
+                                <img src="images/checkmark.svg">
+                            </td>
+                            <td>
+                                <img src="images/checkmark.svg">
+                            </td>
                         </tr>
                         <tr>
                             <td><span style="color: rgb(67, 74, 84); font-family: 'Source Han Sans SC'; font-size: 16px; line-height: normal; white-space: pre-wrap;">日志</span></td>
@@ -149,32 +258,44 @@
                         </tr>
                         <tr>
                             <td>
-                                <div class="has-tooltip" data-placement="top" data-toggle="tooltip" title="内网穿越安全通道，调试微信的利器"><span style="color: rgb(67, 74, 84); font-family: 'Source Han Sans SC'; font-size: 16px; line-height: normal; white-space: pre-wrap;">Docker迁移</span></div>
+                                <div class="has-tooltip" data-placement="top" data-toggle="tooltip" title="" data-original-title="内网穿越安全通道，调试微信的利器">
+                                    <span style="color: rgb(67, 74, 84); font-family: 'Source Han Sans SC'; font-size: 16px; line-height: normal; white-space: pre-wrap;">Docker迁移</span>
+                                </div>
                             </td>
-                            <td style="color:#aab2bd">
-                                <font color="#333333">－</font>
-                            </td>
+                            <td style="color:#aab2bd"><font color="#333333">－</font></td>
                             <td><span data-sheets-userformat="{&quot;2&quot;:14915,&quot;3&quot;:{&quot;1&quot;:0},&quot;4&quot;:{&quot;1&quot;:2,&quot;2&quot;:16777215},&quot;9&quot;:1,&quot;12&quot;:0,&quot;14&quot;:{&quot;1&quot;:2,&quot;2&quot;:6647160},&quot;15&quot;:&quot;\&quot;Source Han Sans SC\&quot;&quot;,&quot;16&quot;:12}" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;\u5b9a\u5236&quot;}" style="font-size:120%;font-family:Source Han Sans SC;color:#656d78;text-align:center;">定制</span></td>
                             <td><span data-sheets-userformat="{&quot;2&quot;:14915,&quot;3&quot;:{&quot;1&quot;:0},&quot;4&quot;:{&quot;1&quot;:2,&quot;2&quot;:16777215},&quot;9&quot;:1,&quot;12&quot;:0,&quot;14&quot;:{&quot;1&quot;:2,&quot;2&quot;:6647160},&quot;15&quot;:&quot;\&quot;Source Han Sans SC\&quot;&quot;,&quot;16&quot;:12}" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;\u5b9a\u5236&quot;}" style="font-size:120%;font-family:Source Han Sans SC;color:#656d78;text-align:center;">定制</span></td>
                         </tr>
                         <tr>
                             <td>开放 API</td>
                             <td><span style="line-height: 20.8px;">－</span></td>
-                            <td><img src="/images/assets/checkmark.svg" /></td>
-                            <td><img src="/images/assets/checkmark.svg" /></td>
+                            <td>
+                                <img src="images/checkmark.svg">
+                            </td>
+                            <td>
+                                <img src="images/checkmark.svg">
+                            </td>
                         </tr>
                         <tr class="strong">
                             <td colspan="4"><span style="color: rgb(67, 74, 84); font-family: 'Source Han Sans SC'; font-size: 16px; line-height: normal; white-space: pre-wrap; background-color: rgb(245, 247, 250);">安全+監控能力</span></td>
                         </tr>
                         <tr>
                             <td><span style="color: rgb(67, 74, 84); font-family: 'Source Han Sans SC'; font-size: 16px; line-height: normal; white-space: pre-wrap;">Ping</span></td>
-                            <td><img src="/images/assets/checkmark.svg" /></td>
-                            <td><img src="/images/assets/checkmark.svg" style="line-height: 20.8px;" /></td>
-                            <td><img src="/images/assets/checkmark.svg" style="line-height: 20.8px;" /></td>
+                            <td>
+                                <img src="images/checkmark.svg">
+                            </td>
+                            <td>
+                                <img src="images/checkmark.svg" style="line-height: 20.8px;">
+                            </td>
+                            <td>
+                                <img src="images/checkmark.svg" style="line-height: 20.8px;">
+                            </td>
                         </tr>
                         <tr>
                             <td><span style="color: rgb(67, 74, 84); font-family: 'Source Han Sans SC'; font-size: 16px; line-height: normal; white-space: pre-wrap;">ab 測試</span></td>
-                            <td><img src="/images/assets/checkmark.svg" style="line-height: 20.8px;" /></td>
+                            <td>
+                                <img src="images/checkmark.svg" style="line-height: 20.8px;">
+                            </td>
                             <td>自动</td>
                             <td><span data-sheets-userformat="{&quot;2&quot;:14915,&quot;3&quot;:{&quot;1&quot;:0},&quot;4&quot;:{&quot;1&quot;:2,&quot;2&quot;:16777215},&quot;9&quot;:1,&quot;12&quot;:0,&quot;14&quot;:{&quot;1&quot;:2,&quot;2&quot;:6647160},&quot;15&quot;:&quot;\&quot;Source Han Sans SC\&quot;&quot;,&quot;16&quot;:12}" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;\u81ea\u5b9a\u4e49\u89c4\u5219&quot;}" style="font-size:120%;font-family:Source Han Sans SC;color:#656d78;text-align:center;">自定义规则</span></td>
                         </tr>
@@ -215,210 +336,268 @@
                         </tr>
                         <tr>
                             <td>技术支持</td>
-                            <td style="color:#aab2bd">
-                                <font color="#333333">－</font>
+                            <td style="color:#aab2bd"><font color="#333333">－</font></td>
+                            <td>
+                                <img src="images/checkmark.svg">
                             </td>
-                            <td><img src="/images/assets/checkmark.svg" /></td>
-                            <td><img src="/images/assets/checkmark.svg" /></td>
+                            <td>
+                                <img src="images/checkmark.svg">
+                            </td>
                         </tr>
                         <tr>
                             <td>架构咨询</td>
-                            <td style="color:#aab2bd">
-                                <font color="#333333">－</font>
+                            <td style="color:#aab2bd"><font color="#333333">－</font></td>
+                            <td style="color:#aab2bd"><font color="#333333">－</font></td>
+                            <td>
+                                <img src="images/checkmark.svg">
                             </td>
-                            <td style="color:#aab2bd">
-                                <font color="#333333">－</font>
-                            </td>
-                            <td><img src="/images/assets/checkmark.svg" /></td>
                         </tr>
                         <tr>
                             <td>管理培训</td>
-                            <td style="color:#aab2bd">
-                                <font color="#333333">－</font>
+                            <td style="color:#aab2bd"><font color="#333333">－</font></td>
+                            <td style="color:#aab2bd"><font color="#333333">－</font></td>
+                            <td>
+                                <img src="images/checkmark.svg">
                             </td>
-                            <td style="color:#aab2bd">
-                                <font color="#333333">－</font>
-                            </td>
-                            <td><img src="/images/assets/checkmark.svg" /></td>
                         </tr>
                         <tr>
                             <td>&nbsp;</td>
                             <td class="mores">
-                                <a class="more" href="javascript:;" id="community-more2">
-                                    <font color="#333333">了解详情</font>
-                                </a>
+                                <a class="more" href="javascript:;" id="community-more2"><font color="#333333">了解详情</font></a>
                             </td>
                             <td class="mores">
-                                <a class="more" href="javascript:;" id="profession-more2">
-                                    <font color="#333333">了解详情</font>
-                                </a>
+                                <a class="more" href="javascript:;" id="profession-more2"><font color="#333333">了解详情</font></a>
                             </td>
                             <td class="mores">
-                                <a class="more" href="javascript:;" id="enterprise-more2">
-                                    <font color="#333333">了解详情</font>
-                                </a>
+                                <a class="more" href="javascript:;" id="enterprise-more2"><font color="#333333">了解详情</font></a>
                             </td>
                         </tr>
                     </tbody>
                 </table>
                 <div class="plan-arrows hidden-md hidden-lg">
-                    <a class="plan-arrow plan-arrow-left pull-left hidden" href=javascript:;> <img src="/images/assets/arrow-left.svg"> <span class=plan-arrow-left-text></span> </a>
-                    <a class="plan-arrow plan-arrow-right pull-right" href=javascript:;> <span class=plan-arrow-right-text>了解专业版</span> <img src="/images/assets/arrow-right.svg"> </a>
+                    <a class="plan-arrow plan-arrow-left pull-left hidden" href="javascript:;"> 
+                        <img src="images/arrow-left.svg"> 
+                        <span class="plan-arrow-left-text"></span> 
+                    </a>
+                    <a class="plan-arrow plan-arrow-right pull-right" href="javascript:;"> 
+                        <span class="plan-arrow-right-text">了解专业版</span> 
+                        <img src="images/arrow-right.svg"> 
+                    </a>
                 </div>
             </div>
         </div>
-        <hr class="hidden divider" id=divider>
-        <div class="plan-container hidden" id=community>
-            <div class=container>
+        <hr class="hidden divider" id="divider">
+        <div class="plan-container hidden" id="community">
+            <div class="container">
                 <div class="section production">
-                    <div class=title>社区版</div>
-                    <div class=gray>满足个人用户接量付费需求</div>
-                    <div class=ornamental-thread></div>
-                    <div class=row>
+                    <div class="title">社区版</div>
+                    <div class="gray">满足个人用户接量付费需求</div>
+                    <div class="ornamental-thread"></div>
+                    <div class="row">
                         <div class="col-sm-6 col-xs-12 text-left left-section">
-                            <div class=box-container>
-                                <div class=title> 1. 性能优化能力 </div>
-                                <div class=content> 无限项目 </div>
+                            <div class="box-container">
+                                <div class="title"> 1. 性能优化能力 </div>
+                                <div class="content"> 无限项目 </div>
                             </div>
-                            <div class=box-container>
-                                <div class=title> 2. 向單主机部署次 </div>
-                                <div class=content> <span class=range1-value>1</span> x <span class=pull-right data-toggle=tooltip data-placement=top title="x 是一个使用BootDev优化数，每 x 等于一个项目优化一次"> <img src="/images/assets/question.svg">什么是 x？ </span> </div>
-                                <div class=range-container> <input type=range id=range1 class="quota-x fill" min=0 max=13 value=0 step=1>
-                                    <div class=ticks> <span>1</span> <span>资源</span> <span class=pull-right>500</span> </div>
+                            <div class="box-container">
+                                <div class="title"> 2. 向單主机部署次 </div>
+                                <div class="content"> 
+                                    <span class="range1-value">1</span> x 
+                                    <span class="pull-right" data-toggle="tooltip" data-placement="top" title="" data-original-title="x 是一个使用BootDev优化数，每 x 等于一个项目优化一次"> <img src="images/question.svg">什么是 x？ </span> 
                                 </div>
-                                <div class=description> 您的套餐价格随消耗的部署数变化 </div>
+                                <div class="range-container"> 
+                                    <input type="range" id="range1" class="quota-x fill" min="0" max="13" value="0" step="1">
+                                    <div class="ticks"> 
+                                        <span>1</span> 
+                                        <span>资源</span> 
+                                        <span class="pull-right">500</span> 
+                                    </div>
+                                </div>
+                                <div class="description"> 您的套餐价格随消耗的部署数变化 </div>
                             </div>
                         </div>
                         <div class="col-sm-6 col-xs-12 text-left right-section">
-                            <div class=cart-item>
-                                <div class=title>性能优化檢測</div>
-                                <div class=description> <span class=size> 无限项目 </span> <span class="price pull-right"> 免费 </span> </div>
-                            </div>
-                            <div class=cart-item>
-                                <div class=title>向单主机部署优化代码／次</div>
-                                <div class=description> <span class="size range1-value">1</span> x <span class="price pull-right"><span class=range1-price>99</span> 元 <small>/ 次</small></span>
+                            <div class="cart-item">
+                                <div class="title">性能优化檢測</div>
+                                <div class="description"> 
+                                    <span class="size"> 无限项目 </span> 
+                                    <span class="price pull-right"> 免费 </span> 
                                 </div>
                             </div>
-                            <hr class=divider>
-                            <div class=total> <span>合计</span> <span class=pull-right><span class=range1-total>99</span> 元 <small>/ 次</small></span>
+                            <div class="cart-item">
+                                <div class="title">向单主机部署优化代码／次</div>
+                                <div class="description"> 
+                                    <span class="size range1-value">1</span> x 
+                                    <span class="price pull-right"><span class="range1-price">99</span> 元 <small>/ 次</small></span>
+                                </div>
                             </div>
-                            <div class=register-container> <button class="button signup">免费注册</button> <a href=mailto:info@bootdev.com>需要私有化定制方案?</a> </div>
+                            <hr class="divider">
+                            <div class="total"> 
+                                <span>合计</span> 
+                                <span class="pull-right"><span class="range1-total">99</span> 元 <small>/ 次</small></span>
+                            </div>
+                            <div class="register-container"> 
+                                <button class="button signup">免费注册</button>                                 
+                                <a href="mailto:info@bootdev.com">需要私有化定制方案?</a> 
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="plan-container hidden" id=profession>
-            <div class=container>
+        <div class="plan-container hidden" id="profession">
+            <div class="container">
                 <div class="section production">
-                    <div class=title>专业版</div>
-                    <div class=gray>提供每月多次性能自动优化方案</div>
-                    <div class=ornamental-thread></div>
-                    <div class=row>
+                    <div class="title">专业版</div>
+                    <div class="gray">提供每月多次性能自动优化方案</div>
+                    <div class="ornamental-thread"></div>
+                    <div class="row">
                         <div class="col-sm-6 col-xs-12 text-left left-section">
-                            <div class=box-container>
-                                <div class=title> 1. 性能优化能力 </div>
-                                <div class=content> <span class=range2-value>1</span> 个项目 </div>
-                                <div class=range-container> <input type=range id=range2 class="cd fill" min=0 max=8 step=1 value=0>
-                                    <div class=ticks> <span>1</span> <span>项目</span> <span class=pull-right>100</span> </div>
+                            <div class="box-container">
+                                <div class="title"> 1. 性能优化能力 </div>
+                                <div class="content"> 
+                                    <span class="range2-value">1</span> 个项目 
                                 </div>
-                                <div class=description> 您的套餐价格随优化的项目数变化 </div>
+                                <div class="range-container"> 
+                                    <input type="range" id="range2" class="cd fill" min="0" max="8" step="1" value="0">
+                                    <div class="ticks"> 
+                                        <span>1</span> 
+                                        <span>项目</span> 
+                                        <span class="pull-right">100</span> 
+                                    </div>
+                                </div>
+                                <div class="description"> 您的套餐价格随优化的项目数变化 </div>
                             </div>
-                            <div class=box-container>
-                                <div class=title> 2. 向多主机部署优化代码／次 </div>
-                                <div class=content> <span class=range3-value>5</span> x <span class=pull-right data-toggle=tooltip data-placement=top title="x 是一个使用BootDev优化数，每 x 等于一个项目优化一次"> <img src="/images/assets/question.svg">什么是 x？ </span> </div>
-                                <div class=range-container> <input type=range id=range3 class="fill quota-x" min=0 max=13 value=0 step=1>
-                                    <div class=ticks> <span>5</span> <span>资源</span> <span class=pull-right>500</span> </div>
+                            <div class="box-container">
+                                <div class="title"> 2. 向多主机部署优化代码／次 </div>
+                                <div class="content"> 
+                                    <span class="range3-value">5</span> x 
+                                    <span class="pull-right" data-toggle="tooltip" data-placement="top" title="" data-original-title="x 是一个使用BootDev优化数，每 x 等于一个项目优化一次"> <img src="images/question.svg">什么是 x？ </span> 
                                 </div>
-                                <div class=description> 您的套餐价格随消耗的部署数变化 </div>
+                                <div class="range-container"> 
+                                    <input type="range" id="range3" class="fill quota-x" min="0" max="13" value="0" step="1">
+                                    <div class="ticks"> 
+                                        <span>5</span> 
+                                        <span>资源</span> 
+                                        <span class="pull-right">500</span> 
+                                    </div>
+                                </div>
+                                <div class="description"> 您的套餐价格随消耗的部署数变化 </div>
                             </div>
                         </div>
                         <div class="col-sm-6 col-xs-12 text-left right-section">
-                            <div class=cart-item>
-                                <div class=title>性能优化能力</div>
-                                <div class=description> <span class="size range2-value"> 1 </span> 个项目，专业版 <span class="price pull-right"> <span class=range2-price value=500>500</span> 元 <small>/ 月</small> </span>
+                            <div class="cart-item">
+                                <div class="title">性能优化能力</div>
+                                <div class="description"> 
+                                    <span class="size range2-value"> 1 </span> 个项目，专业版 
+                                    <span class="price pull-right"> <span class="range2-price" value="500">500</span> 元 <small>/ 月</small> </span>
                                 </div>
                             </div>
-                            <div class=cart-item>
-                                <div class=title>向多主机优化次</div>
-                                <div class=description> <span class="size range3-value"> 5 </span> x <span class="price pull-right"> <span class=range3-price value=0>0</span> 元 <small>/ 月</small> </span>
+                            <div class="cart-item">
+                                <div class="title">向多主机优化次</div>
+                                <div class="description"> 
+                                    <span class="size range3-value"> 5 </span> x 
+                                    <span class="price pull-right"> <span class="range3-price" value="0">0</span> 元 <small>/ 月</small> </span>
                                 </div>
                             </div>
-                            <hr class=divider>
-                            <div class=total> <span>合计</span> <span class=pull-right><span class="range2-total range3-total">500</span> 元 <small>/ 月</small></span>
+                            <hr class="divider">
+                            <div class="total"> 
+                                <span>合计</span> 
+                                <span class="pull-right"><span class="range2-total range3-total">500</span> 元 <small>/ 月</small></span>
                             </div>
-                            <div class=register-container> <button class="button signup">免费注册</button> <a href=mailto:info@bootdev.com> 需要把 BootDev 整体私有化?<br> 请获取我们的私有云产品及方案 </a> </div>
+                            <div class="register-container"> 
+                                <button class="button signup">免费注册</button>                                 
+                                <a href="mailto:info@bootdev.com"> 需要把 BootDev 整体私有化?<br> 请获取我们的私有云产品及方案 </a> 
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="plan-container hidden" id=enterprise>
-            <div class=container>
+        <div class="plan-container hidden" id="enterprise">
+            <div class="container">
                 <div class="section production">
-                    <div class=title>企业版</div>
-                    <div class=gray>全定制性能自动优化方案适用任何公有云，私有云</div>
+                    <div class="title">企业版</div>
+                    <div class="gray">全定制性能自动优化方案适用任何公有云，私有云</div>
                     <div></div>
                     <div class="section production">
-                        <div> <a href=mailto:info@bootdev.com> 需要把 BootDev 整体私有化? 请获取我们的私有云产品及方案 </a> </div>
+                        <div> 
+                            <a href="mailto:info@bootdev.com"> 需要把 BootDev 整体私有化? 请获取我们的私有云产品及方案 </a> 
+                        </div>
                     </div>
                 </div>
             </div>
             <!-- Footer -->
-            <div id="footer">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xs-6 col-sm-3 footer-col">
-                            <div class="footer-col-unit">
-                                <h4>关于公司</h4>
-                                <li> <a href="http://blog.bootdev.com/" target="_blank">博客</a>
-                                </li>
-                                <!--<li> <a  href="http://open.bootdev.com/"  target="_blank">社区</a>-->
-                                </li>
-                                <li> <a href="http://docs.bootdev.com/" target="_blank">文档</a>
-                                </li>
-                                <li> <a href="http://get.bootdev.com/" target="_blank">下载</a> </li>
-                                <li class="service-items"> <a href="https://account.bootdev.com/term" target="_blank">服
-                  务条款</a> </li>
-                                <li class="service-items"> <a href="http://status.bootdev.com/" target="_blank">服
-                  务状态</a> </li>
-                            </div>
-                        </div>
-                        <div class="col-xs-6 col-sm-3 footer-col">
-                            <div class="footer-col-unit">
-                                <h4>社交媒体</h4>
-                                <li> <a href="http://overseas.weibo.com/user/5305828201" target="_self">微博</a>
-                                </li>
-                                <li> <a href="https://www.facebook.com/bootdev" target="_self">Facebook</a>
-                                </li>
-                                <li> <a href="https://twitter.com/bootdev_channel" target="_self">Twitter</a>
-                                </li>
-                                <li> <a href="https://www.linkedin.com/company/bootdev" target="_self">LinkedIn</a>
-                                </li>
-                            </div>
-                        </div>
-                        <div class="col-xs-6 col-sm-3 footer-col">
-                            <div class="footer-col-unit">
-                                <h4>联系方式</h4>
-                                <li> 邮箱：<a href="mailto:info@bootdev.com">info@bootdev.com</a> </li>
-                                <li> 电话：021-999999 </li>
-                                <li class="address"> 地址：上海市虹口区祥德路118号1901室 </li>
-                            </div>
-                        </div>
-                        <div class="col-xs-6 col-sm-3 footer-col">
-                            <div class="footer-col-unit">
-                                <h4>扫描二维码</h4>
-                                <img src="http://res.cloudinary.com/hrscywv4p/image/upload/c_limit,f_auto,h_3000,q_90,w_1200/v1/715149/594c804739294639a76be692dad2191b_riogn3.jpg" style="width:100px; margin-top:10px">
-                            </div>
+        </div>
+        <div id="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-6 col-sm-3 footer-col">
+                        <div class="footer-col-unit">
+                            <h4>关于公司</h4>
+                            <li> 
+                                <a href="http://blog.bootdev.com/" target="_blank">博客</a>
+                            </li>
+                            <!--<li> <a  href="http://open.bootdev.com/"  target="_blank">社区</a>-->
+                            <li> 
+                                <a href="http://docs.bootdev.com/" target="_blank">文档</a>
+                            </li>
+                            <li> 
+                                <a href="http://get.bootdev.com/" target="_blank">下载</a> 
+                            </li>
+                            <li class="service-items"> 
+                                <a href="https://account.bootdev.com/term" target="_blank">服务条款</a> 
+                            </li>
+                            <li class="service-items"> 
+                                <a href="http://status.bootdev.com/" target="_blank">服务状态</a> 
+                            </li>
                         </div>
                     </div>
-                    <div class="final-intro"> © 沪ICP备999999999号-1 - 上海豹达科技有限公司 </div>
+                    <div class="col-xs-6 col-sm-3 footer-col">
+                        <div class="footer-col-unit">
+                            <h4>社交媒体</h4>
+                            <li> 
+                                <a href="http://overseas.weibo.com/user/5305828201" target="_self">微博</a>
+                            </li>
+                            <li> 
+                                <a href="https://www.facebook.com/bootdev" target="_self">Facebook</a>
+                            </li>
+                            <li> 
+                                <a href="https://twitter.com/bootdev_channel" target="_self">Twitter</a>
+                            </li>
+                            <li> 
+                                <a href="https://www.linkedin.com/company/bootdev" target="_self">LinkedIn</a>
+                            </li>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-3 footer-col">
+                        <div class="footer-col-unit">
+                            <h4>联系方式</h4>
+                            <li> 邮箱：
+                                <a href="mailto:info@bootdev.com">info@bootdev.com</a> 
+                            </li>
+                            <li> 电话：021-999999 </li>
+                            <li class="address"> 地址：上海市虹口区祥德路118号1901室 </li>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-3 footer-col">
+                        <div class="footer-col-unit">
+                            <h4>扫描二维码</h4>
+                            <img src="images/594c804739294639a76be692dad2191b_riogn3.jpg" style="width:100px; margin-top:10px">
+                        </div>
+                    </div>
                 </div>
+                <div class="final-intro"> © 沪ICP备999999999号-1 - 上海豹达科技有限公司 </div>
             </div>
-            <script>
+        </div>
+        <script>
                 var api_url = '';
                 var githubClientId = '';
                 var account_url = '';
             </script>
-            <script src="/js/pricing_vendor.js"></script>
-            <script src="/js/pricing.js"></script>
+        <script src="js/pricing_vendor.js"></script>
+        <script src="js/pricing.js"></script>
+        <script src="js/vendor.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+</html>
